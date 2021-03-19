@@ -1,0 +1,50 @@
+<div class="card" [routerLink]="['/shop']" [queryParams]="{ id: shop.id }">
+  <div class="row mx-0 p-2">
+    <div class="p-0">
+      <img
+        [src]="getSource(shop.logo)"
+        alt=""
+        width="70"
+        height="70"
+        class="border p-1"
+      />
+    </div>
+    <div class="my-auto px-3">
+      <div *ngIf="appService.lang == 'en'" class="font-weight-bold">
+        {{ shop.titleEnglish }}
+      </div>
+      <div *ngIf="appService.lang == 'ar'" class="font-weight-bold">
+        {{ shop.titleArabic }}
+      </div>
+
+      <div class="text-muted small mt-2">
+        <i class="fa fa-map-marker primary"></i>
+        <span class="mx-1"> rayad , jadah</span>
+      </div>
+      <small class="text-success">open</small>
+    </div>
+  </div>
+  <hr class="my-0" />
+  <div class="small text-muted p-2 mt-1">
+    <span>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur.
+    </span>
+    <br />
+    <div class="row mx-0">
+      <span class="my-auto text-dark font-weight-bold">Reviews :</span>
+      <ngb-rating
+        class="mx-2"
+        [max]="5"
+        [(rate)]="currentRate"
+        [readonly]="true"
+      ></ngb-rating>
+      <span class="bg-primary px-2 py-1 rounded-lg mx-2 h-auto my-auto"
+        >4.5</span
+      >
+    </div>
+  </div>
+  <hr class="my-0" />
+  <button class="btn m-2 hover-primary">
+    <i class="fa fa-book" aria-hidden="true"></i> View Menu
+  </button>
+</div>

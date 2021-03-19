@@ -1,0 +1,157 @@
+<nav class="navbar navbar-expand-lg pt-2 pb-2 navbar-light shadow">
+  <div class="container text-left">
+    <a class="navbar-brand logo" routerLink="/"> Logo</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <i class="fa fa-bars text-white" aria-hidden="true"></i>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent  ">
+      <ul class="navbar-nav ml-auto py-1">
+        <!--<li class="nav-item">
+          <a class="nav-link" routerLink="/">
+            {{ "BAZZAR.HOME" | translate }}
+          </a>
+        </li>-->
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/">{{ "BAZZAR.HOME" | translate }}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/all-shops">
+            {{ "BAZZAR.ALL_SHOPS" | translate }}</a
+          >
+        </li>
+
+        <li *ngIf="appService.lang == 'en'" class="nav-item">
+          <a class="nav-link" (click)="appService.changeLanguage()">
+            العربية
+          </a>
+        </li>
+        <li *ngIf="appService.lang == 'ar'" class="nav-item">
+          <a class="nav-link" (click)="appService.changeLanguage()">
+            English
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link border-white px-3" routerLink="/login">{{
+            "BAZZAR.LOGIN" | translate
+          }}</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link border-white px-3">{{
+            "BAZZAR.LOGOUT" | translate
+          }}</a>
+        </li>
+
+        <li class="nav-item">
+          <a [popoverOnHover]="false" [popover]="myPopover" class="nav-link">
+            <i class="fa fa-user-circle mx-2" aria-hidden="true"></i>
+            {{ "BAZZAR.MY_ACCOUNT" | translate }}
+          </a>
+          <popover-content
+            #myPopover
+            placement="bottom "
+            [animation]="true"
+            class="arabic-dir"
+            [closeOnClickOutside]="true"
+          >
+            <ul class="no-bullets text-left arabic-dir">
+              <li class="p-3 px-4 arabic-dir" routerLink="/my-account">
+                <img
+                  src="../../assets/icon_myorders.svg"
+                  alt="image"
+                  class="text-left mr-3"
+                  height="20"
+                  width="auto"
+                />
+                {{ "BAZZAR.MY_ORDERS" | translate }}
+              </li>
+
+              <li class="p-3 px-4" routerLink="/my-account">
+                <img
+                  src="../../assets/icon_account.svg"
+                  alt="image"
+                  class="text-left mr-3"
+                  height="20"
+                  width="auto"
+                />
+                {{ "BAZZAR.ACCOUNT_INFO" | translate }}
+              </li>
+              <li class="p-3 px-4" routerLink="/my-account">
+                <img
+                  src="../../assets/icon_address2.svg"
+                  alt="image"
+                  class="text-left mr-3"
+                  height="20"
+                  width="auto"
+                />
+                {{ "BAZZAR.SAVED_ADDRESSES" | translate }}
+              </li>
+              <li class="p-3 px-4">
+                <img
+                  src="../../assets/icon_logout2.svg"
+                  alt="image"
+                  class="text-left mr-3"
+                  height="20"
+                  width="auto"
+                />
+                {{ "BAZZAR.LOGOUT" | translate }}
+              </li>
+            </ul>
+          </popover-content>
+        </li>
+        <li class="nav-item arabic-dir">
+          <a
+            [popoverOnHover]="false"
+            [popover]="myPopoverFlag"
+            class="nav-link"
+          >
+            <img
+              src="../../assets/flag-round-ksa.png"
+              alt="image"
+              class="text-left"
+              height="25"
+              width="auto"
+            />
+          </a>
+          <popover-content
+            #myPopoverFlag
+            title="  {{ 'BAZZAR.SELECT_COUNTRY' | translate }}"
+            placement="bottom "
+            [animation]="true"
+            [closeOnClickOutside]="true"
+          >
+            <ul class="no-bullets text-left arabic-dir">
+              <li class="p-2 px-3 arabic-dir">
+                <img
+                  src="../../assets/flag-round-ksa.png"
+                  alt="image"
+                  class="text-left mr-2"
+                  height="23"
+                  width="auto"
+                />
+                {{ "BAZZAR.KSA" | translate }}
+              </li>
+            </ul>
+          </popover-content>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link btn-main" routerLink="/join-us">
+            {{ "BAZZAR.BECOME_APARTNER" | translate }}</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Links -->

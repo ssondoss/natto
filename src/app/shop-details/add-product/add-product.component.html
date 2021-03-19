@@ -1,0 +1,75 @@
+<div class="arabic-dir">
+  <div class="row border-bottom pb-2">
+    <h5 class="text-primary text-left col-md-6 col-9">
+      {{ "BAZZAR.ADD_ITEM_CHOICES" | translate }}
+    </h5>
+    <i
+      class="fa fa-times text-dark text-right text-left-ar col-md-6 col-3 pt-1"
+      (click)="onNoClick()"
+    >
+    </i>
+  </div>
+  <div>
+    <div class="row mt-2 mx-0">
+      <div class="col-md-4 pb-4 pb-md-0">
+        <img
+          [src]="getSource(product.image)"
+          alt="image"
+          height="auto"
+          width="100%"
+          class="p-1 border"
+        />
+      </div>
+      <div class="col-md-4 pb-4 pb-md-0 text-left">
+        <span *ngIf="appService.lang == 'en'">{{ product.titleEnglish }}</span>
+        <span *ngIf="appService.lang == 'ar'">{{ product.titleArabic }}</span>
+
+        <br />
+        <small *ngIf="appService.lang == 'en'" class="text-muted">{{
+          product.descriptionEnglish
+        }}</small>
+        <small *ngIf="appService.lang == 'ar'" class="text-muted">{{
+          product.descriptionArabic
+        }}</small>
+      </div>
+      <div class="col-md-2 col-6 text-left" dir="ltr">
+        <div
+          class="border bg-white text-left small my-auto"
+          style="height: fit-content; width: fit-content"
+        >
+          <button class="border-0 bg-transparent" (click)="increment()">
+            <i class="fa fa-plus text-primary border-right px-2 py-2"></i>
+          </button>
+          <span class="p-2"> {{ counter }} </span>
+          <button class="border-0 bg-transparent" (click)="decrement()">
+            <i class="fa fa-minus text-primary border-left px-2 py-2"></i>
+          </button>
+        </div>
+      </div>
+      <div class="col-6 col-md-2 text-right text-left-ar">
+        <span>
+          {{ "BAZZAR.PRICE" | translate }}
+          <span class="text-muted">
+            {{ product.price }} {{ "BAZZAR.SAR" | translate }}
+          </span></span
+        >
+      </div>
+    </div>
+
+    <div class="text-center mt-3 pt-4">
+      <button
+        class="btn btn-success px-5 text-white my-auto"
+        (click)="addToCart()"
+      >
+        <img
+          class="my-auto px-2 pb-1"
+          src="../../../assets/icon_cart.svg"
+          alt="image"
+          height="25"
+          width="auto"
+        />
+        {{ "BAZZAR.ADD_TO_CART" | translate }}
+      </button>
+    </div>
+  </div>
+</div>

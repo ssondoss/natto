@@ -1,0 +1,33 @@
+<div class="card p-0 text-center">
+  <img
+    class="card-img-top w-100 p-0 m-0"
+    src="../../assets/download.jpg"
+    height="160"
+    alt="Card image cap"
+  />
+  <div class="card-body py-2">
+    <div class="card-title font-weight-bold">Card title</div>
+    <p class="card-text small text-left">
+      Some quick example text to build on the card title and make up the bulk of
+      the card's content.
+    </p>
+    <div class="text-left small font-weight-bold">
+      <i class="fa fa-truck" aria-hidden="true"></i> delivery cost :
+    </div>
+    <div class="text-left small font-weight-bold mt-2">
+      <i class="fa fa-clock-o" aria-hidden="true"></i>
+      delivery time :
+    </div>
+    <div class="text-left row mx-0 mt-2">
+      <ngb-rating
+        [max]="5"
+        [(rate)]="currentRate"
+        [readonly]="true"
+      ></ngb-rating>
+      <div class="bg-primary rounded-lg h-50 px-2 mx-2 my-auto small">4.5</div>
+      <div class="ml-auto my-auto small">
+        <i class="fa fa-comments" aria-hidden="true"></i> 05
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,61 @@
+.topnav {
+  background-color: rgba(248, 246, 246, 0);
+  overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  font-family: "Open Sans", sans-serif !important;
+  display: block;
+  color: #363535;
+  width: 33%;
+  text-decoration: none;
+  font-size: 19px;
+  border-bottom: 2px solid transparent;
+}
+.active {
+  border-bottom: 2px solid #ff5a00;
+  font-weight: 600 !important;
+}
+.topnav a:hover {
+  border-bottom: 2px solid #ff5a00;
+  font-weight: 600 !important;
+}
+
+.topnav a.active {
+  border-bottom: 2px solid #ff5a00;
+}
+.rounded {
+  border-radius: 13px !important;
+}
+
+a.nav-link {
+  background-color: #ffffff;
+  color: rgb(66, 65, 65) !important;
+  border-radius: 0px;
+  font-size: 13px !important;
+  border: none;
+}
+
+.t-12 {
+  font-size: 12px !important;
+}
+.icon-add:hover {
+  color: #4ba318 !important;
+}
+ngb-rating {
+  border: none !important;
+  outline: none !important;
+  font-size: 22px !important;
+  color: #ff5a00 !important;
+}
+@media screen and (min-width: 541px) {
+  .merhantLogo img {
+    max-height: 110px !important;
+  }
+}
+@media screen and (max-width: 541px) {
+  .merhantLogo img {
+    max-height: 350px !important;
+  }
+}

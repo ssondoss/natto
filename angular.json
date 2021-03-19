@@ -19,14 +19,31 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": true,
+            "extractCss": true,
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/font-awesome/css/font-awesome.css",
+              {
+                "input": "src/style-ar.css",
+                "bundleName": "arabicStyle",
+                "lazy": true
+              },
+              {
+                "input": "src/style-en.css",
+                "bundleName": "englishStyle",
+                "lazy": true
+              }
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -88,6 +105,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -119,6 +137,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "new-bazzar"
+    }
+  },
+  "defaultProject": "new-bazzar",
+  "cli": {
+    "analytics": "26f65a9d-985b-482b-a499-319b0a571c74"
+  }
 }
