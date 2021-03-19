@@ -28,6 +28,11 @@
             {{ "BAZZAR.ALL_SHOPS" | translate }}</a
           >
         </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/how-to-order">
+            {{ "BAZZAR.HOW_TO_ORDER" | translate }}</a
+          >
+        </li>
 
         <li *ngIf="appService.lang == 'en'" class="nav-item">
           <a class="nav-link" (click)="appService.changeLanguage()">

@@ -233,6 +233,7 @@
     "ORDER_ID": "Order ID",
     "USER": "User",
     "DATE": "Date",
+    "HOW_TO_ORDER": "How to order",
     "PAYMENT_METHOD": "Payment Method",
     "TOTAL": "Total",
     "STATUS": "Status",
