@@ -9,10 +9,13 @@ import { PopoverModule } from 'ngx-smart-popover';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgbRatingConfig, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { UserSessionService } from './user-session.service';
 
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { ApplicationStateService } from './app.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CarouselModule } from 'primeng/carousel';
+
 import { Ng2TelInputModule } from 'ng2-tel-input';
 import { DialogModule } from '@syncfusion/ej2-angular-popups';
 import { HomeComponent } from './home/home.component';
@@ -22,6 +25,8 @@ import { AllShopsComponent } from './all-shops/all-shops.component';
 import { ShopCardMainComponent } from './shop-card-main/shop-card-main.component';
 import { ShopDetailsComponent } from './shop-details/shop-details.component';
 import { MaterialModule } from './material.module';
+import { Ng2CarouselamosModule } from 'ng2-carouselamos';
+
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
@@ -41,6 +46,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     BrowserModule,
     AppRoutingModule,
     PopoverModule,
+    CarouselModule,
+    Ng2CarouselamosModule,
     HttpClientModule,
     MaterialModule,
 
@@ -70,7 +77,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 
     NgbModule,
   ],
-  providers: [ApplicationStateService],
+  providers: [ApplicationStateService, UserSessionService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

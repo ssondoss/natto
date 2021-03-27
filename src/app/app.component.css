@@ -268,3 +268,12 @@ button:hover {
 .hover-primary:focus {
   color: #ffa803 !important;
 }
+.t-12 {
+  font-size: 12px !important;
+}
+.t-13 {
+  font-size: 13px !important;
+}
+.t-14 {
+  font-size: 14px !important;
+}

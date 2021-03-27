@@ -45,7 +45,8 @@ export class ShopDetailsComponent implements OnInit {
     public userSession: UserSessionService
   ) {
     config.max = 5;
-    if (!userSession.isLoggedIn) {
+    {
+      console.log('sondos');
       userSession.shoppingCart = { items: [] };
     }
   }

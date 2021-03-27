@@ -1,4 +1,4 @@
-<div class="card" [routerLink]="['/shop']" [queryParams]="{ id: shop.id }">
+<div class="card">
   <div class="row mx-0 p-2">
     <div class="p-0">
       <img
@@ -17,20 +17,34 @@
         {{ shop.titleArabic }}
       </div>
 
-      <div class="text-muted small mt-2">
+      <div class="text-muted t-12 mt-2">
         <i class="fa fa-map-marker primary"></i>
         <span class="mx-1"> rayad , jadah</span>
       </div>
-      <small class="text-success">open</small>
+      <small
+        class="font-weight-bold"
+        [ngClass]="{
+          'text-success': shop.merchantStatus == 'OPENED',
+          'text-danger': shop.merchantStatus == 'CLOSED',
+          'text-muted': shop.merchantStatus == 'BUSY'
+        }"
+      >
+        <span *ngIf="appService.lang == 'en'">{{
+          getStatusEnglish(shop.merchantStatus)
+        }}</span>
+        <span *ngIf="appService.lang == 'ar'">{{
+          getStatusArabic(shop.merchantStatus)
+        }}</span></small
+      >
     </div>
   </div>
   <hr class="my-0" />
-  <div class="small text-muted p-2 mt-1">
+  <div class="t-13 text-muted p-2 mt-1">
     <span>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur.
     </span>
     <br />
-    <div class="row mx-0">
+    <div class="row mx-0 my-3">
       <span class="my-auto text-dark font-weight-bold">Reviews :</span>
       <ngb-rating
         class="mx-2"
@@ -44,7 +58,11 @@
     </div>
   </div>
   <hr class="my-0" />
-  <button class="btn m-2 hover-primary">
+  <button
+    class="btn m-2 hover-primary"
+    [routerLink]="['/shop']"
+    [queryParams]="{ id: shop.id }"
+  >
     <i class="fa fa-book" aria-hidden="true"></i> View Menu
   </button>
 </div>
