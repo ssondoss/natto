@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApplicationStateService } from '../app.service';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +9,21 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
   currentRate = 5;
 
-  constructor() {}
+  constructor(public appService: ApplicationStateService) {}
 
   ngOnInit(): void {}
+  categories = [
+    { titleEnglish: 'yousef' },
+    { titleEnglish: 'yousef' },
+    { titleEnglish: 'yousef' },
+    { titleEnglish: 'yousef' },
+    { titleEnglish: 'yousef' },
+    { titleEnglish: 'yousef' },
+    { titleEnglish: 'yousef' },
+    { titleEnglish: 'yousef' },
+    { titleEnglish: 'yousef' },
+    { titleEnglish: 'yousef' },
+    { titleEnglish: 'yousef' },
+    { titleEnglish: 'yousef' },
+  ];
 }

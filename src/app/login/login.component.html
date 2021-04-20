@@ -1,0 +1,116 @@
+<div class="justify-content-center text-center d-flex px-2 px-md-5 bg-light">
+  <div class="card shadow px-3 pt-0 my-5 col-xl-6 col-lg-8 mx-auto border-0">
+    <h2 class="pt-5 text-center">
+      {{ "BAZZAR.LOGIN_NOW" | translate }}
+    </h2>
+
+    <div class="col-md-8 offset-md-2">
+      <hr />
+      <div
+        *ngIf="messageWrongEmailOrPassword == true"
+        class="text-left bg-secondary border p-2 row arabic-dir mx-0 rounded-sm"
+      >
+        <div class="col-1 px-0 px-md-1 my-auto">
+          <img
+            src="../../assets/icon_alert.svg"
+            height="auto"
+            width="100%"
+            alt="image"
+            class="px-0 text-left"
+          />
+        </div>
+        <small class="col-11 px-2 t-media-12">{{
+          "BAZZAR.ALERT_WRONG_PASSWORD_OR_EMAIL" | translate
+        }}</small>
+      </div>
+      <div
+        *ngIf="messageRequired == true"
+        class="text-left bg-secondary border p-2 row arabic-dir mx-0 rounded-sm"
+      >
+        <div class="col-1 px-0 px-md-1 my-auto">
+          <img
+            src="../../assets/icon_alert.svg"
+            height="auto"
+            width="100%"
+            alt="image"
+            class="px-0 text-left"
+          />
+        </div>
+        <small class="col-11 px-2 t-media-12">{{
+          "BAZZAR.messageRequired" | translate
+        }}</small>
+      </div>
+
+      <form action="" class="pt-5" [formGroup]="loginForm">
+        <div class="form-group row mx-0 mb-4">
+          <label
+            class="col-md-3 my-auto text-left font-14px font-weight-bold pl-0 pb-3 pb-md-0"
+            >{{ "BAZZAR.EMAIL" | translate }}</label
+          >
+          <div class="col-md-9 px-0 text-left">
+            <input
+              class="form-control"
+              formControlName="email"
+              type="email"
+              maxlength="150"
+            />
+            <mat-error
+              *ngIf="
+                loginForm.controls.email.errors?.required &&
+                loginForm.controls.email.touched
+              "
+            >
+              {{ "BAZZAR.REQUIRED" | translate }}
+            </mat-error>
+          </div>
+        </div>
+
+        <div class="form-group row mx-0 mb-4 mb-4">
+          <label
+            class="col-md-3 my-auto text-left font-14px font-weight-bold pl-0 pb-3 pb-md-0"
+            >{{ "BAZZAR.PASSWORD" | translate }}</label
+          >
+          <div class="col-md-9 px-0 text-left">
+            <input
+              class="form-control"
+              required
+              type="password"
+              formControlName="password"
+              maxlength="100"
+            />
+            <mat-error
+              *ngIf="
+                loginForm.controls.password.errors?.required &&
+                loginForm.controls.password.touched
+              "
+            >
+              {{ "BAZZAR.REQUIRED" | translate }}
+            </mat-error>
+          </div>
+        </div>
+        <div class="mx-0 small mx-0 pt-3 text-muted text-left row">
+          <a class="text-muted" (click)="openDialogForgetPassword()">
+            {{ "BAZZAR.FORGET" | translate }}</a
+          >
+        </div>
+
+        <div class="form-group pt-5 text-center">
+          <button class="btn btn-primary w-100" (click)="login()">
+            {{ "BAZZAR.LOGIN" | translate }}
+          </button>
+        </div>
+      </form>
+
+      <div
+        class="row mx-0 text-center mx-0 justify-content-center pb-5 pt-5 mb-5 arabic-dir"
+      >
+        <p class="font-weight-600">
+          {{ "BAZZAR.DONT_HAVE_ACCOUNT" | translate }}
+        </p>
+        <a routerLink="/regestration" class="link-primary px-2">
+          {{ "BAZZAR.CREATE_AN_ACCOUNT" | translate }}</a
+        >
+      </div>
+    </div>
+  </div>
+</div>

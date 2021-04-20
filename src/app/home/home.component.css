@@ -7,7 +7,6 @@
   top: 12px;
   font-size: 12px !important;
   color: #969595;
-  left: 15px;
 }
 .search-form input::placeholder {
   font-size: 12px !important;
@@ -17,10 +16,7 @@
   background-color: #f9f9f936 !important;
   height: 380px !important;
 }
-.work-img {
-  height: 70px !important;
-  width: 70px !important;
-}
+
 .work-img img:hover {
   -webkit-transform: rotateY(360deg);
   -ms-transform: rotateY(360deg);
@@ -30,8 +26,19 @@
 .carousel-control-next-icon {
   color: black !important;
 }
-.bg-img {
-  background-image: url(../../assets/banner.jpeg);
+.bg-img1 {
+  background-image: url(../../assets/banner-1.jpeg);
+  background-size: cover;
+  padding: 0 !important;
+  margin: 0 !important;
+  background-color: #000000d5 !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  width: 100% !important;
+}
+.bg-img2 {
+  background-image: url(../../assets/banner-2.jpeg);
   background-size: cover;
   padding: 0 !important;
   margin: 0 !important;

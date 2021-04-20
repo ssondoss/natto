@@ -50,3 +50,17 @@
 .bg-aren {
   background-color: aqua !important;
 }
+.mr-auto {
+  margin-left: auto !important;
+}
+.search-icon {
+  position: absolute;
+  top: 12px;
+  left: 15px;
+}
+.bread {
+  margin-left: auto !important;
+}
+.nav-text {
+  margin-left: auto !important;
+}

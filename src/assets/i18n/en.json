@@ -85,7 +85,9 @@
     "USE_ARABIC_LETTERS": "please use the arabic letters for this field",
     "EMAIL_RESET_PASSWORD": "the link sent for your email successfully ",
     "EMAIL_NOT_FOUND": "this email not found , please check the email or use another one",
-    "": "",
+    "SAVE_CHANGES": "Save Changes",
+    "OLD_PASSWORD": "Old Password",
+
     "": "",
     "": "",
     "": "",
@@ -275,6 +277,8 @@
     "ALL_CATEGORIES": "All category",
     "ALL_CITIES": "All cities",
     "ENTER_MERCHANT_NAME": "Enter Merchant Name",
-    "SEARCH_RESULTS": "Search Results"
+    "SEARCH_RESULTS": "Search Results",
+    "CHANGE_PASSWORD_SMALL": "Change Password",
+    "ADD_SHOP": "ADD SHOP"
   }
 }

@@ -1,0 +1,198 @@
+<!-- <div *ngIf="myDangerAlert === true" class="text-center justify-content-center">
+  <div class="fixed-top alert alert-danger alert-animation mx-auto arabic-dir">
+    <img src="../../../assets/cancel.png" alt="image" height="40" />
+    {{ "BAZZAR.TRY_AGAIN" | translate }}
+  </div>
+</div> -->
+
+<div class="d-flex px-2 px-md-5 bg-light">
+  <div
+    class="card shadow px-3 text-center my-5 col-xl-7 col-lg-9 mx-auto border-0"
+  >
+    <h4 class="font-weight-bold pt-5 text-center">
+      {{ "BAZZAR.CREATE_AN_ACCOUNT" | translate }}
+    </h4>
+
+    <div class="col-md-8 offset-md-2 text-left">
+      <hr />
+      <form action="" class="pt-4" [formGroup]="regestrationForm" id="dirForm">
+        <div class="form-group row mx-0 mb-4 mb-4">
+          <label
+            class="col-md-4 my-auto text-left font-14px font-weight-bold pl-0 pb-3 pb-md-0"
+            >{{ "BAZZAR.USERNAME" | translate }}</label
+          >
+          <div class="col-md-8 px-0 text-left">
+            <input
+              class="form-control"
+              type="text"
+              formControlName="username"
+              required
+              minlength="3"
+              maxlength="100"
+            />
+            <mat-error
+              *ngIf="
+                regestrationForm.controls.username.errors?.required &&
+                regestrationForm.controls.username.touched
+              "
+            >
+              {{ "BAZZAR.REQUIRED" | translate }}
+            </mat-error>
+            <mat-error
+              *ngIf="regestrationForm.controls.username.hasError('minlength')"
+            >
+              {{ "BAZZAR.USERNAME_LENGTH" | translate }}
+            </mat-error>
+          </div>
+        </div>
+        <div class="form-group row mx-0 mb-4 mb-4">
+          <label
+            class="col-md-4 my-auto text-left font-14px font-weight-bold pl-0 pb-3 pb-md-0"
+            >{{ "BAZZAR.EMAIL" | translate }}</label
+          >
+          <div class="col-md-8 px-0 text-left">
+            <input
+              class="form-control"
+              formControlName="email"
+              type="email"
+              maxlength="150"
+            />
+            <mat-error
+              *ngIf="
+                regestrationForm.controls.email.errors?.required &&
+                regestrationForm.controls.email.touched
+              "
+            >
+              {{ "BAZZAR.REQUIRED" | translate }}
+            </mat-error>
+            <mat-error
+              *ngIf="regestrationForm.controls.email.hasError('invalidEmail')"
+            >
+              {{ "BAZZAR.EMAIL_PATTERN" | translate }}
+            </mat-error>
+          </div>
+        </div>
+        <div class="form-group row mx-0 mb-4 mb-4">
+          <label
+            class="col-md-4 my-auto text-left font-14px font-weight-bold pl-0 pb-3 pb-md-0"
+            >{{ "BAZZAR.PHONE" | translate }}</label
+          >
+          <div class="col-md-8 px-0">
+            <input
+              class="form-control"
+              type="tel"
+              required
+              formControlName="phone"
+              minlength="10"
+              pattern="[0-9]*"
+              maxlength="15"
+            />
+            <mat-error
+              *ngIf="regestrationForm.controls.phone.hasError('pattern')"
+            >
+              {{ "BAZZAR.PHONE_PATTERN" | translate }}
+            </mat-error>
+
+            <mat-error
+              *ngIf="
+                regestrationForm.controls.phone.errors?.required &&
+                regestrationForm.controls.phone.touched
+              "
+            >
+              {{ "BAZZAR.REQUIRED" | translate }}
+            </mat-error>
+            <mat-error
+              *ngIf="regestrationForm.controls.phone.hasError('minlength')"
+            >
+              {{ "BAZZAR.PHONE_LENGTH" | translate }}
+            </mat-error>
+          </div>
+        </div>
+        <div class="form-group row mx-0 mb-4 mb-4">
+          <label
+            class="col-md-4 my-auto text-left font-14px font-weight-bold pl-0 pb-3 pb-md-0"
+            >{{ "BAZZAR.PASSWORD" | translate }}</label
+          >
+          <div class="col-md-8 px-0">
+            <input
+              class="form-control"
+              formControlName="password"
+              required
+              type="password"
+              minlength="6"
+              maxlength="100"
+            />
+            <mat-error
+              *ngIf="
+                regestrationForm.controls.password.errors?.required &&
+                regestrationForm.controls.password.touched
+              "
+            >
+              {{ "BAZZAR.REQUIRED" | translate }}
+            </mat-error>
+            <mat-error
+              *ngIf="regestrationForm.controls.password.hasError('minlength')"
+            >
+              {{ "BAZZAR.PASSWORD_LENGTH" | translate }}
+            </mat-error>
+          </div>
+        </div>
+        <div class="form-group row mx-0 mb-4 mb-4">
+          <label
+            class="col-md-4 my-auto text-left font-14px font-weight-bold pl-0 pb-3 pb-md-0"
+            >{{ "BAZZAR.CONFIRM_PASSWORD" | translate }}</label
+          >
+          <div class="col-md-8 px-0">
+            <input
+              class="form-control"
+              formControlName="confirmPassword"
+              required
+              type="password"
+              maxlength="100"
+              minlength="6"
+            />
+            <mat-error
+              *ngIf="
+                regestrationForm.controls.confirmPassword.errors?.required &&
+                regestrationForm.controls.confirmPassword.touched
+              "
+            >
+              {{ "BAZZAR.REQUIRED" | translate }}
+            </mat-error>
+            <mat-error
+              *ngIf="
+                regestrationForm.controls.confirmPassword.hasError(
+                  'mismatchedPasswords'
+                ) && regestrationForm.controls.confirmPassword.touched
+              "
+              >{{ "BAZZAR.DONT_MATCH" | translate }}</mat-error
+            >
+          </div>
+        </div>
+
+        <div class="row mx-0 small mx-0 mt-5">
+          {{ "BAZZAR.AGREE_OF_TERMS" | translate }} .
+        </div>
+        <div class="form-group mt-5 text-center">
+          <button
+            class="btn btn-primary w-100"
+            (click)="addUser(regestrationForm)"
+          >
+            {{ "BAZZAR.CREATE_YOUR_ACCOUNT" | translate }}
+          </button>
+        </div>
+      </form>
+
+      <div
+        class="row mx-0 text-center mx-0 justify-content-center pb-4 pt-3 arabic-dir"
+      >
+        <p class="font-weight-bold">
+          {{ "BAZZAR.ALREADY_YOU_HAVE_ACCOUNT" | translate }}
+        </p>
+        <a routerLink="/login" class="link-primary px-2">
+          {{ "BAZZAR.LOGIN" | translate }}</a
+        >
+      </div>
+    </div>
+  </div>
+</div>

@@ -7,7 +7,6 @@
   background-color: #ffa803 !important;
   color: #ffffff;
   height: 45px;
-  border-radius: 8px;
   border: 1px solid #ffa803;
 }
 .btn-primary:hover {
@@ -276,4 +275,17 @@ button:hover {
 }
 .t-14 {
   font-size: 14px !important;
+}
+.bg-light2 {
+  background-color: #f3f3f3;
+}
+
+.work-img img:hover {
+  -webkit-transform: rotateY(360deg);
+  -ms-transform: rotateY(360deg);
+  transform: rotateY(360deg);
+  transition: transform 0.8s linear;
+}
+.larger {
+  font-size: larger;
 }

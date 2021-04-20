@@ -1,0 +1,17 @@
+.side-nav:hover {
+  background-color: #f5f5f5 !important;
+  color: #000;
+}
+
+.side-nav:focus {
+  border: 1px solid #eee !important;
+  outline: none;
+  color: #000;
+  cursor: pointer;
+}
+.side-nav:active {
+  border: 1px solid #eee !important;
+}
+.side-nav {
+  color: #6d6c6c;
+}

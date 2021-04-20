@@ -18,6 +18,18 @@ export function arabicLetters(control: FormControl): { [key: string]: any } {
     return { invalidLetters: true };
   }
 }
+export function matchingPasswords(
+  passwordKey: string,
+  passwordConfirmationKey: string
+) {
+  return (group: FormGroup) => {
+    let password = group.controls[passwordKey];
+    let passwordConfirmation = group.controls[passwordConfirmationKey];
+    if (password.value !== passwordConfirmation.value) {
+      return passwordConfirmation.setErrors({ mismatchedPasswords: true });
+    }
+  };
+}
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
