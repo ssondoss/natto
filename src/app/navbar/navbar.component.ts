@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ApplicationStateService } from '../app.service';
+import { UserSessionService } from '../user-session.service';
 
 @Component({
   selector: 'navbar',
@@ -8,10 +9,22 @@ import { ApplicationStateService } from '../app.service';
   styleUrls: ['./navbar.component.css', '../app.component.css'],
 })
 export class NavbarComponent implements OnInit {
+  viewCountriesDiv = false;
+  viewAccountDiv = false;
   constructor(
     public appService: ApplicationStateService,
-    public http: HttpClient
+    public http: HttpClient,
+    public userSession: UserSessionService
   ) {}
 
   ngOnInit(): void {}
+  viewCountries() {
+    this.viewCountriesDiv = !this.viewCountriesDiv;
+  }
+  viewAccount() {
+    this.viewAccountDiv = !this.viewAccountDiv;
+  }
+  logout() {
+    this.userSession.logout();
+  }
 }

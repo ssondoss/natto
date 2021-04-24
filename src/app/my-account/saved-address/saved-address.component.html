@@ -1,0 +1,77 @@
+<top-part></top-part>
+<div class="container my-5 py-5">
+  <div class="row mx-0">
+    <div class="col-md-3 border px-0 rounded h-100">
+      <side-nav></side-nav>
+    </div>
+    <div class="col-md-9 mr-auto px-0 px-md-4 mt-5 mt-md-0">
+      <div class="h5 mb-3">{{ "BAZZAR.SAVED_ADDRESSES" | translate }}</div>
+      <div class="border px-md-4 p-3 rounded">
+        <div *ngIf="hasAddress === false">
+          <p class="text-muted">You dont have any saved address yet ..</p>
+          <a
+            class="text-success ml-auto-en mr-auto-ar border-right-0-ar"
+            (click)="openDialogAddAddress()"
+          >
+            {{ "BAZZAR.ADD_ADDRESS" | translate }}
+          </a>
+        </div>
+
+        <div class="arabic-dir px-0" *ngIf="hasAddress === true">
+          <div class="row mt-2 mx-0 px-0">
+            <label
+              class="col-md-4 col-lg-3 col-form-label text-left my-auto text-muted font-weight-600 px-0"
+            >
+              {{ "BAZZAR.ADDRESS" | translate }}
+            </label>
+            <div
+              class="col-md-8 col-lg-9 text-left my-auto px-0"
+              style="word-wrap: break-word !important"
+            >
+              <span>
+                {{ user.address.city }} , {{ user.address.country }} ,
+                {{ user.address.addressLineOne }}
+              </span>
+            </div>
+          </div>
+          <div class="row mt-2 mx-0 px-0">
+            <label
+              class="col-md-4 col-lg-3 col-form-label text-left text-muted my-auto font-weight-600 px-0"
+              style="word-wrap: break-word !important"
+            >
+              {{ "BAZZAR.MOBILE_NUMBER" | translate }}
+            </label>
+            <div class="col-md-8 col-lg-9 text-left my-auto px-0">
+              <span>{{ user.phone }}</span>
+            </div>
+          </div>
+          <div class="row mx-0 mt-2 px-0">
+            <label
+              class="col-md-4 col-lg-3 col-form-label text-left text-muted my-auto font-weight-600 px-0"
+            >
+              {{ "BAZZAR.ADDITIONAL_DIRECTIONS" | translate }}
+            </label>
+            <div
+              class="col-md-8 col-lg-9 text-left my-auto px-0"
+              style="word-wrap: break-word !important"
+            >
+              <span>{{ user.address.addressLineTwo }}</span>
+            </div>
+          </div>
+
+          <div class="row mx-0 py-2 text-right mt-4">
+            <a
+              class="text-success ml-auto-en mr-auto-ar border-right-0-ar"
+              (click)="openDialogAddAddress()"
+            >
+              {{ "BAZZAR.EDIT" | translate }}
+            </a>
+            <!-- <a class="px-3 text-success">
+                {{ "BAZZAR.DELETE" | translate }}
+              </a> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

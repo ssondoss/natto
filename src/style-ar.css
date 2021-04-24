@@ -144,3 +144,26 @@ small {
 .bg-aren {
   background-color: blue !important;
 }
+@media screen and (min-width: 1025px) {
+  .text-lg-left {
+    text-align: right !important;
+  }
+}
+
+.search-icon {
+  position: absolute;
+  top: 12px;
+  right: 15px !important;
+}
+.search-form ::placeholder {
+  padding-right: 20px !important;
+}
+.bread {
+  margin-right: auto !important;
+}
+.bread {
+  text-align: left !important;
+}
+.nav-text {
+  margin-right: auto !important;
+}

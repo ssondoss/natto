@@ -1,0 +1,220 @@
+<merchant-top-part></merchant-top-part>
+<div class="container my-5 py-5">
+  <div class="row mx-0">
+    <div class="col-md-3 border px-0 rounded h-100">
+      <merchant-side-nav></merchant-side-nav>
+    </div>
+    <div class="col-md-9 mr-auto mt-5 mt-md-0 px-0 px-md-4">
+      <div class="h5 mb-3">{{ "BAZZAR.WARDROBE" | translate }}</div>
+      <div class="border px-md-4 p-3 rounded">
+        <form class="row mx-0" [formGroup]="productForm" id="dirForm">
+          <div class="form-group col-md-5">
+            <label>{{ "BAZZAR.TITLE_ENGLISH" | translate }}</label>
+            <input
+              required
+              type="text"
+              class="form-control"
+              formControlName="titleEnglish"
+              maxlength="100"
+            />
+            <mat-error
+              *ngIf="
+                productForm.controls.titleEnglish.errors?.required &&
+                productForm.controls.titleEnglish.touched
+              "
+            >
+              {{ "BAZZAR.REQUIRED" | translate }}
+            </mat-error>
+            <mat-error
+              *ngIf="productForm.controls.titleEnglish.hasError('maxlength')"
+            >
+              {{ "BAZZAR.100_LENGTH" | translate }}
+            </mat-error>
+          </div>
+          <div class="form-group col-md-5 RT">
+            <label for="exampleInputEmail1">
+              {{ "BAZZAR.TITLE_ARABIC" | translate }}</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              formControlName="titleArabic"
+              required
+              maxlength="100"
+            />
+            <mat-error
+              *ngIf="
+                productForm.controls.titleArabic.hasError('invalidLetters')
+              "
+            >
+              {{ "BAZZAR.USE_ARABIC_LETTERS" | translate }}
+            </mat-error>
+            <mat-error
+              *ngIf="
+                productForm.controls.titleArabic.errors?.required &&
+                productForm.controls.titleArabic.touched
+              "
+            >
+              {{ "BAZZAR.REQUIRED" | translate }}
+            </mat-error>
+            <mat-error
+              *ngIf="productForm.controls.titleArabic.hasError('maxlength')"
+            >
+              {{ "BAZZAR.100_LENGTH" | translate }}
+            </mat-error>
+          </div>
+          <div class="col-md-2 pb-3 pl-3 imageLabel text-center">
+            <label>
+              {{ "BAZZAR.IMAGE" | translate }}
+
+              <br />
+              <input id="file-input" type="file" style="display: none" />
+              <i class="fa fa-upload pt-2" aria-hidden="true"></i>
+            </label>
+            <input type="file" class="form-control-file" />
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="exampleInputPassword1">
+              {{ "BAZZAR.DESCRIPTION_ENGLISH" | translate }}
+            </label>
+            <textarea
+              type="text"
+              formControlName="descriptionEnglish"
+              class="form-control"
+              maxlength="250"
+            ></textarea>
+            <mat-error
+              *ngIf="
+                productForm.controls.descriptionEnglish.hasError('maxlength')
+              "
+            >
+              {{ "BAZZAR.250_LENGTH" | translate }}
+            </mat-error>
+          </div>
+          <div class="form-group col-md-6 RT">
+            <label> {{ "BAZZAR.DESCRIPTION_ARABIC" | translate }} </label>
+            <textarea
+              type="text"
+              formControlName="descriptionArabic"
+              class="form-control"
+              maxlength="250"
+            ></textarea>
+            <mat-error
+              *ngIf="
+                productForm.controls.descriptionArabic.hasError(
+                  'invalidLetters'
+                )
+              "
+            >
+              {{ "BAZZAR.USE_ARABIC_LETTERS" | translate }}
+            </mat-error>
+            <mat-error
+              *ngIf="
+                productForm.controls.descriptionArabic.hasError('maxlength')
+              "
+            >
+              {{ "BAZZAR.250_LENGTH" | translate }}
+            </mat-error>
+          </div>
+          <div class="form-group col-md-6">
+            <label> {{ "BAZZAR.deliveryDescription" | translate }} </label>
+            <textarea
+              type="text"
+              class="form-control"
+              formControlName="deliveryDescription"
+            ></textarea>
+          </div>
+          <div class="form-group col-md-4">
+            <label> {{ "BAZZAR.MAIN_WORDROBE" | translate }} </label>
+            <select
+              name="main_wardrobe"
+              id="main_wardrobe"
+              class="form-control"
+              formControlName="category"
+            >
+              <option>
+                <div>titleEnglish }}</div>
+                <div>titleArabic }}</div>
+              </option>
+            </select>
+            <mat-error
+              *ngIf="
+                productForm.controls.category.errors?.required &&
+                productForm.controls.category.touched
+              "
+            >
+              {{ "BAZZAR.REQUIRED" | translate }}
+            </mat-error>
+          </div>
+
+          <div class="form-group col-md-2">
+            <label> {{ "BAZZAR.PRICE" | translate }} </label>
+            <input
+              type="number"
+              class="form-control"
+              formControlName="price"
+              min="0"
+            />
+            <mat-error
+              *ngIf="
+                productForm.controls.price.errors?.required &&
+                productForm.controls.price.touched
+              "
+            >
+              {{ "BAZZAR.REQUIRED" | translate }}
+            </mat-error>
+          </div>
+          <div class="form-group col-md-2 text-center">
+            <button
+              type="submit"
+              class="btn btn-primary px-5"
+              (click)="addProduct()"
+            >
+              {{ "BAZZAR.ADD" | translate }}
+            </button>
+          </div>
+        </form>
+        <div class="mt-5 table-responsive">
+          <table class="table table-bordered">
+            <thead class="text-dark text-center">
+              <th>
+                {{ "BAZZAR.TITLE_ENGLISH" | translate }}
+              </th>
+              <th>
+                {{ "BAZZAR.TITLE_ARABIC" | translate }}
+              </th>
+
+              <th>
+                {{ "BAZZAR.OPTIONS" | translate }}
+              </th>
+            </thead>
+            <tbody class="text-center">
+              <tr>
+                <td>titleEnglish }}</td>
+                <td>titleArabic }}</td>
+                <td class="mt-2 w-25">
+                  <a class="icon-view pr-2 col-md-4"
+                    ><i class="fa fa-eye text-success" aria-hidden="true"></i>
+                  </a>
+                  <a
+                    class="icon-edit pr-2 col-md-4"
+                    [routerLink]="['/edit-product']"
+                  >
+                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                  </a>
+                  <a class="icon-danger col-md-4" (click)="deleteProduct(1)"
+                    ><i
+                      class="fa fa-trash-o text-danger"
+                      aria-hidden="true"
+                    ></i>
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

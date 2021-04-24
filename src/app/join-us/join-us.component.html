@@ -1,0 +1,364 @@
+<div class="bg-light2">
+  <div class="container">
+    <div class="h4 py-3">Add Shop</div>
+  </div>
+</div>
+<div class="container px-0">
+  <div class="row mx-0 mt-5 px-0">
+    <div class="col-md-6">
+      <div>
+        <div class="h5">Basic Info</div>
+        <form class="mt-3" [formGroup]="joinUsForm">
+          <div class="form-group">
+            <label>
+              {{ "BAZZAR.STORE_NAME_ENGLISH" | translate }}
+            </label>
+            <input
+              type="text"
+              class="form-control"
+              maxlength="100"
+              required
+              formControlName="nameEnglish"
+            />
+            <mat-error
+              *ngIf="
+                joinUsForm.controls.nameEnglish.errors?.required &&
+                joinUsForm.controls.nameEnglish.touched
+              "
+            >
+              {{ "BAZZAR.REQUIRED" | translate }}
+            </mat-error>
+          </div>
+          <div class="form-group">
+            <label> {{ "BAZZAR.STORE_NAME_ARABIC" | translate }} </label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="nameArabic"
+              maxlength="100"
+              required
+            />
+            <mat-error
+              *ngIf="joinUsForm.controls.nameArabic.hasError('invalidLetters')"
+            >
+              {{ "MERCHANT.USE_ARABIC_LETTERS" | translate }}
+            </mat-error>
+            <mat-error
+              *ngIf="
+                joinUsForm.controls.nameArabic.errors?.required &&
+                joinUsForm.controls.nameArabic.touched
+              "
+            >
+              {{ "BAZZAR.REQUIRED" | translate }}
+            </mat-error>
+          </div>
+          <div class="form-group">
+            <label>
+              {{ "BAZZAR.STORE_DESCRIPTION_ENGLISH" | translate }}
+            </label>
+            <input
+              type="text"
+              id="desEnglish"
+              formControlName="desEnglish"
+              maxlength="250"
+              required
+              class="form-control"
+            />
+            <mat-error
+              *ngIf="
+                joinUsForm.controls.desEnglish.errors?.required &&
+                joinUsForm.controls.desEnglish.touched
+              "
+            >
+              {{ "BAZZAR.REQUIRED" | translate }}
+            </mat-error>
+          </div>
+          <div class="form-group">
+            <label>
+              {{ "BAZZAR.STORE_DESCRIPTION_ARABIC" | translate }}
+            </label>
+            <input
+              type="text"
+              class="form-control"
+              maxlength="250"
+              required
+              formControlName="desArabic"
+            />
+            <mat-error
+              *ngIf="
+                joinUsForm.controls.desArabic.errors?.required &&
+                joinUsForm.controls.desArabic.touched
+              "
+            >
+              {{ "BAZZAR.REQUIRED" | translate }}
+            </mat-error>
+            <mat-error
+              *ngIf="joinUsForm.controls.nameArabic.hasError('invalidLetters')"
+            >
+              {{ "MERCHANT.USE_ARABIC_LETTERS" | translate }}
+            </mat-error>
+          </div>
+          <div class="form-group mb-4">
+            <div class="custom-file mt-3">
+              <label class="custom-file-label" for="validatedCustomFile">{{
+                "BAZZAR.STORE_LOGO" | translate
+              }}</label>
+              <input
+                type="file"
+                class="custom-file-input"
+                formControlName="logo"
+                required
+              />
+            </div>
+
+            <mat-error
+              *ngIf="
+                joinUsForm.controls.logo.errors?.required &&
+                joinUsForm.controls.logo.touched
+              "
+            >
+              {{ "BAZZAR.REQUIRED" | translate }}
+            </mat-error>
+          </div>
+          <div class="form-group mb-5">
+            <label>{{ "BAZZAR.TAG" | translate }}</label>
+            <select
+              class="form-select form-control"
+              formControlName="tag"
+              required
+            >
+              <option selected>- {{ "BAZZAR.SELECT" | translate }} -</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+            <mat-error
+              *ngIf="
+                joinUsForm.controls.tag.errors?.required &&
+                joinUsForm.controls.tag.touched
+              "
+            >
+              {{ "BAZZAR.REQUIRED" | translate }}
+            </mat-error>
+          </div>
+
+          <div class="h5">Contact Info</div>
+          <div class="form-group mb-4">
+            <label class="t-media-14">
+              {{ "BAZZAR.MOBILE_NUMBER1" | translate }}
+            </label>
+            <input
+              type="tel"
+              formControlName="phone1"
+              class="form-control"
+              id="mobileNumber1"
+              maxlength="15"
+            />
+            <mat-error
+              *ngIf="
+                joinUsForm.controls.phone1.errors?.required &&
+                joinUsForm.controls.phone1.touched
+              "
+            >
+              {{ "BAZZAR.REQUIRED" | translate }}
+            </mat-error>
+            <mat-error *ngIf="joinUsForm.controls.phone1.hasError('minlength')">
+              {{ "BAZZAR.PHONE_LENGTH" | translate }}
+            </mat-error>
+          </div>
+          <div class="form-group mb-4">
+            <label class="t-media-14">
+              {{ "BAZZAR.MOBILE_NUMBER2" | translate }}</label
+            >
+            <input
+              type="tel"
+              class="form-control"
+              id="mobileNumber2"
+              maxlength="15"
+              formControlName="phone2"
+            />
+            <mat-error
+              *ngIf="
+                joinUsForm.controls.phone2.errors?.required &&
+                joinUsForm.controls.phone2.touched
+              "
+            >
+              {{ "BAZZAR.REQUIRED" | translate }}
+            </mat-error>
+            <mat-error *ngIf="joinUsForm.controls.phone2.hasError('minlength')">
+              {{ "BAZZAR.PHONE_LENGTH" | translate }}
+            </mat-error>
+          </div>
+          <div class="form-group mb-4">
+            <label class="t-media-14">{{ "BAZZAR.EMAIL" | translate }}</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              maxlength="150"
+              formControlName="email"
+            />
+            <mat-error
+              *ngIf="
+                joinUsForm.controls.email.errors?.required &&
+                joinUsForm.controls.email.touched
+              "
+            >
+              {{ "BAZZAR.REQUIRED" | translate }}
+            </mat-error>
+            <mat-error
+              *ngIf="joinUsForm.controls.email.hasError('invalidEmail')"
+            >
+              {{ "BAZZAR.EMAIL_PATTERN" | translate }}
+            </mat-error>
+          </div>
+          <div class="h5">Location</div>
+
+          <div class="form-group mb-4">
+            <label>{{ "BAZZAR.COUNTRY" | translate }}</label>
+            <input
+              type="text"
+              class="form-control"
+              id="country"
+              disabled
+              value="Saudi Arabia"
+            />
+          </div>
+          <div class="form-group mb-4">
+            <label>{{ "BAZZAR.CITY" | translate }}</label>
+            <select class="form-select form-control" formControlName="city">
+              <option selected>- {{ "BAZZAR.SELECT" | translate }} -</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+            <mat-error
+              *ngIf="
+                joinUsForm.controls.city.errors?.required &&
+                joinUsForm.controls.city.touched
+              "
+            >
+              {{ "BAZZAR.REQUIRED" | translate }}
+            </mat-error>
+          </div>
+          <div class="h5">Confirmation</div>
+
+          <div class="form-group mb-4">
+            <label class="t-media-14">{{
+              "BAZZAR.PASSWORD" | translate
+            }}</label>
+            <input
+              type="password"
+              class="form-control"
+              maxlength="100"
+              id="password"
+              formControlName="password"
+            />
+            <mat-error
+              *ngIf="
+                joinUsForm.controls.password.errors?.required &&
+                joinUsForm.controls.password.touched
+              "
+            >
+              {{ "BAZZAR.REQUIRED" | translate }}
+            </mat-error>
+            <mat-error
+              *ngIf="joinUsForm.controls.password.hasError('minlength')"
+            >
+              {{ "BAZZAR.PASSWORD_LENGTH" | translate }}
+            </mat-error>
+          </div>
+          <div class="form-group mb-5">
+            <label class="t-media-14">
+              {{ "BAZZAR.CONFIRM_PASSWORD" | translate }}</label
+            >
+            <input
+              type="password"
+              class="form-control"
+              maxlength="100"
+              id="confirmPassword"
+              formControlName="confirmPassword"
+            />
+            <mat-error
+              *ngIf="
+                joinUsForm.controls.confirmPassword.errors?.required &&
+                joinUsForm.controls.confirmPassword.touched
+              "
+            >
+              {{ "BAZZAR.REQUIRED" | translate }}
+            </mat-error>
+            <mat-error
+              *ngIf="
+                joinUsForm.controls.confirmPassword.hasError(
+                  'mismatchedPasswords'
+                ) && joinUsForm.controls.confirmPassword.touched
+              "
+              >{{ "BAZZAR.DONT_MATCH" | translate }}</mat-error
+            >
+          </div>
+
+          <div class="form-group mb-5 text-left">
+            <button
+              class="btn btn-primary py-2 px-4 rounded-0"
+              (click)="addMerchant()"
+            >
+              {{ "BAZZAR.ADD_SHOP" | translate }}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-5 px-md-0">
+      <div class="h5">How it Works</div>
+      <div class="work-img mt-5">
+        <img
+          src="../../assets/icon-1.svg"
+          alt=""
+          height="40"
+          width="40"
+          class="m-auto"
+        />
+      </div>
+      <p class="larger mt-1">Fill Form</p>
+      <p class="text-muted">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nulla
+        accusantium reprehenderit porro harum ab, maiores, numquam repellendus
+        rerum facilis repudiandae possimus rem aliquid nihil explicabo
+        praesentium et, vel atque ad.
+      </p>
+      <div class="work-img mt-5">
+        <img
+          src="../../assets/icon-2.svg"
+          alt=""
+          height="40"
+          width="40"
+          class="m-auto"
+        />
+      </div>
+      <p class="larger mt-1">Fill Form</p>
+      <p class="text-muted">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nulla
+        accusantium reprehenderit porro harum ab, maiores, numquam repellendus
+        rerum facilis repudiandae possimus rem aliquid nihil explicabo
+        praesentium et, vel atque ad.
+      </p>
+      <div class="work-img mt-5">
+        <img
+          src="../../assets/icon-3.svg"
+          alt=""
+          height="40"
+          width="40"
+          class="m-auto"
+        />
+      </div>
+      <p class="larger mt-1">Fill Form</p>
+      <p class="text-muted">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nulla
+        accusantium reprehenderit porro harum ab, maiores, numquam repellendus
+        rerum facilis repudiandae possimus rem aliquid nihil explicabo
+        praesentium et, vel atque ad.
+      </p>
+    </div>
+  </div>
+</div>

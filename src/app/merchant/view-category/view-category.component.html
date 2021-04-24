@@ -1,0 +1,108 @@
+<merchant-top-part></merchant-top-part>
+<div class="container my-5 py-5">
+  <div class="row mx-0">
+    <div class="col-md-3 border px-0 rounded h-100">
+      <merchant-side-nav></merchant-side-nav>
+    </div>
+    <div class="col-md-9 mr-auto mt-5 mt-md-0 px-0 px-md-4">
+      <div class="h5 mb-3">{{ "BAZZAR.WARDROBE" | translate }}</div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="bg-light2 text-dark h4 my-auto py-3">
+            {{ "BAZZAR.WARDROBE_NUMBER" | translate }}
+            #001
+          </div>
+        </div>
+        <div class="view">
+          <div class="text-center mt-4">
+            <div class="border-bottom">
+              <div class="row mx-0 p-4">
+                <div class="text-primary text-center h6 ml-auto">
+                  {{ "BAZZAR.WARDROBE_DETAILS_EN" | translate }}
+                </div>
+                <a *ngIf="show == 1" class="ml-auto">
+                  <i
+                    class="fa fa-minus text-primary"
+                    aria-hidden="true"
+                    (click)="minimize()"
+                  ></i>
+                </a>
+                <a *ngIf="show == 0" class="ml-auto">
+                  <i
+                    class="fa fa-plus text-primary"
+                    aria-hidden="true"
+                    (click)="maximize()"
+                  ></i>
+                </a>
+              </div>
+
+              <div *ngIf="show == 1">
+                <div class="row p-4 mx-0">
+                  <p class="text-dark col-md-3 arabic-text">
+                    {{ "BAZZAR.TITLE" | translate }}
+                  </p>
+                  <p class="col-md-9">clothes</p>
+                </div>
+              </div>
+            </div>
+            <div class="border-bottom">
+              <div class="row mx-0 p-4">
+                <div class="text-primary text-center h6 ml-auto">
+                  {{ "BAZZAR.WARDROBE_DETAILS_AR" | translate }}
+                </div>
+                <a *ngIf="show2 == 2" class="ml-auto">
+                  <i
+                    class="fa fa-minus text-primary"
+                    aria-hidden="true"
+                    (click)="minimize2()"
+                  ></i>
+                </a>
+                <a *ngIf="show2 == 20" class="ml-auto">
+                  <i
+                    class="fa fa-plus text-primary"
+                    aria-hidden="true"
+                    (click)="maximize2()"
+                  ></i>
+                </a>
+              </div>
+
+              <div *ngIf="show2 == 2">
+                <div class="row mb-4">
+                  <p class="text-dark col-md-3 arabic-text">
+                    {{ "BAZZAR.TITLE" | translate }}
+                  </p>
+                  <p class="col-md-9 float-right text-arabic">ملبوسات</p>
+                </div>
+              </div>
+            </div>
+            <div class="row mx-0 p-4">
+              <div class="text-primary ml-auto h6">
+                {{ "BAZZAR.IMAGE" | translate }}
+              </div>
+              <a *ngIf="show3 == 3" class="ml-auto">
+                <i
+                  class="fa fa-minus text-primary"
+                  aria-hidden="true"
+                  (click)="minimize3()"
+                ></i>
+              </a>
+              <a *ngIf="show3 == 30" class="ml-auto">
+                <i
+                  class="fa fa-plus text-primary"
+                  aria-hidden="true"
+                  (click)="maximize3()"
+                ></i>
+              </a>
+            </div>
+            <div *ngIf="show3 == 3">
+              <div class="mb-4 text-center col-md-12">
+                <img src="../../../assets/bg-how.jpg" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

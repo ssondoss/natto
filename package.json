@@ -11,7 +11,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "~11.2.7",
+    "@angular/animations": "^11.2.8",
     "@angular/cdk": "^10.2.7",
     "@angular/common": "~11.2.7",
     "@angular/compiler": "~11.2.7",
@@ -26,6 +26,7 @@
     "@ngx-translate/core": "^13.0.0",
     "@ngx-translate/http-loader": "^6.0.0",
     "@syncfusion/ej2-angular-popups": "^18.4.44",
+    "angular-animations": "^0.11.0",
     "angular-material": "^1.2.2",
     "bootstrap": "^4.6.0",
     "font-awesome": "^4.7.0",

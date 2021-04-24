@@ -1,8 +1,8 @@
-<!-- <div class="arabic-dir">
+<div class="arabic-dir" style="z-index: 9999 !important">
   <div class="row border-bottom pb-2">
-    <h5 class="text-primary text-left col-md-6 col-9">
+    <div class="text-primary text-left col-md-6 col-9 h5">
       {{ "BAZZAR.ADD_ITEM_CHOICES" | translate }}
-    </h5>
+    </div>
     <i
       class="fa fa-times text-dark text-right text-left-ar col-md-6 col-3 pt-1"
       (click)="onNoClick()"
@@ -15,7 +15,7 @@
         <img
           [src]="getSource(product.image)"
           alt="image"
-          height="auto"
+          height="150"
           width="100%"
           class="p-1 border"
         />
@@ -72,4 +72,4 @@
       </button>
     </div>
   </div>
-</div> -->
+</div>
