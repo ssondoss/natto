@@ -289,3 +289,28 @@ button:hover {
 .larger {
   font-size: larger;
 }
+.icon-view {
+  color: #28a745;
+  font-size: 23px;
+}
+.icon-view :hover {
+  color: #157e2d;
+  font-size: 25px;
+}
+
+.icon-edit {
+  color: #51cbce;
+  font-size: 23px;
+}
+.icon-edit :hover {
+  color: #3ba0a1;
+  font-size: 25px;
+}
+.icon-danger {
+  color: #d84040;
+  font-size: 23px;
+}
+.icon-danger:hover {
+  color: #a83333;
+  font-size: 25px;
+}

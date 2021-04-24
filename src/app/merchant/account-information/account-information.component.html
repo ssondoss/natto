@@ -1,0 +1,245 @@
+<merchant-top-part></merchant-top-part>
+<div class="container my-5 py-5">
+  <div class="row mx-0">
+    <div class="col-md-3 border px-0 rounded h-100">
+      <merchant-side-nav></merchant-side-nav>
+    </div>
+    <div class="col-md-9 mr-auto mt-5 mt-md-0 px-0 px-md-4">
+      <div class="h5 mb-3">{{ "BAZZAR.ACCOUNT_INFORMATION" | translate }}</div>
+      <div class="border px-md-4 p-3 rounded">
+        <form>
+          <div class="row">
+            <div class="col-md-5 px-2">
+              <div class="form-group">
+                <label
+                  >{{ "BAZZAR.COMPANY" | translate }} ({{
+                    "BAZZAR.DISABLED" | translate
+                  }})
+                </label>
+                <input
+                  disabled
+                  type="text"
+                  class="form-control"
+                  placeholder="{{ 'BAZZAR.COMPANY' | translate }}"
+                  value="Yousef's Shop."
+                />
+              </div>
+            </div>
+            <div class="col-md-3 px-2">
+              <div class="form-group">
+                <label> {{ "BAZZAR.USERNAME" | translate }}</label>
+                <input
+                  *ngIf="edit == false"
+                  disabled
+                  type="text"
+                  class="form-control"
+                  placeholder="{{ 'BAZZAR.USERNAME' | translate }}"
+                  value="YJN"
+                />
+                <input
+                  *ngIf="edit == true"
+                  disabled
+                  type="text"
+                  class="form-control"
+                  placeholder=" {{ 'BAZZAR.USERNAME' | translate }}"
+                  value="YJN"
+                />
+              </div>
+            </div>
+            <div class="col-md-4 px-2">
+              <div class="form-group">
+                <label for="exampleInputEmail1">{{
+                  "BAZZAR.EMAIL" | translate
+                }}</label>
+                <input
+                  *ngIf="edit == false"
+                  disabled=""
+                  type="email"
+                  class="form-control"
+                  placeholder="{{ 'BAZZAR.EMAIL' | translate }}"
+                />
+                <input
+                  *ngIf="edit == true"
+                  type="email"
+                  class="form-control"
+                  disabled
+                  placeholder="{{ 'BAZZAR.EMAIL' | translate }}"
+                  formControlName="email"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 px-2">
+              <div class="form-group">
+                <label>{{ "BAZZAR.CONTACT_INFO_2" | translate }}</label>
+                <input
+                  *ngIf="edit == false"
+                  disabled=""
+                  type="text"
+                  class="form-control"
+                  placeholder="{{ 'BAZZAR.CONTACT_INFO_2' | translate }}"
+                />
+                <input
+                  *ngIf="edit == true"
+                  type="text"
+                  class="form-control"
+                  id="userPhone"
+                  placeholder="{{ 'BAZZAR.CONTACT_INFO_2' | translate }}"
+                />
+              </div>
+            </div>
+            <div class="col-md-6 px-2">
+              <div class="form-group">
+                <label>{{ "BAZZAR.CONTACT_INFO_2" | translate }}</label>
+                <input
+                  *ngIf="edit == false"
+                  disabled=""
+                  type="text"
+                  class="form-control"
+                  placeholder="{{ 'BAZZAR.CONTACT_INFO_2' | translate }}"
+                />
+                <input
+                  *ngIf="edit == true"
+                  type="text"
+                  class="form-control"
+                  placeholder="{{ 'BAZZAR.CONTACT_INFO_2' | translate }}"
+                  id="BAZZARContactInfo"
+                />
+              </div>
+            </div>
+          </div>
+          <!-- <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>{{ "BAZZAR.ADDRESS" | translate }}</label>
+                <input
+                  *ngIf="edit == false"
+                  disabled=""
+                  type="text"
+                  class="form-control"
+                  placeholder="{{ 'BAZZAR.ADDRESS' | translate }}"
+                  value="Jabal Alzuhor"
+                />
+                <input
+                  *ngIf="edit == true"
+                  type="text"
+                  class="form-control"
+                  placeholder="{{ 'BAZZAR.ADDRESS' | translate }}"
+                  value="Jabal Alzuhor"
+                />
+              </div>
+            </div>
+          </div> -->
+          <div class="row">
+            <div class="col-md-4 px-2">
+              <div class="form-group">
+                <label>{{ "BAZZAR.CITY" | translate }}</label>
+                <input
+                  *ngIf="edit == false"
+                  disabled=""
+                  type="text"
+                  class="form-control"
+                  placeholder="{{ 'BAZZAR.CITY' | translate }}"
+                />
+                <input
+                  *ngIf="edit == true"
+                  type="text"
+                  class="form-control"
+                  id="city"
+                  placeholder="{{ 'BAZZAR.CITY' | translate }}"
+                />
+              </div>
+            </div>
+            <div class="col-md-4 px-2">
+              <div class="form-group">
+                <label>{{ "BAZZAR.COUNTRY" | translate }}</label>
+                <input
+                  *ngIf="edit == false"
+                  disabled=""
+                  type="text"
+                  class="form-control"
+                  placeholder="{{ 'BAZZAR.COUNTRY' | translate }}"
+                />
+                <input
+                  *ngIf="edit == true"
+                  type="text"
+                  class="form-control"
+                  id="country"
+                  placeholder="{{ 'BAZZAR.COUNTRY' | translate }}"
+                />
+              </div>
+            </div>
+            <div class="col-md-4 px-2">
+              <div class="form-group">
+                <label>{{ "BAZZAR.TAG" | translate }}</label>
+                <input
+                  disabled=""
+                  class="form-control"
+                  placeholder="{{ 'BAZZAR.TAG' | translate }}"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>{{ "BAZZAR.DESCRIPTION_ENGLISH" | translate }}</label>
+                <textarea
+                  class="form-control textarea"
+                  *ngIf="edit == false"
+                  disabled
+                >
+                   descriptionEnglish }}
+                </textarea>
+                <textarea
+                  class="form-control textarea"
+                  *ngIf="edit == true"
+                  id="descriptionEnglish"
+                >
+                   descriptionEnglish }}
+                </textarea>
+              </div>
+              <div class="form-group">
+                <label>{{ "BAZZAR.DESCRIPTION_ARABIC" | translate }}</label>
+                <textarea
+                  class="form-control textarea"
+                  *ngIf="edit == false"
+                  disabled
+                >
+                   descriptionArabic }}
+                </textarea>
+                <textarea
+                  class="form-control textarea"
+                  *ngIf="edit == true"
+                  id="descriptionArabic"
+                >
+                   descriptionArabic }}
+                </textarea>
+              </div>
+            </div>
+          </div>
+          <div class="row mx-0">
+            <div class="text-right" *ngIf="edit == true">
+              <button
+                class="btn btn-primary px-5"
+                (click)="changeTheEditMode()"
+              >
+                {{ "BAZZAR.UPDATE" | translate }}
+              </button>
+            </div>
+            <div class="text-right" *ngIf="edit === false">
+              <button
+                type="submit"
+                class="btn btn-primary px-5"
+                (click)="changeTheEditMode()"
+              >
+                {{ "BAZZAR.EDIT" | translate }}
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

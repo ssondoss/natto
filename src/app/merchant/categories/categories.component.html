@@ -1,0 +1,115 @@
+<merchant-top-part></merchant-top-part>
+<div class="container my-5 py-5">
+  <div class="row mx-0">
+    <div class="col-md-3 border px-0 rounded h-100">
+      <merchant-side-nav></merchant-side-nav>
+    </div>
+    <div class="col-md-9 mr-auto mt-5 mt-md-0 px-0 px-md-4">
+      <div class="h5 mb-3">{{ "BAZZAR.WARDROBE" | translate }}</div>
+      <div class="border px-md-4 p-3 rounded">
+        <form class="row mx-0" [formGroup]="categoryForm" id="dirForm">
+          <div class="form-group col-md-5">
+            <label>{{ "BAZZAR.TITLE_ENGLISH" | translate }}</label>
+            <input
+              type="text"
+              class="form-control"
+              required
+              formControlName="titleEnglish"
+              maxlength="100"
+            />
+            <mat-error
+              *ngIf="
+                categoryForm.controls.titleEnglish.errors?.required &&
+                categoryForm.controls.titleEnglish.touched
+              "
+              >{{ "BAZZAR.REQUIRED" | translate }}</mat-error
+            >
+          </div>
+          <div class="form-group col-md-5">
+            <label> {{ "BAZZAR.TITLE_ARABIC" | translate }}</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="titleArabic"
+              maxlength="100"
+              required
+            />
+            <mat-error
+              *ngIf="
+                categoryForm.controls.titleArabic.hasError('invalidLetters')
+              "
+            >
+              {{ "BAZZAR.USE_ARABIC_LETTERS" | translate }}
+            </mat-error>
+            <mat-error
+              *ngIf="
+                categoryForm.controls.titleArabic.errors?.required &&
+                categoryForm.controls.titleArabic.touched
+              "
+            >
+              {{ "BAZZAR.REQUIRED" | translate }}
+            </mat-error>
+          </div>
+          <div class="col-md-2 pb-3 pl-3 imageLabel text-center">
+            <label>
+              {{ "BAZZAR.IMAGE" | translate }}
+
+              <br />
+              <input id="file-input" type="file" style="display: none" />
+              <i class="fa fa-upload pt-2" aria-hidden="true"></i>
+            </label>
+            <input type="file" class="form-control-file" id="image" />
+          </div>
+          <div class="form-group col-md-2 text-center h-50 mt-2">
+            <button
+              type="submit"
+              class="btn btn-primary px-5"
+              (click)="addWardrobe(categoryForm)"
+            >
+              {{ "BAZZAR.ADD" | translate }}
+            </button>
+          </div>
+        </form>
+        <div class="table-responsive mt-5 p-3">
+          <table class="table table-bordered">
+            <thead class="text-center text-dark">
+              <th>
+                {{ "BAZZAR.TITLE_ENGLISH" | translate }}
+              </th>
+              <th>
+                {{ "BAZZAR.TITLE_ARABIC" | translate }}
+              </th>
+
+              <th class="my-auto">
+                {{ "BAZZAR.OPTIONS" | translate }}
+              </th>
+            </thead>
+            <tbody class="text-center">
+              <tr>
+                <td>titleEnglish }}</td>
+                <td>titleArabic }}</td>
+                <td class="mt-2 w-25">
+                  <!-- <a class="icon-view pr-2 col-md-4" routerLink="/view-category"
+                    ><i class="fa fa-eye" aria-hidden="true"></i>
+                  </a> -->
+                  <a class="icon-edit pr-2 col-md-6">
+                    <i
+                      class="fa fa-pencil-square-o text-success"
+                      aria-hidden="true"
+                    ></i>
+                  </a>
+                  <a class="icon-danger col-md-6" (click)="deleteWardrobe(1)"
+                    ><i
+                      class="fa fa-trash-o text-danger"
+                      aria-hidden="true"
+                    ></i>
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

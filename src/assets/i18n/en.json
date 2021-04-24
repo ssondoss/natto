@@ -87,6 +87,7 @@
     "EMAIL_NOT_FOUND": "this email not found , please check the email or use another one",
     "SAVE_CHANGES": "Save Changes",
     "OLD_PASSWORD": "Old Password",
+    "ACCOUNT_INFORMATION": "Account Information",
 
     "": "",
     "": "",
@@ -279,6 +280,8 @@
     "ENTER_MERCHANT_NAME": "Enter Merchant Name",
     "SEARCH_RESULTS": "Search Results",
     "CHANGE_PASSWORD_SMALL": "Change Password",
-    "ADD_SHOP": "ADD SHOP"
+    "ADD_SHOP": "ADD SHOP",
+    "CONTACT_INFO_1": "Contact info 1",
+    "CONTACT_INFO_2": "Contact info 2"
   }
 }

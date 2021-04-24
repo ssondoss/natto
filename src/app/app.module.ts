@@ -39,12 +39,24 @@ import { OrderDetailsComponent } from './my-account/order-details/order-details.
 import { CommonModule } from '@angular/common';
 import { SavedAddressComponent } from './my-account/saved-address/saved-address.component';
 import { SideNavComponent } from './my-account/side-nav/side-nav.component';
+import { SideNavMerchantComponent } from './merchant/side-nav/side-nav.component';
+
 import { TopPartComponent } from './my-account/top-part/top-part.component';
 import { RateOrderComponent } from './my-account/rate-order/rate-order.component';
 import { MyOrdersComponent } from './my-account/my-orders/my-orders.component';
 import { JoinUsComponent } from './join-us/join-us.component';
 import { AddProduct } from './shop-details/add-product/add-product.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { AccountInformationComponent } from './merchant/account-information/account-information.component';
+import { TopPartMerchantComponent } from './merchant/top-part/top-part.component';
+import { CategoriesComponent } from './merchant/categories/categories.component';
+import { ProductsComponent } from './merchant/products/products.component';
+import { OrdersComponent } from './merchant/orders/orders.component';
+import { ViewCategoryComponent } from './merchant/view-category/view-category.component';
+import { EditCategoryComponent } from './merchant/edit-category/edit-category.component';
+import { EditProductComponent } from './merchant/edit-product/edit-product.component';
+import { ViewProductComponent } from './merchant/view-product/view-product.component';
+import { ViewOrderComponent } from './merchant/view-order/view-order.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -52,15 +64,26 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
+    ViewCategoryComponent,
+    EditCategoryComponent,
+    EditProductComponent,
+    ViewProductComponent,
+    ViewOrderComponent,
     NavbarComponent,
     FooterComponent,
     HomeComponent,
+    OrdersComponent,
     PartnerComponent,
+    ProductsComponent,
+    CategoriesComponent,
+    SideNavMerchantComponent,
     ShopCardComponent,
     HowToOrderComponent,
+    AccountInformationComponent,
     OrderDetailsComponent,
     AllShopsComponent,
     ShopCardMainComponent,
+    TopPartMerchantComponent,
     LoginComponent,
     ForgetPasswordComponent,
     RegestrationComponent,
