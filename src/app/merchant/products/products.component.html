@@ -1,14 +1,14 @@
 <merchant-top-part></merchant-top-part>
 <div class="container my-5 py-5">
-  <div class="row mx-0">
+  <div class="row mx-0 arabic-dir">
     <div class="col-md-3 border px-0 rounded h-100">
       <merchant-side-nav></merchant-side-nav>
     </div>
     <div class="col-md-9 mr-auto mt-5 mt-md-0 px-0 px-md-4">
-      <div class="h5 mb-3">{{ "BAZZAR.WARDROBE" | translate }}</div>
+      <div class="h5 mb-3 text-left">{{ "BAZZAR.WARDROBE" | translate }}</div>
       <div class="border px-md-4 p-3 rounded">
-        <form class="row mx-0" [formGroup]="productForm" id="dirForm">
-          <div class="form-group col-md-5">
+        <form class="row mx-0 mt-3" [formGroup]="productForm" id="dirForm">
+          <div class="form-group col-md-6 px-0">
             <label>{{ "BAZZAR.TITLE_ENGLISH" | translate }}</label>
             <input
               required
@@ -31,7 +31,7 @@
               {{ "BAZZAR.100_LENGTH" | translate }}
             </mat-error>
           </div>
-          <div class="form-group col-md-5 RT">
+          <div class="form-group col-md-6 px-0 p-lang">
             <label for="exampleInputEmail1">
               {{ "BAZZAR.TITLE_ARABIC" | translate }}</label
             >
@@ -63,18 +63,23 @@
               {{ "BAZZAR.100_LENGTH" | translate }}
             </mat-error>
           </div>
-          <div class="col-md-2 pb-3 pl-3 imageLabel text-center">
-            <label>
+          <div class="col-md-12 pb-3 text-left px-0">
+            <div class="mb-2">
               {{ "BAZZAR.IMAGE" | translate }}
-
+            </div>
+            <div class="custom-file">
               <br />
-              <input id="file-input" type="file" style="display: none" />
-              <i class="fa fa-upload pt-2" aria-hidden="true"></i>
-            </label>
-            <input type="file" class="form-control-file" />
+              <input
+                type="file"
+                class="custom-file-input"
+                formControlName="image"
+                (change)="uploadImage($event)"
+              />
+              <label class="custom-file-label"></label>
+            </div>
           </div>
 
-          <div class="form-group col-md-6">
+          <div class="form-group col-md-6 px-0">
             <label for="exampleInputPassword1">
               {{ "BAZZAR.DESCRIPTION_ENGLISH" | translate }}
             </label>
@@ -84,15 +89,8 @@
               class="form-control"
               maxlength="250"
             ></textarea>
-            <mat-error
-              *ngIf="
-                productForm.controls.descriptionEnglish.hasError('maxlength')
-              "
-            >
-              {{ "BAZZAR.250_LENGTH" | translate }}
-            </mat-error>
           </div>
-          <div class="form-group col-md-6 RT">
+          <div class="form-group col-md-6 p-lang px-0">
             <label> {{ "BAZZAR.DESCRIPTION_ARABIC" | translate }} </label>
             <textarea
               type="text"
@@ -109,23 +107,16 @@
             >
               {{ "BAZZAR.USE_ARABIC_LETTERS" | translate }}
             </mat-error>
-            <mat-error
-              *ngIf="
-                productForm.controls.descriptionArabic.hasError('maxlength')
-              "
-            >
-              {{ "BAZZAR.250_LENGTH" | translate }}
-            </mat-error>
           </div>
-          <div class="form-group col-md-6">
-            <label> {{ "BAZZAR.deliveryDescription" | translate }} </label>
-            <textarea
+          <div class="form-group col-md-12 px-0">
+            <label> {{ "BAZZAR.DELIVERY_DESCRIPTION" | translate }} </label>
+            <input
               type="text"
               class="form-control"
               formControlName="deliveryDescription"
-            ></textarea>
+            />
           </div>
-          <div class="form-group col-md-4">
+          <div class="form-group col-md-8 px-0">
             <label> {{ "BAZZAR.MAIN_WORDROBE" | translate }} </label>
             <select
               name="main_wardrobe"
@@ -133,9 +124,13 @@
               class="form-control"
               formControlName="category"
             >
-              <option>
-                <div>titleEnglish }}</div>
-                <div>titleArabic }}</div>
+              <option *ngFor="let wardrobe of wardrobes" [value]="wardrobe.id">
+                <span *ngIf="service.lang === 'en'">{{
+                  wardrobe.titleEnglish
+                }}</span>
+                <span *ngIf="service.lang === 'ar'">{{
+                  wardrobe.titleArabic
+                }}</span>
               </option>
             </select>
             <mat-error
@@ -148,7 +143,7 @@
             </mat-error>
           </div>
 
-          <div class="form-group col-md-2">
+          <div class="form-group col-md-4 px-0 p-lang">
             <label> {{ "BAZZAR.PRICE" | translate }} </label>
             <input
               type="number"
@@ -165,7 +160,7 @@
               {{ "BAZZAR.REQUIRED" | translate }}
             </mat-error>
           </div>
-          <div class="form-group col-md-2 text-center">
+          <div class="text-left">
             <button
               type="submit"
               class="btn btn-primary px-5"
@@ -190,20 +185,26 @@
               </th>
             </thead>
             <tbody class="text-center">
-              <tr>
-                <td>titleEnglish }}</td>
-                <td>titleArabic }}</td>
+              <tr *ngFor="let product of products">
+                <td>{{ product.titleEnglish }}</td>
+                <td>{{ product.titleArabic }}</td>
                 <td class="mt-2 w-25">
-                  <a class="icon-view pr-2 col-md-4"
+                  <a
+                    class="icon-view pr-2 col-md-4"
+                    [routerLink]="['/view-product']"
+                    [queryParams]="{ id: product.id }"
                     ><i class="fa fa-eye text-success" aria-hidden="true"></i>
                   </a>
                   <a
                     class="icon-edit pr-2 col-md-4"
                     [routerLink]="['/edit-product']"
+                    [queryParams]="{ id: product.id }"
                   >
                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                   </a>
-                  <a class="icon-danger col-md-4" (click)="deleteProduct(1)"
+                  <a
+                    class="icon-danger col-md-4"
+                    (click)="deleteProduct(product.id)"
                     ><i
                       class="fa fa-trash-o text-danger"
                       aria-hidden="true"

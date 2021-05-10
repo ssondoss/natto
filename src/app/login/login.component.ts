@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
         async (data: any) => {
           if (data.payload.role == 'CLIENT') {
             localStorage.setItem('bazzar-user-jwt', JSON.stringify(data));
-            this.userSession.login();
+            this.userSession.login(JSON.stringify(data));
             this.router.navigate(['/']);
             this.messageRequired = false;
           } else if (data.payload.role == 'MERCHANT_OWNER') {
@@ -72,11 +72,13 @@ export class LoginComponent implements OnInit {
                   'bazzar-merchant-merchant-info',
                   JSON.stringify(merchant)
                 );
-                window.location.href = 'http://164.68.99.181/merchant';
+                this.userSession.login(JSON.stringify(data));
+                this.router.navigate(['/']);
               });
           } else if (data.payload.role == 'ADMIN') {
             localStorage.setItem('bazzar-admin-user-jwt', JSON.stringify(data));
-            window.location.href = 'http://164.68.99.181/admin';
+            this.userSession.login(JSON.stringify(data));
+            this.router.navigate(['/']);
           }
         },
         (error) => {

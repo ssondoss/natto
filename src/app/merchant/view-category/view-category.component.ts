@@ -1,4 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { ApplicationStateService } from 'src/app/app.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-view-category',
@@ -34,7 +38,23 @@ export class ViewCategoryComponent implements OnInit {
   minimize4() {
     this.show4 = 40;
   }
-  constructor() {}
+  id;
+  category: any;
+  constructor(
+    activatedRouter: ActivatedRoute,
+    private http: HttpClient,
+    public appService: ApplicationStateService
+  ) {
+    activatedRouter.queryParams.subscribe((params) => {
+      this.id = params['id'];
+      this.http
+        .get(environment.apiURL + '/category/' + this.id)
+        .subscribe((res) => {
+          this.category = res;
+          console.log(this.category);
+        });
+    });
+  }
 
   ngOnInit(): void {}
 }

@@ -13,17 +13,17 @@ export class UserSessionService {
   shoppingCart: any;
   constructor(private http: HttpClient, private router: Router) {
     if (localStorage.getItem('bazzar-user-jwt') != null) {
-      console.log(JSON.parse(localStorage.getItem('bazzar-user-jwt')));
-      this.login();
+      this.login(JSON.parse(localStorage.getItem('bazzar-user-jwt')));
+    } else if (localStorage.getItem('bazzar-merchant-user-jwt') != null) {
+      this.login(JSON.parse(localStorage.getItem('bazzar-merchant-user-jwt')));
     } else {
       this.isLoggedIn = false;
       this.user = null;
     }
   }
 
-  login() {
+  login(user: any) {
     this.isLoggedIn = true;
-    let user = JSON.parse(localStorage.getItem('bazzar-user-jwt'));
     this.user = new User();
     this.user.id = user.payload.id;
     this.user.email = user.payload.email;

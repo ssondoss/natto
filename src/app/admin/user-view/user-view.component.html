@@ -1,0 +1,101 @@
+<admin-top-part> </admin-top-part>
+<div class="container my-5 py-5">
+  <div class="row mx-0 arabic-dir">
+    <div class="col-md-3 border px-0 rounded h-100">
+      <admin-side-nav></admin-side-nav>
+    </div>
+    <div class="col-md-9 mr-auto mt-5 mt-md-0 px-0 px-md-4">
+      <div class="h5 mb-3 text-left">
+        {{ "BAZZAR.USER_PROFILE" | translate }}
+      </div>
+      <div class="border px-md-4 p-3 rounded">
+        <form class="my-3">
+          <div class="row mx-0">
+            <div class="form-group col-md-5">
+              <label>E-mail</label>
+              <input
+                disabled=""
+                type="email"
+                class="form-control"
+                placeholder="E-mail"
+                value="{{ user.email }}"
+              />
+            </div>
+            <div class="form-group col-md-3">
+              <label>Name</label>
+              <input
+                disabled=""
+                type="text"
+                class="form-control"
+                placeholder="Username "
+                value="{{ user.username }}"
+              />
+            </div>
+            <div class="form-group col-md-4">
+              <label>Contact</label>
+              <input
+                disabled=""
+                type="text"
+                class="form-control"
+                placeholder="Phone"
+                value="{{ user.phone }}"
+              />
+            </div>
+          </div>
+
+          <div class="row mx-0">
+            <div class="form-group col-md-6">
+              <label>City</label>
+              <input
+                disabled=""
+                type="text"
+                class="form-control"
+                placeholder="City"
+                value="{{ user.deliveryAddress.city }}"
+              />
+            </div>
+            <div class="form-group col-md-6">
+              <label>Country</label>
+              <input
+                disabled=""
+                type="text"
+                class="form-control"
+                placeholder="Country"
+                value="{{ user.deliveryAddress.country }}"
+              />
+            </div>
+          </div>
+          <div class="form-group col-12">
+            <label>Address Line 1</label>
+            <input
+              disabled=""
+              type="text"
+              class="form-control"
+              placeholder="Home Address"
+              value="{{ user.deliveryAddress.addressLineOne }}"
+            />
+          </div>
+
+          <div class="form-group col-12">
+            <label>Address Line 2</label>
+            <input
+              disabled=""
+              type="text"
+              class="form-control"
+              placeholder="Home Address"
+              value="{{ user.deliveryAddress.addressLineTwo }}"
+            />
+          </div>
+
+          <div class="text-left mt-4 mx-3">
+            <a [routerLink]="['/users']" rel="noopener noreferrer">
+              <button type="submit" class="btn btn-primary btn-round px-4">
+                BACK
+              </button></a
+            >
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

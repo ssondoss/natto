@@ -6,7 +6,157 @@
     </div>
     <div class="col-md-9 mr-auto mt-5 mt-md-0 px-0 px-md-4">
       <div class="h5 mb-3">{{ "BAZZAR.WARDROBE" | translate }}</div>
-      <div class="border px-md-4 p-3 rounded"></div>
+      <div class="border px-md-4 p-3 rounded">
+        <form class="row pb-5 my-3" [formGroup]="productForm">
+          <div class="form-group col-md-6">
+            <label>{{ "BAZZAR.TITLE_ENGLISH" | translate }}</label>
+            <input
+              required
+              type="text"
+              class="form-control"
+              formControlName="titleEnglish"
+              maxlength="100"
+            />
+            <mat-error
+              *ngIf="
+                productForm.controls.titleEnglish.errors?.required &&
+                productForm.controls.titleEnglish.touched
+              "
+            >
+              {{ "BAZZAR.REQUIRED" | translate }}
+            </mat-error>
+          </div>
+          <div class="form-group col-md-6 RT">
+            <label for="exampleInputEmail1">
+              {{ "BAZZAR.TITLE_ARABIC" | translate }}</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              formControlName="titleArabic"
+              required
+              maxlength="100"
+            />
+            <mat-error
+              *ngIf="
+                productForm.controls.titleArabic.errors?.required &&
+                productForm.controls.titleArabic.touched
+              "
+            >
+              {{ "BAZZAR.REQUIRED" | translate }}
+            </mat-error>
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="exampleInputPassword1">
+              {{ "BAZZAR.DESCRIPTION_ENGLISH" | translate }}
+            </label>
+            <textarea
+              type="text"
+              formControlName="descriptionEnglish"
+              class="form-control"
+              maxlength="250"
+            ></textarea>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="exampleInputPassword1">
+              {{ "BAZZAR.DELIVERY_DESCRIPTION" | translate }}
+            </label>
+            <textarea
+              type="text"
+              formControlName="deliveryDescription"
+              class="form-control"
+              maxlength="250"
+            ></textarea>
+          </div>
+          <div class="form-group col-md-6 RT">
+            <label> {{ "BAZZAR.DESCRIPTION_ARABIC" | translate }} </label>
+            <textarea
+              type="text"
+              formControlName="descriptionArabic"
+              class="form-control"
+              maxlength="250"
+            ></textarea>
+            <mat-error
+              *ngIf="
+                productForm.controls.descriptionArabic.errors?.required &&
+                productForm.controls.descriptionArabic.touched
+              "
+            >
+              {{ "BAZZAR.REQUIRED" | translate }}
+            </mat-error>
+          </div>
+
+          <div class="form-group col-md-6 RT">
+            <label> {{ "BAZZAR.MAIN_WORDROBE" | translate }} </label>
+            <select
+              name="main_wardrobe"
+              id="main_wardrobe"
+              class="form-control"
+              formControlName="category"
+            >
+              <option *ngFor="let wardrobe of wardrobes" [value]="wardrobe.id">
+                <div *ngIf="service.lang == 'en'">
+                  {{ wardrobe.titleEnglish }}
+                </div>
+                <div *ngIf="service.lang == 'ar'">
+                  {{ wardrobe.titleArabic }}
+                </div>
+              </option>
+            </select>
+            <mat-error
+              *ngIf="
+                productForm.controls.category.errors?.required &&
+                productForm.controls.category.touched
+              "
+            >
+              {{ "BAZZAR.REQUIRED" | translate }}
+            </mat-error>
+          </div>
+
+          <div class="form-group col-md-6">
+            <label> {{ "BAZZAR.PRICE" | translate }} </label>
+            <input
+              type="number"
+              class="form-control"
+              formControlName="price"
+              min="0"
+            />
+            <mat-error
+              *ngIf="
+                productForm.controls.price.errors?.required &&
+                productForm.controls.price.touched
+              "
+            >
+              {{ "BAZZAR.REQUIRED" | translate }}
+            </mat-error>
+          </div>
+          <div class="col-md-6">
+            <div class="mb-2">
+              {{ "BAZZAR.IMAGE" | translate }}
+            </div>
+            <div class="custom-file">
+              <br />
+              <input
+                type="file"
+                class="custom-file-input"
+                id="customFile"
+                (input)="uploadImage($event)"
+              />
+              <label class="custom-file-label" for="customFile"></label>
+            </div>
+          </div>
+          <div class="text-left px-3">
+            <button
+              type="submit"
+              class="btn btn-primary mt-4 px-3"
+              (click)="update()"
+            >
+              {{ "BAZZAR.UPDATE" | translate }}
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </div>

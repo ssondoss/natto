@@ -47,8 +47,8 @@ export class MyAccountComponent implements OnInit {
     config.max = 5;
     if (!userSession.isLoggedIn) userSession.logout();
     else {
-      this.userSession.login();
       this.user = userSession.user;
+      console.log(this.user);
       if (
         this.user.address.addressLineOne == 'NA' ||
         this.user.address.addressLineTwo == 'NA' ||

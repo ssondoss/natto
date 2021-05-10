@@ -1,0 +1,76 @@
+<admin-top-part> </admin-top-part>
+<div class="container my-5 py-5">
+  <div class="row mx-0 arabic-dir">
+    <div class="col-md-3 border px-0 rounded h-100">
+      <admin-side-nav></admin-side-nav>
+    </div>
+    <div class="col-md-9 mr-auto mt-5 mt-md-0 px-0 px-md-4">
+      <div class="h5 mb-3 text-left">
+        {{ "BAZZAR.ALL_MERCHANTS" | translate }}
+      </div>
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead class="text-dark bg-light">
+            <th class="text-center">Title English</th>
+            <th class="text-center">Title Arabic</th>
+            <th class="text-center">Options</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let merchant of merchants">
+              <td class="text-center">
+                <a
+                  class="anchor"
+                  [routerLink]="['/merchant-view']"
+                  [queryParams]="{ id: merchant.id }"
+                  rel="noopener noreferrer"
+                >
+                  {{ merchant.titleEnglish }}
+                </a>
+              </td>
+              <td class="text-center">
+                <a
+                  class="anchor"
+                  [routerLink]="['/merchant-view']"
+                  [queryParams]="{ id: merchant.id }"
+                  rel="noopener noreferrer"
+                >
+                  {{ merchant.titleArabic }}
+                </a>
+              </td>
+              <td class="text-center">
+                <a
+                  [routerLink]="['/edit-merchant']"
+                  [queryParams]="{ id: merchant.id }"
+                  rel="noopener noreferrer"
+                >
+                  <i class="mx-3 fa fa-edit icon-edit"></i
+                ></a>
+                <!-- <a><i class="mx-3 px-2 fa fa-lock h3 my-icon"></i></a> -->
+                <a *ngIf="merchant.blocked"
+                  ><i
+                    class="mx-3 fa fa-lock icon-dark"
+                    (click)="
+                      unblockMerchant(merchant.id, merchant.titleEnglish)
+                    "
+                  ></i
+                ></a>
+                <a *ngIf="!merchant.blocked"
+                  ><i
+                    class="mx-3 fa fa-unlock icon-dark"
+                    (click)="blockMerchant(merchant.id, merchant.titleEnglish)"
+                  ></i
+                ></a>
+                <a
+                  ><i
+                    class="mx-3 fa fa-trash-o icon-danger"
+                    (click)="deleteMerchent(merchant.id, merchant.titleEnglish)"
+                  ></i
+                ></a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

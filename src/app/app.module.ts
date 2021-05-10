@@ -57,6 +57,21 @@ import { EditCategoryComponent } from './merchant/edit-category/edit-category.co
 import { EditProductComponent } from './merchant/edit-product/edit-product.component';
 import { ViewProductComponent } from './merchant/view-product/view-product.component';
 import { ViewOrderComponent } from './merchant/view-order/view-order.component';
+import { AllMerchantsComponent } from './admin/all-merchants/all-merchants.component';
+import { AdminSideNavComponent } from './admin/side-nav/side-nav.component';
+import { AdminTopPartComponent } from './admin/top-part/top-part.component';
+import { MerchantViewComponent } from './admin/merchant-view/merchant-view.component';
+import { EditMerchantComponent } from './admin/edit-merchant/edit-merchant.component';
+import { MerchantsRequsetsComponent } from './admin/merchants-requsets/merchants-requsets.component';
+import { AllOrdersComponent } from './admin/all-orders/all-orders.component';
+import { DiscountComponent } from './admin/discount/discount.component';
+import { AdminsComponent } from './admin/admins/admins.component';
+import { UsersComponent } from './admin/users/users.component';
+import { PaymentComponent } from './admin/payment/payment.component';
+import { MerchantRequsetComponent } from './admin/merchant-requset/merchant-requset.component';
+import { UpdateUserComponent } from './admin/update-user/update-user.component';
+import { UserViewComponent } from './admin/user-view/user-view.component';
+import { OrderViewAdminComponent } from './admin/order-view-admin/order-view-admin.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -71,6 +86,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ViewOrderComponent,
     NavbarComponent,
     FooterComponent,
+    OrderViewAdminComponent,
     HomeComponent,
     OrdersComponent,
     PartnerComponent,
@@ -83,13 +99,19 @@ export function HttpLoaderFactory(http: HttpClient) {
     OrderDetailsComponent,
     AllShopsComponent,
     ShopCardMainComponent,
+    UserViewComponent,
+    MerchantsRequsetsComponent,
+    MerchantViewComponent,
     TopPartMerchantComponent,
     LoginComponent,
     ForgetPasswordComponent,
+    UpdateUserComponent,
     RegestrationComponent,
     MyAccountComponent,
+    MerchantRequsetComponent,
     RateOrderComponent,
     MyOrdersComponent,
+    EditMerchantComponent,
     ShopDetailsComponent,
     ChangePasswordComponent,
     AddAddressComponent,
@@ -98,7 +120,15 @@ export function HttpLoaderFactory(http: HttpClient) {
     SavedAddressComponent,
     SideNavComponent,
     TopPartComponent,
+    AdminSideNavComponent,
+    AdminTopPartComponent,
     CheckoutComponent,
+    AllOrdersComponent,
+    DiscountComponent,
+    AdminsComponent,
+    UsersComponent,
+    PaymentComponent,
+    AllMerchantsComponent,
   ],
   imports: [
     BrowserModule,
