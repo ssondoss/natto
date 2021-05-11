@@ -1,9 +1,9 @@
 <div class="bg-light2">
   <div class="container">
     <div class="row mx-0 py-4 arabic-dir">
-      <div class="h5 text-left my-auto">How To Order</div>
+      <div class="h5 text-left my-auto">Shop Details</div>
       <div class="bread my-auto">
-        Home / <span routerLink="/all-shops" class="primary">How To order</span>
+        Home / <span routerLink="/all-shops" class="primary">Shop Details</span>
       </div>
     </div>
   </div>
@@ -226,7 +226,7 @@
             </div>
           </div>
         </div>
-        <div *ngIf="showReviewsDiv == true" class="col-lg-8 p-2 text-left">
+        <div *ngIf="showReviewsDiv == true" class="col-12 p-2 text-left">
           <div class="h6 mt-4">{{ "BAZZAR.REVIEWS" | translate }}</div>
           <div
             *ngIf="ratings.length == 0"
@@ -265,7 +265,7 @@
             </div>
           </div>
         </div>
-        <div *ngIf="showInfoDiv == true" class="col-lg-8">
+        <div *ngIf="showInfoDiv == true" class="col-12">
           <p class="font-weight-600 h6 mt-4 mb-4 text-left">
             <span *ngIf="appService.lang == 'en'">
               {{ merchant.titleEnglish }}
@@ -274,7 +274,7 @@
               {{ merchant.titleArabic }}
             </span>
           </p>
-          <hr />
+          <hr class="w-100" />
           <div class="row mx-0">
             <div
               class="col-md-3 text-dark text-left px-0 font-weight-600 font-14px my-auto"

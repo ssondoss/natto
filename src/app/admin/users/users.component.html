@@ -1,0 +1,57 @@
+<admin-top-part> </admin-top-part>
+<div class="container my-5 py-5">
+  <div class="row mx-0 arabic-dir">
+    <div class="col-md-3 border px-0 rounded h-100">
+      <admin-side-nav></admin-side-nav>
+    </div>
+    <div class="col-md-9 mr-auto mt-5 mt-md-0 px-0 px-md-4">
+      <div class="h5 mb-3 text-left">
+        {{ "BAZZAR.USERS" | translate }}
+      </div>
+
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead class="bg-light">
+            <th>Name</th>
+            <th class="text-center">Options</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of users">
+              <td>
+                <a
+                  class="anchor"
+                  [routerLink]="['/user-view']"
+                  [queryParams]="{ id: user.id }"
+                  rel="noopener noreferrer"
+                  >{{ user.username }}
+                </a>
+              </td>
+              <td class="text-center">
+                <a
+                  [routerLink]="['/update-user']"
+                  [queryParams]="{ id: user.id }"
+                  rel="noopener noreferrer"
+                >
+                  <i class="mx-3 px-2 fa fa-edit icon-edit"></i
+                ></a>
+                <a
+                  *ngIf="user.blocked == false"
+                  (click)="blockUser(user.id, user.username)"
+                  ><i class="mx-3 px-2 fa fa-lock icon-dark"></i
+                ></a>
+                <a
+                  *ngIf="user.blocked == true"
+                  (click)="unblockUser(user.id, user.username)"
+                  ><i class="mx-2 px-2 fa fa-unlock icon-dark"></i
+                ></a>
+                <a (click)="deleteUser(user.id, user.username)"
+                  ><i class="mx-3 px-2 fa fa-trash-o icon-danger"></i
+                ></a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -17,12 +17,12 @@
 </div> -->
 <top-part></top-part>
 <div class="container my-5 py-5">
-  <div class="row mx-0">
+  <div class="row mx-0 arabic-dir">
     <div class="col-md-3 border px-0 rounded h-100">
       <side-nav></side-nav>
     </div>
     <div class="col-md-9 mr-auto mt-5 mt-md-0 px-0 px-md-4">
-      <div class="h5 mb-3">{{ "BAZZAR.MY_ORDERS" | translate }}</div>
+      <div class="h5 mb-3 text-left">{{ "BAZZAR.MY_ORDERS" | translate }}</div>
       <div class="border p-3 rounded">
         <div
           *ngIf="orders.length == 0"

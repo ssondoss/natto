@@ -64,3 +64,8 @@
 .nav-text {
   margin-left: auto !important;
 }
+@media screen and (min-width: 767px) {
+  .p-lang {
+    padding-left: 10px !important;
+  }
+}

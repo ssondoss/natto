@@ -1,15 +1,21 @@
 <div class="bg-light2">
   <div class="container">
     <div class="row mx-0 py-4 arabic-dir">
-      <div class="h5 text-left my-auto">All Shops</div>
+      <div class="h5 text-left my-auto" routerLink="/all-shops">
+        {{ "BAZZAR.ALL_SHOPS" | translate }}
+      </div>
       <div class="bread my-auto">
-        Home / <span routerLink="/all-shops" class="primary">All Shops</span>
+        <span routerLink="/"> {{ "BAZZAR.HOME" | translate }}</span>
+        /
+        <span routerLink="/all-shops" class="primary">
+          {{ "BAZZAR.ALL_SHOPS" | translate }}
+        </span>
       </div>
     </div>
   </div>
 </div>
 
-<div class="container mt-5">
+<div class="container mt-5 arabic-dir">
   <div class="row mx-0">
     <div
       class="col-lg-3 col-md-4 border p-0 sticky-top mb-5"

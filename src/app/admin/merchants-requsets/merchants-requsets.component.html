@@ -1,0 +1,58 @@
+<admin-top-part> </admin-top-part>
+<div class="container my-5 py-5">
+  <div class="row mx-0 arabic-dir">
+    <div class="col-md-3 border px-0 rounded h-100">
+      <admin-side-nav></admin-side-nav>
+    </div>
+    <div class="col-md-9 mr-auto mt-5 mt-md-0 px-0 px-md-4">
+      <div class="h5 mb-3 text-left">
+        {{ "BAZZAR.MERCHANTS_REQUESTS" | translate }}
+      </div>
+
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead class="text-center bg-light">
+            <th>{{ "BAZZAR.MERCHANT" | translate }}</th>
+            <th>{{ "BAZZAR.ACCEPT" | translate }}</th>
+            <th>{{ "BAZZAR.REJECT" | translate }}</th>
+          </thead>
+          <tbody class="text-center justifiy-content-center">
+            <tr *ngFor="let request of merchantRequests">
+              <td>
+                <a
+                  class="anchor"
+                  [routerLink]="['/merchant-view']"
+                  [queryParams]="{ id: request.id }"
+                  rel="noopener noreferrer"
+                  rel="noopener noreferrer"
+                >
+                  {{ request.titleEnglish }}
+                </a>
+              </td>
+              <td>
+                <a
+                  type="button"
+                  class="btn btn-success"
+                  (click)="acceptMerchent(request.id)"
+                >
+                  <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                  {{ "BAZZAR.ACCEPT" | translate }}
+                </a>
+              </td>
+              <td>
+                <button
+                  type="button"
+                  class="btn btn-danger"
+                  (click)="deleteMerchent(request.id)"
+                >
+                  <i class="fa fa-times-circle" aria-hidden="true"></i>
+                  {{ "BAZZAR.REJECT" | translate }}
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

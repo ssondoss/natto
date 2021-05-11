@@ -10,11 +10,10 @@
   border: 1px solid #ffa803;
 }
 .btn-primary:hover {
-  background-color: #ffa803 !important;
+  background-color: #e2980e !important;
   color: #ffffff;
-  border: 1px solid #ffa803;
+  border: 1px solid #e2980e;
   box-shadow: none;
-  border-radius: 7px;
 }
 .link-primary {
   color: #ffa803 !important;
@@ -290,27 +289,31 @@ button:hover {
   font-size: larger;
 }
 .icon-view {
-  color: #28a745;
-  font-size: 23px;
+  color: #28a745 !important;
+  font-size: 21px;
 }
-.icon-view :hover {
+.icon-view:hover {
   color: #157e2d;
-  font-size: 25px;
 }
 
 .icon-edit {
-  color: #51cbce;
-  font-size: 23px;
+  color: #51cbce !important;
+  font-size: 20px;
 }
-.icon-edit :hover {
-  color: #3ba0a1;
-  font-size: 25px;
+.icon-edit:hover {
+  color: #3ba0a1 !important;
 }
 .icon-danger {
-  color: #d84040;
-  font-size: 23px;
+  color: #ec2727 !important;
+  font-size: 20px;
 }
 .icon-danger:hover {
-  color: #a83333;
-  font-size: 25px;
+  color: #c52828 !important;
+}
+.icon-dark {
+  color: #000000;
+  font-size: 20px;
+}
+.anchor {
+  color: #e2980e !important;
 }

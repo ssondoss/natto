@@ -118,7 +118,7 @@ export class AddAddressComponent implements OnInit {
                 token.payload = this.userSession.user;
                 console.log(token);
                 localStorage.setItem('bazzar-user-jwt', JSON.stringify(token));
-                this.userSession.login();
+                this.userSession.login(JSON.stringify(token));
                 this.dialogRef.close({
                   event: 'ADDED',
                   user: this.user,

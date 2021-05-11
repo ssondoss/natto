@@ -48,8 +48,8 @@ small {
 }
 .no-bullets li {
   direction: rtl !important;
-  padding-right: 0px !important;
-  margin-right: 0px !important;
+  /* padding-right: 0px !important;
+  margin-right: 0px !important; */
 
   text-align: right !important;
 }
@@ -165,5 +165,23 @@ small {
   text-align: left !important;
 }
 .nav-text {
+  margin-right: auto !important;
+}
+.pr-ar-0 {
+  padding-right: 0 !important;
+}
+.pl-ar-0 {
+  padding-left: 0 !important;
+}
+
+@media screen and (min-width: 767px) {
+  .top-footer .ml-md-auto {
+    margin-right: auto !important;
+  }
+  .p-lang {
+    padding-right: 10px !important;
+  }
+}
+.viewClass .ml-auto {
   margin-right: auto !important;
 }

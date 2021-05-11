@@ -1,5 +1,18 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AdminsComponent } from './admin/admins/admins.component';
+import { AllMerchantsComponent } from './admin/all-merchants/all-merchants.component';
+import { AllOrdersComponent } from './admin/all-orders/all-orders.component';
+import { DiscountComponent } from './admin/discount/discount.component';
+import { EditMerchantComponent } from './admin/edit-merchant/edit-merchant.component';
+import { MerchantRequsetComponent } from './admin/merchant-requset/merchant-requset.component';
+import { MerchantViewComponent } from './admin/merchant-view/merchant-view.component';
+import { MerchantsRequsetsComponent } from './admin/merchants-requsets/merchants-requsets.component';
+import { OrderViewAdminComponent } from './admin/order-view-admin/order-view-admin.component';
+import { PaymentComponent } from './admin/payment/payment.component';
+import { UpdateUserComponent } from './admin/update-user/update-user.component';
+import { UserViewComponent } from './admin/user-view/user-view.component';
+import { UsersComponent } from './admin/users/users.component';
 import { AllShopsComponent } from './all-shops/all-shops.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { HomeComponent } from './home/home.component';
@@ -26,13 +39,33 @@ import { ShopDetailsComponent } from './shop-details/shop-details.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'order-view-admin', component: OrderViewAdminComponent },
+
+  { path: 'user-view', component: UserViewComponent },
+
+  { path: 'update-user', component: UpdateUserComponent },
+
+  { path: 'merchant-request', component: MerchantRequsetComponent },
+
+  { path: 'merchants-requests', component: MerchantsRequsetsComponent },
+  { path: 'users', component: UsersComponent },
+  { path: 'admins', component: AdminsComponent },
+  { path: 'payment', component: PaymentComponent },
+  { path: 'discount', component: DiscountComponent },
+  { path: 'all-orders', component: AllOrdersComponent },
+  { path: 'edit-merchant', component: EditMerchantComponent },
+
+  { path: 'merchant-view', component: MerchantViewComponent },
+
   { path: 'all-shops', component: AllShopsComponent },
   { path: 'shop', component: ShopDetailsComponent },
+
   { path: 'checkout', component: CheckoutComponent },
   { path: 'view-order', component: ViewOrderComponent },
   { path: 'view-product', component: ViewProductComponent },
   { path: 'view-category', component: ViewCategoryComponent },
-  { path: 'edit-category', component: EditCategoryComponent },
+  { path: 'edit-wordrobe', component: EditCategoryComponent },
+  { path: 'all-merchants', component: AllMerchantsComponent },
 
   { path: 'edit-product', component: EditProductComponent },
 
@@ -49,7 +82,6 @@ const routes: Routes = [
   { path: 'saved-address', component: SavedAddressComponent },
   { path: 'join-us', component: JoinUsComponent },
   { path: 'change-password', component: ChangePasswordComponent },
-
   { path: 'my-orders', component: MyOrdersComponent },
 ];
 

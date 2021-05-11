@@ -1,14 +1,14 @@
 <merchant-top-part></merchant-top-part>
 <div class="container my-5 py-5">
-  <div class="row mx-0">
+  <div class="row mx-0 arabic-dir">
     <div class="col-md-3 border px-0 rounded h-100">
       <merchant-side-nav></merchant-side-nav>
     </div>
     <div class="col-md-9 mr-auto mt-5 mt-md-0 px-0 px-md-4">
-      <div class="h5 mb-3">{{ "BAZZAR.WARDROBE" | translate }}</div>
+      <div class="h5 mb-3 text-left">{{ "BAZZAR.WARDROBE" | translate }}</div>
       <div class="border px-md-4 p-3 rounded">
-        <form class="row mx-0" [formGroup]="categoryForm" id="dirForm">
-          <div class="form-group col-md-5">
+        <form class="row mx-0 mt-2" [formGroup]="categoryForm" id="dirForm">
+          <div class="form-group col-md-6 px-0">
             <label>{{ "BAZZAR.TITLE_ENGLISH" | translate }}</label>
             <input
               type="text"
@@ -25,7 +25,7 @@
               >{{ "BAZZAR.REQUIRED" | translate }}</mat-error
             >
           </div>
-          <div class="form-group col-md-5">
+          <div class="form-group col-md-6 px-0 p-lang">
             <label> {{ "BAZZAR.TITLE_ARABIC" | translate }}</label>
             <input
               type="text"
@@ -50,17 +50,22 @@
               {{ "BAZZAR.REQUIRED" | translate }}
             </mat-error>
           </div>
-          <div class="col-md-2 pb-3 pl-3 imageLabel text-center">
+          <!-- <div class="col-md-2 pb-3 pl-3 imageLabel text-center">
             <label>
               {{ "BAZZAR.IMAGE" | translate }}
 
               <br />
-              <input id="file-input" type="file" style="display: none" />
+              <input
+                id="file-input"
+                type="file"
+                style="display: none"
+                onchange=""
+              />
               <i class="fa fa-upload pt-2" aria-hidden="true"></i>
             </label>
             <input type="file" class="form-control-file" id="image" />
-          </div>
-          <div class="form-group col-md-2 text-center h-50 mt-2">
+          </div> -->
+          <div class="text-left">
             <button
               type="submit"
               class="btn btn-primary px-5"
@@ -70,7 +75,7 @@
             </button>
           </div>
         </form>
-        <div class="table-responsive mt-5 p-3">
+        <div class="table-responsive mt-5">
           <table class="table table-bordered">
             <thead class="text-center text-dark">
               <th>
@@ -85,22 +90,31 @@
               </th>
             </thead>
             <tbody class="text-center">
-              <tr>
-                <td>titleEnglish }}</td>
-                <td>titleArabic }}</td>
-                <td class="mt-2 w-25">
-                  <!-- <a class="icon-view pr-2 col-md-4" routerLink="/view-category"
+              <tr *ngFor="let wordrobe of wordrobes">
+                <td>{{ wordrobe.titleEnglish }}</td>
+                <td>{{ wordrobe.titleArabic }}</td>
+                <td class="mt-2">
+                  <!-- <a
+                    class="icon-view pr-2 col-md-4"
+                    [routerLink]="['/view-category']"
+                    [queryParams]="{ id: wordrobe.id }"
                     ><i class="fa fa-eye" aria-hidden="true"></i>
                   </a> -->
-                  <a class="icon-edit pr-2 col-md-6">
+                  <a
+                    class="icon-edit col-6"
+                    [routerLink]="['/edit-wordrobe']"
+                    [queryParams]="{ id: wordrobe.id }"
+                  >
                     <i
-                      class="fa fa-pencil-square-o text-success"
+                      class="fa fa-pencil-square-o text-success t-media-12"
                       aria-hidden="true"
                     ></i>
                   </a>
-                  <a class="icon-danger col-md-6" (click)="deleteWardrobe(1)"
+                  <a
+                    class="icon-danger col-6"
+                    (click)="deleteWardrobe(wordrobe.id)"
                     ><i
-                      class="fa fa-trash-o text-danger"
+                      class="fa fa-trash-o text-danger t-media-12"
                       aria-hidden="true"
                     ></i>
                   </a>

@@ -1,0 +1,63 @@
+<admin-top-part> </admin-top-part>
+<div class="container my-5 py-5">
+  <div class="row mx-0 arabic-dir">
+    <div class="col-md-3 border px-0 rounded h-100">
+      <admin-side-nav></admin-side-nav>
+    </div>
+    <div class="col-md-9 mr-auto mt-5 mt-md-0 px-0 px-md-4">
+      <div class="h5 mb-3 text-left">
+        {{ "BAZZAR.PAYMENTS" | translate }}
+      </div>
+
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead class="bg-light text-center">
+            <th>{{ "BAZZAR.MERCHANT" | translate }}</th>
+            <th class="text-center">
+              {{ "BAZZAR.TOTAL_ORDERS" | translate }}
+            </th>
+            <th class="text-center">
+              {{ "BAZZAR.UNPAID_ORDERS" | translate }}
+            </th>
+            <th class="text-center">{{ "BAZZAR.BALANCE" | translate }}</th>
+            <th class="text-center">
+              {{ "BAZZAR.TOTAL_REVENUE" | translate }}
+            </th>
+            <th>{{ "BAZZAR.PAY" | translate }}</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let payment of payments" class="text-center">
+              <td>
+                <a
+                  class="anchor"
+                  [routerLink]="['/merchant-view']"
+                  [queryParams]="{ id: payment.merchant.id }"
+                  rel="noopener noreferrer"
+                  rel="noopener noreferrer"
+                  >{{ payment.merchant.titleEnglish }}</a
+                >
+              </td>
+              <td class="text-center">
+                {{ payment.orderCommissions.length }}
+              </td>
+              <td class="text-center">
+                {{ getUnpaidCount(payment.orderCommissions) }}
+              </td>
+              <td class="text-center">
+                {{ calculateCommission(payment.orderCommissions) }} $
+              </td>
+              <td class="text-center">
+                {{ calculateTotalRevenue(payment.orderCommissions) }} $
+              </td>
+              <td>
+                <button class="btn btn-success" (click)="payTake(payment.id)">
+                  {{ "BAZZAR.PAY" | translate }}
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

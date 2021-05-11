@@ -1,21 +1,21 @@
-<div class="p-3 border-bottom side-nav" routerLink="/account-information">
+<div
+  class="p-3 border-bottom side-nav text-left"
+  routerLink="/account-information"
+>
   {{ "BAZZAR.ACCOUNT_INFORMATION" | translate }}
 </div>
+<div class="p-3 border-bottom side-nav text-left" routerLink="/wardrobes">
+  {{ "BAZZAR.WARDROBES" | translate }}
+</div>
 
-<div class="p-3 border-bottom side-nav" routerLink="/products">
+<div class="p-3 border-bottom side-nav text-left" routerLink="/products">
   {{ "BAZZAR.PRODUCTS" | translate }}
 </div>
 
-<div class="p-3 border-bottom side-nav" routerLink="/orders">
-  {{ "BAZZAR.ORDERS" | translate }}
-</div>
-<div class="p-3 border-bottom side-nav" routerLink="/change-password">
-  {{ "BAZZAR.ORDERS" | translate }}
-</div>
-<div class="p-3 border-bottom side-nav" routerLink="/change-password">
+<div class="p-3 border-bottom side-nav text-left" routerLink="/orders">
   {{ "BAZZAR.ORDERS" | translate }}
 </div>
 
-<div class="p-3 side-nav" routerLink="/wardrobes">
-  {{ "BAZZAR.WARDROBES" | translate }}
+<div class="p-3 side-nav text-left" (click)="userSession.logout()">
+  {{ "BAZZAR.LOGOUT" | translate }}
 </div>

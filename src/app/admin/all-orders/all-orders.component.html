@@ -1,0 +1,73 @@
+<admin-top-part> </admin-top-part>
+<div class="container my-5 py-5">
+  <div class="row mx-0 arabic-dir">
+    <div class="col-md-3 border px-0 rounded h-100">
+      <admin-side-nav></admin-side-nav>
+    </div>
+    <div class="col-md-9 mr-auto mt-5 mt-md-0 px-0 px-md-4">
+      <div class="h5 mb-3 text-left">
+        {{ "BAZZAR.ALL_ORDERS" | translate }}
+      </div>
+
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead class="bg-light text-center">
+            <th>{{ "BAZZAR.MERCHANT" | translate }}</th>
+            <th>{{ "BAZZAR.USER" | translate }}</th>
+            <th>{{ "BAZZAR.ITEMS" | translate }}</th>
+            <th>{{ "BAZZAR.DATE" | translate }}</th>
+            <!-- <th>Payment method</th> -->
+            <th>{{ "BAZZAR.TOTAL" | translate }}</th>
+            <th>{{ "BAZZAR.STATUS" | translate }}</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let order of orders" class="text-center">
+              <td>
+                <a
+                  class="anchor"
+                  [routerLink]="['/merchant-view']"
+                  [queryParams]="{ id: order.merchant.id }"
+                  rel="noopener noreferrer"
+                >
+                  {{ order.merchant.titleEnglish }}
+                </a>
+              </td>
+              <td>
+                <a
+                  class="anchor"
+                  [routerLink]="['/user-view']"
+                  [queryParams]="{ id: order.user.id }"
+                  rel="noopener noreferrer"
+                >
+                  {{ order.user.username }}
+                </a>
+              </td>
+              <td>
+                <a
+                  [routerLink]="['/order-view-admin']"
+                  [queryParams]="{ id: order.id }"
+                  rel="noopener noreferrer"
+                  class="btn btn-primary btn-sm my-auto h-auto"
+                >
+                  View items
+                </a>
+              </td>
+              <td>
+                {{ order.createdOn | date: "dd/MM/yyyy" }}
+              </td>
+              <!-- <td  >
+                {{ order.paymentMethod }}
+              </td> -->
+              <td>
+                {{ order.total }}
+              </td>
+              <td>
+                {{ order.orderStatus }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

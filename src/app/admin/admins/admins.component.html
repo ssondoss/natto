@@ -1,0 +1,68 @@
+<admin-top-part> </admin-top-part>
+<div class="container my-5 py-5">
+  <div class="row mx-0 arabic-dir">
+    <div class="col-md-3 border px-0 rounded h-100">
+      <admin-side-nav></admin-side-nav>
+    </div>
+    <div class="col-md-9 mr-auto mt-5 mt-md-0 px-0 px-md-4">
+      <div class="h5 mb-3 text-left">
+        {{ "BAZZAR.ADMINS" | translate }}
+      </div>
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead class="bg-light text-center">
+            <th>{{ "BAZZAR.NAME" | translate }}</th>
+            <th class="text-center">{{ "BAZZAR.OPTIONS" | translate }}</th>
+            <!-- <th class="text-center">block</th>
+            <th class="text-center">delete</th> -->
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of users" class="text-center">
+              <td>
+                <a
+                  class="anchor my-auto"
+                  [routerLink]="['/user-view']"
+                  [queryParams]="{ id: user.id }"
+                  rel="noopener noreferrer"
+                  >{{ user.username }}
+                </a>
+              </td>
+              <td class="" dir="">
+                <a
+                  class="icon-edit mx-3"
+                  [routerLink]="['/user']"
+                  [queryParams]="{ id: user.id }"
+                  rel="noopener noreferrer"
+                >
+                  <i class="mx-1 fa fa-edit"></i>
+                  <small class="mx-1">{{ "BAZZAR.EDIT" | translate }}</small>
+                </a>
+
+                <a
+                  class="icon-dark mx-3"
+                  (click)="blockUser(user.id)"
+                  *ngIf="user.blocked == false"
+                >
+                  <i class="fa fa-lock"></i>
+                  <small class="mx-1"> {{ "BAZZAR.BLOCK" | translate }}</small>
+                </a>
+                <button
+                  class="btn btn-dark"
+                  (click)="unblockUser(user.id)"
+                  *ngIf="user.blocked == true"
+                >
+                  UnBlock
+                </button>
+
+                <a class="mx-3 icon-danger" (click)="deleteUser(user.id)">
+                  <i class="fa fa-trash"></i>
+                  <small class="mx-1"> {{ "BAZZAR.DELETE" | translate }}</small>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
