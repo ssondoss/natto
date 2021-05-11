@@ -162,6 +162,7 @@
     "NAME": "Name",
     "UNIT_PRICE": "Unit Price",
     "LOGIN": "Login",
+    "LOGIN_NOW": "Login",
     "ADDED": "added successfully ",
     "NOT_ADDED": "Can't add product to the Shopping cart!",
     "YOU_CANT_MORE": "You can't choose more items than available In stock",
