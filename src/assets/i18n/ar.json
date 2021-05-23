@@ -319,6 +319,12 @@
     "ALL_CITIES": "جميع المدن",
     "ENTER_MERCHANT_NAME": "ادخل اسم المتجر",
     "SEARCH_RESULTS": "نتائج البحث",
-    "HOW_TO_ORDER": "كيف تطلب ؟"
+    "HOW_TO_ORDER": "كيف تطلب ؟",
+    "HOMR_SLIDER_TITLE": "اختر و اطلب",
+    "HOMR_SLIDER_SUBTITLE": "حدد عنوانك للتسليم السريع",
+    "HOMR_SLIDER_Text": "خدمة ٢٤ ساعة",
+    "FIND_NEW_MERCHANRS": "اكتشف متاجر جديدة",
+    "NEW": "جديد",
+    "ALL": "الكل"
   }
 }

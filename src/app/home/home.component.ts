@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApplicationStateService } from '../app.service';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -8,22 +11,44 @@ import { ApplicationStateService } from '../app.service';
 })
 export class HomeComponent implements OnInit {
   currentRate = 5;
+  categories: any;
+  categoriesAr: any;
+  categoriesEn: any;
 
-  constructor(public appService: ApplicationStateService) {}
+  constructor(
+    public appService: ApplicationStateService,
+    private http: HttpClient,
+    private router: Router
+  ) {}
 
-  ngOnInit(): void {}
-  categories = [
-    { titleEnglish: 'yousef' },
-    { titleEnglish: 'yousef' },
-    { titleEnglish: 'yousef' },
-    { titleEnglish: 'yousef' },
-    { titleEnglish: 'yousef' },
-    { titleEnglish: 'yousef' },
-    { titleEnglish: 'yousef' },
-    { titleEnglish: 'yousef' },
-    { titleEnglish: 'yousef' },
-    { titleEnglish: 'yousef' },
-    { titleEnglish: 'yousef' },
-    { titleEnglish: 'yousef' },
-  ];
+  getAllCategories() {
+    this.http.get(environment.apiURL + '/tag').subscribe((tags: any) => {
+      this.categories = tags;
+
+      this.categories.forEach((category: any) => {
+        this.categoriesAr.push(category.nameArabic);
+        this.categoriesEn.push(category.nameEnglish);
+      });
+      console.log(tags);
+    });
+  }
+
+  ngOnInit(): void {
+    this.getAllCategories();
+  }
+
+  search() {
+    let nameInput = document.getElementById('nameInput') as HTMLInputElement;
+    let cityInput = document.getElementById('cityInput') as HTMLInputElement;
+
+    let name =
+      nameInput == undefined || nameInput == null ? '' : nameInput.value;
+    // let tag =
+    //   tagInput == undefined || tagInput == null ? 'all' : tagInput.value;
+    let city =
+      cityInput == undefined || cityInput == null ? 'all' : cityInput.value;
+    this.router.navigate(['/all-shops'], {
+      queryParams: { name: name, city: city, tag: 'all' },
+    });
+  }
 }

@@ -10,11 +10,13 @@
     <div class="row">
       <div class="col-lg-8 col-md-6 my-auto d-none d-md-block text-left">
         <div class="text-white">
-          <div class="title h1">Choose, Order and Checkout</div>
-          <div class="h6 pt-3">
-            Specify your address to suggest you the fast delivery
+          <div class="title h1">
+            {{ "BAZZAR.HOMR_SLIDER_TITLE" | translate }}
           </div>
-          <p>Get our services from 24 hours.</p>
+          <div class="h6 pt-3">
+            {{ "BAZZAR.HOMR_SLIDER_SUBTITLE" | translate }}
+          </div>
+          <p>{{ "BAZZAR.HOMR_SLIDER_Text" | translate }}</p>
           <a class="p-3 btn btn-main mt-4" href="#">Go To Meal</a>
         </div>
       </div>
@@ -26,6 +28,7 @@
             <input
               class="form-control"
               name="search"
+              id="cityInput"
               type="text"
               placeholder="Choose your location"
             />
@@ -36,10 +39,15 @@
               class="form-control"
               name="search"
               type="text"
-              placeholder="Choose restaurant"
+              id="nameInput"
+              placeholder="Choose merchant"
             />
             <div class="text-left">
-              <button class="btn btn-main mt-4 p-3" type="button">
+              <button
+                class="btn btn-main mt-4 p-3"
+                type="button"
+                (click)="search()"
+              >
                 Find Food
               </button>
             </div>
@@ -168,11 +176,11 @@
         class="item mx-4 px-2 d-flex itemsContainer font-weight-600 text-muted"
       >
         <span *ngIf="appService.lang == 'en'" class="m-auto"
-          >{{ item.titleEnglish }}
+          >{{ item.nameEnglish }}
         </span>
 
         <span *ngIf="appService.lang == 'ar'" class="m-auto"
-          >{{ item.titleArabic }}
+          >{{ item.nameArabic }}
         </span>
       </div>
     </ng-template>

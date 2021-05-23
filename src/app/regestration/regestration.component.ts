@@ -109,6 +109,7 @@ export class RegestrationComponent implements OnInit {
       .append('password', password);
     this.http.post(environment.apiURL + '/auth', httpParams).subscribe(
       (data: any) => {
+        console.log(data);
         localStorage.setItem('bazzar-user-jwt', JSON.stringify(data));
         this.userSession.login(JSON.stringify(data));
         this.router.navigate(['/']);

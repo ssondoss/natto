@@ -54,12 +54,17 @@
       <ngb-rating
         class="mx-2"
         [max]="5"
-        [(rate)]="currentRate"
+        [(rate)]="shop.totalRatings"
         [readonly]="true"
       ></ngb-rating>
-      <span class="bg-primary px-2 py-1 rounded-lg mx-2 h-auto my-auto"
-        >4.5</span
-      >
+      <span class="bg-primary px-2 py-1 rounded-lg mx-2 h-auto my-auto">
+        <span *ngIf="shop.totalRatings == 0">
+          {{ "BAZZAR.NEW" | translate }}
+        </span>
+        <span *ngIf="shop.totalRatings != 0">
+          {{ shop.totalRatings }}
+        </span>
+      </span>
     </div>
   </div>
   <hr class="my-0" />

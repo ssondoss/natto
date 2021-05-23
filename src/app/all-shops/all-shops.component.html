@@ -25,29 +25,31 @@
       <form action="" class="p-3">
         <div class="form-group">
           <label class="small">City</label>
-          <select class="form-control" id="exampleFormControlSelect1">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
+          <select class="form-control" id="city">
+            <option value="">All</option>
+            <option *ngFor="let city of cities">
+              <span *ngIf="service.lang == 'ar'">{{ city.city }}</span>
+              <span *ngIf="service.lang == 'en'">{{ city.city }}</span>
+            </option>
           </select>
         </div>
         <div class="form-group">
           <label class="small">Category</label>
-          <select class="form-control" id="exampleFormControlSelect1">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
+          <select class="form-control" id="tag">
+            <option value="all">All</option>
+            <option *ngFor="let tag of tags" [value]="tag.id">
+              <span *ngIf="service.lang == 'ar'">{{ tag.nameArabic }}</span>
+              <span *ngIf="service.lang == 'en'">{{ tag.nameEnglish }}</span>
+            </option>
           </select>
         </div>
         <div class="form-group">
           <label for="" class="small">Merchant name</label>
-          <input type="text" class="form-control" />
+          <input type="text" class="form-control" id="name" />
         </div>
-        <button class="btn btn-main w-100 rounded-lg">search</button>
+        <button class="btn btn-main w-100 rounded-lg" (click)="search()">
+          search
+        </button>
       </form>
     </div>
     <div class="col-lg-9 col-md-8 px-0 px-lg-3">

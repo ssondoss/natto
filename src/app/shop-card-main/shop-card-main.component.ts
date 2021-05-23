@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ApplicationStateService } from '../app.service';
+import { environment } from 'src/environments/environment';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'shop-card-main',
@@ -10,9 +12,29 @@ export class ShopCardMainComponent implements OnInit {
   currentRate = 3;
 
   @Input() shop: any;
-  constructor(public appService: ApplicationStateService) {}
+  constructor(
+    public appService: ApplicationStateService,
+    private http: HttpClient
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.http
+      .get(environment.apiURL + '/merchant-rating/' + this.shop.id)
+      .subscribe((ratings: any) => {
+        this.shop.ratings = ratings;
+
+        this.shop.totalRatings = this.getTotalRatings(ratings);
+      });
+  }
+
+  getTotalRatings(ratings) {
+    let total = 0;
+    if (ratings.length == 0) return 0;
+    ratings.forEach((element) => {
+      total += element.rate;
+    });
+    return Math.ceil(total / ratings.length);
+  }
 
   getSource(image): string {
     return 'http://164.68.99.181' + '/images/' + image;

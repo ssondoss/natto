@@ -13,9 +13,9 @@ export class UserSessionService {
   shoppingCart: any;
   constructor(private http: HttpClient, private router: Router) {
     if (localStorage.getItem('bazzar-user-jwt') != null) {
-      this.login(JSON.parse(localStorage.getItem('bazzar-user-jwt')));
+      this.login(localStorage.getItem('bazzar-user-jwt'));
     } else if (localStorage.getItem('bazzar-merchant-user-jwt') != null) {
-      this.login(JSON.parse(localStorage.getItem('bazzar-merchant-user-jwt')));
+      this.login(localStorage.getItem('bazzar-merchant-user-jwt'));
     } else {
       this.isLoggedIn = false;
       this.user = null;
@@ -23,6 +23,8 @@ export class UserSessionService {
   }
 
   login(user: any) {
+    console.log(user);
+    user = JSON.parse(user);
     this.isLoggedIn = true;
     this.user = new User();
     this.user.id = user.payload.id;

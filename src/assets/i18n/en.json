@@ -165,6 +165,7 @@
     "": "",
     "": "",
     "": "",
+    "BLOCK": "Block",
 
     "TRY_AGAIN": "Something wrong happened , please try again",
 
@@ -353,6 +354,12 @@
     "ADD_SHOP": "ADD SHOP",
     "CONTACT_INFO_1": "Contact info 1",
     "CONTACT_INFO_2": "Contact info 2",
-    "MERCHANT_ACCOUNT": "Merchant Account"
+    "MERCHANT_ACCOUNT": "Merchant Account",
+    "HOMR_SLIDER_TITLE": "Choose, Order and Checkout",
+    "HOMR_SLIDER_SUBTITLE": "Specify your address to suggest you the fast delivery",
+    "HOMR_SLIDER_Text": "Get our services from 24 hours.",
+    "FIND_NEW_MERCHANRS": "Discover New Merchants & Order Now",
+    "NEW": "New",
+    "ALL": "All"
   }
 }

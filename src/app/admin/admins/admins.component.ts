@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { UserSessionService } from 'src/app/user-session.service';
 import { environment } from 'src/environments/environment';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-admins',
@@ -33,17 +34,30 @@ export class AdminsComponent implements OnInit {
   }
 
   deleteUser(id: string) {
-    this.http
-      .delete(environment.apiURL + '/user/' + id)
-      .subscribe((data: any) => {
-        this.users.forEach((user) => {
-          if (user.id == id) {
-            this.users.splice(this.users.indexOf(user), 1);
-            this.i--;
-          }
-        });
+    swal
+      .fire({
+        title: 'Are you sure?',
+        text: 'You will delete admin account !',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!',
+      })
+      .then((result) => {
+        if (result.value) {
+          this.http
+            .delete(environment.apiURL + '/user/' + id)
+            .subscribe((data: any) => {
+              this.users.forEach((user) => {
+                if (user.id == id) {
+                  this.users.splice(this.users.indexOf(user), 1);
+                  this.i--;
+                }
+              });
+            });
+        }
       });
-    console.log(this.users);
   }
 
   blockUser(id: string) {

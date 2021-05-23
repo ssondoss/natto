@@ -38,11 +38,12 @@ export class AllShopsComponent implements OnInit {
       this.cities = data;
     });
     activatedRoute.queryParams.subscribe(async (params) => {
+      console.log('here ');
       let name = params['name'];
       let tag = params['tag'];
       let city = params['city'];
       if (name != undefined && tag != undefined && city != undefined) {
-        if (name == '' && tag == 'all' && city == 'all') {
+        if (name == '' && tag == 'all' && city == '') {
           this.currentPage = 0;
           this.withSearchkeyword = false;
           this.currentTag = 'all';
@@ -78,6 +79,7 @@ export class AllShopsComponent implements OnInit {
   }
   ngOnInit(): void {}
   getPageOfShops(page: number) {
+    console.log('get page');
     this.currentPage = page;
 
     let url = environment.apiURL;
@@ -150,7 +152,7 @@ export class AllShopsComponent implements OnInit {
       .subscribe((data: any) => {
         this.pageable = data.pageable;
         this.totalPages = data.totalPages;
-        console.log('total pages' + this.totalPages);
+
         this.pagesNumber = Array(this.totalPages);
         for (let index = 1; index <= this.totalPages; index++) {
           this.pagesNumber[index - 1] = index;
@@ -158,6 +160,7 @@ export class AllShopsComponent implements OnInit {
 
         this.totalElements = data.totalElements;
         this.shopsList = data.content;
+
         console.log(this.shopsList);
       });
   }
@@ -278,9 +281,40 @@ export class AllShopsComponent implements OnInit {
     let tag =
       tagInput == undefined || tagInput == null ? 'all' : tagInput.value;
     let city =
-      cityInput == undefined || cityInput == null ? 'all' : cityInput.value;
-    this.router.navigate(['/all-shops'], {
-      queryParams: { name: name, city: city, tag: tag },
-    });
+      cityInput == undefined || cityInput == null ? '' : cityInput.value;
+
+    if (name != undefined && tag != undefined && city != undefined) {
+      if (name == '' && tag == 'all' && city == '') {
+        this.currentPage = 0;
+        this.withSearchkeyword = false;
+        this.currentTag = 'all';
+        this.title = 'all';
+        this.currentTagName = 'all';
+        this.getPageOfShops(this.currentPage);
+        this.getTags();
+      } else {
+        this.currentPage = 0;
+        if (name != '') {
+          this.withSearchkeyword = true;
+          this.searchKeyword = name;
+        }
+        if (tag != 'all') {
+          this.withSearchTag = true;
+          this.currentTag = tag;
+        }
+        if (city != 'all') {
+          this.withSearchCity = true;
+          this.currentCity = city;
+        }
+        this.getPageOfShops(this.currentPage);
+      }
+    } else {
+      this.currentPage = 0;
+      this.withSearchkeyword = false;
+      this.currentTag = 'all';
+      this.currentTagName = 'all';
+      this.getPageOfShops(this.currentPage);
+      this.getTags();
+    }
   }
 }
