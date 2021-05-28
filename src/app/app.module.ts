@@ -72,6 +72,8 @@ import { MerchantRequsetComponent } from './admin/merchant-requset/merchant-requ
 import { UpdateUserComponent } from './admin/update-user/update-user.component';
 import { UserViewComponent } from './admin/user-view/user-view.component';
 import { OrderViewAdminComponent } from './admin/order-view-admin/order-view-admin.component';
+import { TagComponent } from './admin/tag/tag.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -129,6 +131,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     UsersComponent,
     PaymentComponent,
     AllMerchantsComponent,
+    TagComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,

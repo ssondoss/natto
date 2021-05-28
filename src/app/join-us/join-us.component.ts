@@ -17,15 +17,22 @@ import swal from 'sweetalert2';
   styleUrls: ['./join-us.component.css', '../app.component.css'],
 })
 export class JoinUsComponent implements OnInit {
+  private _jsonURL = 'assets/json/cities.json';
+
   joinUsForm: FormGroup;
   lastUploadedLogo: string;
   tags: Object;
+  cities: Object;
   constructor(
     public formBuilder: FormBuilder,
     private http: HttpClient,
     private router: Router,
-    private appService: ApplicationStateService
-  ) {}
+    public appService: ApplicationStateService
+  ) {
+    http.get(this._jsonURL).subscribe((data) => {
+      this.cities = data;
+    });
+  }
 
   ngOnInit(): void {
     this.clearjoinUsForm();

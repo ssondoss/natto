@@ -17,6 +17,8 @@ export class AccountInformationComponent implements OnInit {
   merchantAccountForm;
   edit = false;
   merchant: any;
+  private _jsonURL = 'assets/json/cities.json';
+  cities: Object;
 
   constructor(
     public dialog: MatDialog,
@@ -27,6 +29,9 @@ export class AccountInformationComponent implements OnInit {
     private http: HttpClient,
     private fb: FormBuilder
   ) {
+    http.get(this._jsonURL).subscribe((data) => {
+      this.cities = data;
+    });
     this.http
       .get(
         environment.apiURL + '/merchant/get-byOwner/' + this.userSession.user.id

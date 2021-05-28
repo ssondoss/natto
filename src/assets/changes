@@ -1,0 +1,23 @@
+menue and logo to the corners  ---------------------------------------------------------------> Done
+give color to the table headers  -------------------------------------------------------------> NO
+add accordian in product add  ----------------------------------------------------------------> NO
+edit wardrops show with pop up ---------------------------------------------------------------> NO
+in merchant orders all became icons and they will be under options th ------------------------> NO
+on order tab in merchant the rtl and ltr is wrong as well in edit product --------------------> NO
+edit product show with popup   ---------------------------------------------------------------> NO
+order status one way update    ---------------------------------------------------------------> NO
+confirm email in creat account ---------------------------------------------------------------> NO
+order details accrodain    -------------------------------------------------------------------> NO
+city in merchant information DDL   -----------------------------------------------------------> NO
+desing the DDL   -----------------------------------------------------------------------------> Done -> change city in "home" , "join us" and "merchant"
+Catigories in the home page either in boxes or icons and better both   -----------------------> Done
+ازالة غير مفعل من معلومات الميرشانت
+________________________ admin
+add accoutn when admin is logged in
+paging in all merchants
+pagin in users in admin
+add new admin account
+view items in admin popup
+search by status and date and merchant name
+edit view items in admin
+validation on discount percentage not more the 100%

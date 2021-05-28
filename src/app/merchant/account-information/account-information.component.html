@@ -204,11 +204,22 @@
               <div class="col-md-4 px-0">
                 <div class="form-group">
                   <label>{{ "BAZZAR.CITY" | translate }}</label>
-                  <input
+
+                  <select
+                    class="form-control p-foucs"
+                    id="city"
                     formControlName="city"
-                    type="text"
-                    class="form-control"
-                  />
+                  >
+                    <option value="">All</option>
+                    <option *ngFor="let city of cities">
+                      <span *ngIf="appService.lang == 'ar'">{{
+                        city.city
+                      }}</span>
+                      <span *ngIf="appService.lang == 'en'">{{
+                        city.city
+                      }}</span>
+                    </option>
+                  </select>
                 </div>
               </div>
               <div class="col-md-4 px-0 px-md-2">

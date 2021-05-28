@@ -1,0 +1,75 @@
+<admin-top-part> </admin-top-part>
+<div class="container my-5 py-5">
+  <div class="row mx-0 arabic-dir">
+    <div class="col-md-3 border px-0 rounded h-100">
+      <admin-side-nav></admin-side-nav>
+    </div>
+    <div class="col-md-9 mr-auto mt-5 mt-md-0 px-0 px-md-4">
+      <div class="h5 mb-3 text-left">
+        {{ "BAZZAR.TAGS" | translate }}
+      </div>
+      <div class="border p-md-4 p-3">
+        <form
+          [formGroup]="codeForm"
+          class="my-2"
+          (ngSubmit)="addDiscountCode(codeForm.value)"
+        >
+          <div class="row mx-0 px-0">
+            <div class="col-md-6 form-group px-0">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Name Arabic"
+                formControlName="nameArabic"
+                required
+              />
+            </div>
+            <div class="col-md-6 form-group">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Name English"
+                formControlName="nameEnglish"
+                required
+              />
+            </div>
+
+            <div class="col-md-6 form-group">
+              <input
+                type="file"
+                class="form-control"
+                (change)="uploadImage($event)"
+              />
+            </div>
+          </div>
+          <div class="text-left">
+            <button type="submit" class="btn btn-primary px-4">Add</button>
+          </div>
+        </form>
+        <div class="table-responsive mt-5">
+          <table class="table table-bordered">
+            <thead class="text-center bg-light">
+              <th>Name Arabic</th>
+              <th>Name Eglish</th>
+              <th>Icon</th>
+            </thead>
+            <tbody>
+              <tr *ngFor="let code of codes" class="text-center">
+                <td>
+                  {{ code.nameArabic }}
+                </td>
+                <td>{{ code.nameEnglish }}</td>
+                <td>
+                  <img [src]="getIconSrc(code.icon)" alt="" srcset="" />
+                  <!-- <a type="button" (click)="deleteCode(code.id, code.code)">
+                    <i class="fa fa-trash icon-danger"></i>
+                  </a> -->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

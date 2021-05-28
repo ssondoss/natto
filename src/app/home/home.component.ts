@@ -14,12 +14,18 @@ export class HomeComponent implements OnInit {
   categories: any;
   categoriesAr: any;
   categoriesEn: any;
+  cities: Object;
+  private _jsonURL = 'assets/json/cities.json';
 
   constructor(
     public appService: ApplicationStateService,
     private http: HttpClient,
     private router: Router
-  ) {}
+  ) {
+    http.get(this._jsonURL).subscribe((data) => {
+      this.cities = data;
+    });
+  }
 
   getAllCategories() {
     this.http.get(environment.apiURL + '/tag').subscribe((tags: any) => {
@@ -50,5 +56,9 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/all-shops'], {
       queryParams: { name: name, city: city, tag: 'all' },
     });
+  }
+
+  getIconSrc(logo) {
+    return environment.imageURL + logo;
   }
 }
