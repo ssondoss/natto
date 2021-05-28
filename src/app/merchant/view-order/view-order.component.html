@@ -8,271 +8,260 @@
       <div class="h5 mb-3 text-left">
         {{ "BAZZAR.ORDER_DETAILS" | translate }}
       </div>
-      <div class="card">
-        <div class="border-bottom">
-          <div class="row mx-0 px-md-4 px-1 py-4">
-            <div class="text-dark text-left h6 col-md-11 col-10">
-              <span class="text-center">{{
-                "BAZZAR.PRODUCT_DETAILS_EN" | translate
-              }}</span>
-            </div>
-            <div class="col-md-1 col-2 text-right text-left-ar">
-              <a *ngIf="show1 == 1">
-                <i
-                  class="fa fa-minus text-dark"
-                  aria-hidden="true"
-                  (click)="minimize1()"
-                ></i>
-              </a>
-              <a *ngIf="show1 == 0">
-                <i
-                  class="fa fa-plus text-dark"
-                  aria-hidden="true"
-                  (click)="maximize1()"
-                ></i>
-              </a>
-            </div>
-          </div>
-
-          <div *ngIf="show1 == 1">
-            <div class="row p-md-4 p-1 mx-0 text-muted">
-              <p class="col-md-3 col-6 text-left">
-                {{ "BAZZAR.SHIPPING_ADDRESS" | translate }}
-              </p>
-              <p class="col-md-9 col-6 text-center">
-                {{ order.shippingAddress.country }} ,
-                {{ order.shippingAddress.city }} ,
-                {{ order.shippingAddress.addressLineOne }} -
-                {{ order.shippingAddress.addressLineTwo }}
-              </p>
-            </div>
-
-            <div class="row p-md-4 p-1 mx-0 text-muted">
-              <p class="col-md-3 col-6 text-left">
-                {{ "BAZZAR.STATUS" | translate }}
-              </p>
-              <p class="col-md-9 col-6 text-center">
-                {{ order.orderStatus }}
-              </p>
-            </div>
-            <div class="row p-md-4 p-1 mx-0 text-muted">
-              <p class="col-md-3 col-6 text-left">
-                {{ "BAZZAR.DATE_AND_TIME" | translate }}
-              </p>
-              <p class="col-md-9 col-6 text-center">
-                {{ order.dateAndTime | date: "MMM d, y, h:mm:ss a" }}
-              </p>
-            </div>
-
-            <div class="row p-md-4 p-1 mx-0 text-muted">
-              <p class="col-md-3 col-6 text-left">
-                {{ "BAZZAR.ITEMS" | translate }}
-              </p>
-              <p class="col-md-9 col-6 text-center">
-                <a *ngIf="show == 0" class="icon-view" (click)="showItems()"
-                  ><i class="fa fa-eye" aria-hidden="true"></i>
-                </a>
-                <a *ngIf="show == 1" class="icon-view" (click)="unshowItems()"
-                  ><i class="fa fa-eye-slash" aria-hidden="true"></i>
-                </a>
-              </p>
-            </div>
-
-            <div *ngIf="show == 1" class="mb-4 table-responsive">
-              <table class="table table-bordered">
-                <thead class="text-center">
-                  <th>
-                    {{ "BAZZAR.IMAGE" | translate }}
-                  </th>
-                  <th>
-                    {{ "BAZZAR.TITLE" | translate }}
-                  </th>
-
-                  <th>
-                    {{ "BAZZAR.PRICE" | translate }}
-                  </th>
-                  <th>
-                    {{ "BAZZAR.QUANTITY" | translate }}
-                  </th>
-                  <th>
-                    {{ "BAZZAR.TOTAL" | translate }}
-                  </th>
-                </thead>
-                <tbody class="text-center">
-                  <tr *ngFor="let product of order.products">
-                    <td>
-                      <img
-                        [src]="getSource(product.product.image)"
-                        alt=""
-                        height="50"
-                        width="50"
-                      />
-                    </td>
-                    <td>{{ product.product.titleEnglish }}</td>
-
-                    <td>{{ product.product.price }}</td>
-                    <td>{{ product.quantity }}</td>
-                    <td>
-                      {{ product.quantity * product.product.price }}
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-
-        <div class="border-bottom">
-          <div class="row mx-0 px-md-4 px-1 py-4">
-            <div class="text-dark text-left h6 col-md-11 col-10">
-              <span class="text-center">
-                {{ "BAZZAR.USER_INFORMATION" | translate }}</span
-              >
-            </div>
-            <div class="col-md-1 col-2 text-right text-left-ar">
-              <a *ngIf="show2 == 1">
-                <i
-                  class="fa fa-minus text-dark"
-                  aria-hidden="true"
-                  (click)="minimize2()"
-                ></i>
-              </a>
-              <a *ngIf="show2 == 0">
-                <i
-                  class="fa fa-plus text-dark"
-                  aria-hidden="true"
-                  (click)="maximize2()"
-                ></i>
-              </a>
-            </div>
-          </div>
-
-          <div *ngIf="show2 == 1">
-            <div class="row p-md-4 p-1 mx-0 text-muted">
-              <p class="col-md-3 col-6 text-left">
-                {{ "BAZZAR.USERNAME" | translate }}
-              </p>
-              <p class="col-md-9 col-6 text-center">
-                {{ order.user.username }}
-              </p>
-            </div>
-
-            <div class="row p-md-4 p-1 mx-0 text-muted">
-              <p class="col-md-3 col-6 text-left">
-                {{ "BAZZAR.PHONE" | translate }}
-              </p>
-              <p class="col-md-9 col-6 text-center">
-                {{ order.user.phone }}
-              </p>
-            </div>
-            <div class="row p-md-4 p-1 mx-0 text-muted">
-              <p class="col-md-3 col-6 text-left">
-                {{ "BAZZAR.EMAIL" | translate }}
-              </p>
-              <p class="col-md-9 col-6 text-center">
-                {{ order.user.email }}
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="border-bottom">
-          <div class="row mx-0 px-md-4 px-1 py-4">
-            <div class="text-dark text-left h6 col-md-11 col-10">
-              <span class="text-center">
-                {{ "BAZZAR.PAYMENT_INFORMATION" | translate }}
-              </span>
-            </div>
-            <div class="col-md-1 col-2 text-right text-left-ar">
-              <a *ngIf="show3 == 1">
-                <i
-                  class="fa fa-minus text-dark"
-                  aria-hidden="true"
-                  (click)="minimize3()"
-                ></i>
-              </a>
-              <a *ngIf="show3 == 0">
-                <i
-                  class="fa fa-plus text-dark"
-                  aria-hidden="true"
-                  (click)="maximize3()"
-                ></i>
-              </a>
-            </div>
-          </div>
-
-          <div *ngIf="show3 == 1">
-            <div class="row p-md-4 p-1 mx-0 text-muted">
-              <p class="col-md-3 col-6 text-left">
-                {{ "BAZZAR.PAYMENT_METHOD" | translate }}
-              </p>
-              <p class="col-md-9 col-6 text-center">
-                {{ order.paymentMethod }}
-              </p>
-            </div>
-
-            <div class="row p-md-4 p-1 mx-0 text-muted">
-              <p class="col-md-3 col-6 text-left">
-                {{ "BAZZAR.TOTAL" | translate }}
-              </p>
-              <p class="col-md-9 col-6 text-center">
-                {{ order.total }} {{ "BAZZAR.SAR" | translate }}
-              </p>
-            </div>
-            <div class="row p-md-4 p-1 mx-0 text-muted">
-              <p class="col-md-3 col-6 text-left">
-                {{ "BAZZAR.DISCOUNT_CODE" | translate }}
-              </p>
-              <p class="col-md-9 col-6 text-center">
-                <span *ngIf="order.discountCode == null">---</span>
-                <span *ngIf="order.discountCode != null">
-                  {{ order.discountCode }}</span
+      <div class="">
+        <div id="accordion">
+          <div class="card">
+            <div class="card-header bg-light" id="headingOne">
+              <h5 class="mb-0">
+                <button
+                  class="btn btn-link"
+                  data-toggle="collapse"
+                  data-target="#collapseOne"
+                  aria-expanded="true"
+                  aria-controls="collapseOne"
                 >
-              </p>
+                  {{ "BAZZAR.PRODUCT_DETAILS_EN" | translate }}
+                </button>
+              </h5>
             </div>
-            <div class="row p-md-4 p-1 mx-0 text-muted">
-              <p class="col-md-3 col-6 text-left">
-                {{ "BAZZAR.DISCOUNT_PERCENTAGE" | translate }}
-              </p>
-              <p class="col-md-9 col-6 text-center">
-                {{ order.discount }}
-              </p>
+
+            <div
+              id="collapseOne"
+              class="collapse show"
+              aria-labelledby="headingOne"
+              data-parent="#accordion"
+            >
+              <div class="card-body">
+                <div class="row p-md-4 p-1 mx-0 text-muted">
+                  <p class="col-md-3 col-6 text-left">
+                    {{ "BAZZAR.SHIPPING_ADDRESS" | translate }}
+                  </p>
+                  <p class="col-md-9 col-6 text-center">
+                    {{ order.shippingAddress.country }} ,
+                    {{ order.shippingAddress.city }} ,
+                    {{ order.shippingAddress.addressLineOne }} -
+                    {{ order.shippingAddress.addressLineTwo }}
+                  </p>
+                </div>
+
+                <div class="row p-md-4 p-1 mx-0 text-muted">
+                  <p class="col-md-3 col-6 text-left">
+                    {{ "BAZZAR.STATUS" | translate }}
+                  </p>
+                  <p class="col-md-9 col-6 text-center">
+                    {{ order.orderStatus }}
+                  </p>
+                </div>
+                <div class="row p-md-4 p-1 mx-0 text-muted">
+                  <p class="col-md-3 col-6 text-left">
+                    {{ "BAZZAR.DATE_AND_TIME" | translate }}
+                  </p>
+                  <p class="col-md-9 col-6 text-center">
+                    {{ order.dateAndTime | date: "MMM d, y, h:mm:ss a" }}
+                  </p>
+                </div>
+
+                <div class="row p-md-4 p-1 mx-0 text-muted">
+                  <p class="col-md-3 col-6 text-left">
+                    {{ "BAZZAR.ITEMS" | translate }}
+                  </p>
+                  <p class="col-md-9 col-6 text-center">
+                    <a *ngIf="show == 0" class="icon-view" (click)="showItems()"
+                      ><i class="fa fa-eye" aria-hidden="true"></i>
+                    </a>
+                    <a
+                      *ngIf="show == 1"
+                      class="icon-view"
+                      (click)="unshowItems()"
+                      ><i class="fa fa-eye-slash" aria-hidden="true"></i>
+                    </a>
+                  </p>
+                </div>
+
+                <div *ngIf="show == 1" class="mb-4 table-responsive">
+                  <table class="table table-bordered">
+                    <thead class="text-center">
+                      <th>
+                        {{ "BAZZAR.IMAGE" | translate }}
+                      </th>
+                      <th>
+                        {{ "BAZZAR.TITLE" | translate }}
+                      </th>
+
+                      <th>
+                        {{ "BAZZAR.PRICE" | translate }}
+                      </th>
+                      <th>
+                        {{ "BAZZAR.QUANTITY" | translate }}
+                      </th>
+                      <th>
+                        {{ "BAZZAR.TOTAL" | translate }}
+                      </th>
+                    </thead>
+                    <tbody class="text-center">
+                      <tr *ngFor="let product of order.products">
+                        <td>
+                          <img
+                            [src]="getSource(product.product.image)"
+                            alt=""
+                            height="50"
+                            width="50"
+                          />
+                        </td>
+                        <td>{{ product.product.titleEnglish }}</td>
+
+                        <td>{{ product.product.price }}</td>
+                        <td>{{ product.quantity }}</td>
+                        <td>
+                          {{ product.quantity * product.product.price }}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-
-        <div class="">
-          <div class="row mx-0 px-md-4 px-1 py-4">
-            <div class="text-dark text-left h6 col-md-11 col-10">
-              <span class="text-center">
-                {{ "BAZZAR.ADDITIONAL_INFORMATION" | translate }}
-              </span>
+          <div class="card">
+            <div class="card-header bg-light" id="headingTwo">
+              <h5 class="mb-0">
+                <button
+                  class="btn btn-link collapsed"
+                  data-toggle="collapse"
+                  data-target="#collapseTwo"
+                  aria-expanded="false"
+                  aria-controls="collapseTwo"
+                >
+                  {{ "BAZZAR.USER_INFORMATION" | translate }}
+                </button>
+              </h5>
             </div>
-            <div class="col-md-1 col-2 text-right text-left-ar">
-              <a *ngIf="show4 == 1">
-                <i
-                  class="fa fa-minus text-dark"
-                  aria-hidden="true"
-                  (click)="minimize4()"
-                ></i>
-              </a>
-              <a *ngIf="show4 == 0">
-                <i
-                  class="fa fa-plus text-dark"
-                  aria-hidden="true"
-                  (click)="maximize4()"
-                ></i>
-              </a>
+            <div
+              id="collapseTwo"
+              class="collapse"
+              aria-labelledby="headingTwo"
+              data-parent="#accordion"
+            >
+              <div class="card-body">
+                <div class="row p-md-4 p-1 mx-0 text-muted">
+                  <p class="col-md-3 col-6 text-left">
+                    {{ "BAZZAR.USERNAME" | translate }}
+                  </p>
+                  <p class="col-md-9 col-6 text-center">
+                    {{ order.user.username }}
+                  </p>
+                </div>
+
+                <div class="row p-md-4 p-1 mx-0 text-muted">
+                  <p class="col-md-3 col-6 text-left">
+                    {{ "BAZZAR.PHONE" | translate }}
+                  </p>
+                  <p class="col-md-9 col-6 text-center">
+                    {{ order.user.phone }}
+                  </p>
+                </div>
+                <div class="row p-md-4 p-1 mx-0 text-muted">
+                  <p class="col-md-3 col-6 text-left">
+                    {{ "BAZZAR.EMAIL" | translate }}
+                  </p>
+                  <p class="col-md-9 col-6 text-center">
+                    {{ order.user.email }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header bg-light" id="headingThree">
+              <h5 class="mb-0">
+                <button
+                  class="btn btn-link collapsed"
+                  data-toggle="collapse"
+                  data-target="#collapseThree"
+                  aria-expanded="false"
+                  aria-controls="collapseThree"
+                >
+                  {{ "BAZZAR.PAYMENT_INFORMATION" | translate }}
+                </button>
+              </h5>
+            </div>
+            <div
+              id="collapseThree"
+              class="collapse"
+              aria-labelledby="headingThree"
+              data-parent="#accordion"
+            >
+              <div class="card-body">
+                <div class="row p-md-4 p-1 mx-0 text-muted">
+                  <p class="col-md-3 col-6 text-left">
+                    {{ "BAZZAR.PAYMENT_METHOD" | translate }}
+                  </p>
+                  <p class="col-md-9 col-6 text-center">
+                    {{ order.paymentMethod }}
+                  </p>
+                </div>
+
+                <div class="row p-md-4 p-1 mx-0 text-muted">
+                  <p class="col-md-3 col-6 text-left">
+                    {{ "BAZZAR.TOTAL" | translate }}
+                  </p>
+                  <p class="col-md-9 col-6 text-center">
+                    {{ order.total }} {{ "BAZZAR.SAR" | translate }}
+                  </p>
+                </div>
+                <div class="row p-md-4 p-1 mx-0 text-muted">
+                  <p class="col-md-3 col-6 text-left">
+                    {{ "BAZZAR.DISCOUNT_CODE" | translate }}
+                  </p>
+                  <p class="col-md-9 col-6 text-center">
+                    <span *ngIf="order.discountCode == null">---</span>
+                    <span *ngIf="order.discountCode != null">
+                      {{ order.discountCode }}</span
+                    >
+                  </p>
+                </div>
+                <div class="row p-md-4 p-1 mx-0 text-muted">
+                  <p class="col-md-3 col-6 text-left">
+                    {{ "BAZZAR.DISCOUNT_PERCENTAGE" | translate }}
+                  </p>
+                  <p class="col-md-9 col-6 text-center">
+                    {{ order.discount }}
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div *ngIf="show4 == 1">
-            <div class="row p-md-4 p-1 mx-0 text-muted">
-              <p class="col-md-3 col-6 text-left">
-                {{ "BAZZAR.NOTES" | translate }}
-              </p>
-              <p class="col-md-9 col-6 text-center">
-                {{ order.note }}
-              </p>
+          <div class="card">
+            <div class="card-header bg-light" id="headingFour">
+              <h5 class="mb-0">
+                <button
+                  class="btn btn-link collapsed"
+                  data-toggle="collapse"
+                  data-target="#collapseFour"
+                  aria-expanded="false"
+                  aria-controls="collapseFour"
+                >
+                  {{ "BAZZAR.ADDITIONAL_INFORMATION" | translate }}
+                </button>
+              </h5>
+            </div>
+            <div
+              id="collapseFour"
+              class="collapse"
+              aria-labelledby="headingFour"
+              data-parent="#accordion"
+            >
+              <div class="card-body">
+                <div class="row p-md-4 p-1 mx-0 text-muted">
+                  <p class="col-md-3 col-6 text-left">
+                    {{ "BAZZAR.NOTES" | translate }}
+                  </p>
+                  <p class="col-md-9 col-6 text-center">
+                    {{ order.note }}
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
