@@ -8,7 +8,7 @@
       <div class="h5 mb-3 text-left">{{ "BAZZAR.ORDERS" | translate }}</div>
       <div class="table-responsive">
         <table class="table table-bordered">
-          <thead class="text-center">
+          <thead class="text-center bg-light2">
             <th>
               {{ "BAZZAR.USER" | translate }}
             </th>
@@ -45,7 +45,7 @@
                     id="orderStatus"
                     (change)="changeOrderStatus($event.target.value, order.id)"
                   >
-                    <option>{{ "BAZZAR.CHOOSE" | translate }}...</option>
+                    <!-- <option>{{ "BAZZAR.CHOOSE" | translate }}...</option> -->
                     <option
                       *ngIf="order.orderStatus == 'PENDING'"
                       value="PENDING"

@@ -9,6 +9,7 @@ import { UserSessionService } from 'src/app/user-session.service';
 import { environment } from 'src/environments/environment';
 import { EditCategoryComponent } from '../../categories/edit-category/edit-category.component';
 import swal from 'sweetalert2';
+import { arabicLetters } from 'src/app/app.component';
 @Component({
   selector: 'app-edit-product',
   templateUrl: './edit-product.component.html',
@@ -22,6 +23,7 @@ export class EditProductComponent implements OnInit {
   merchant: any;
   selectedImage: any;
   isImageUploaded = false;
+  imageValue: Object;
 
   constructor(
     public formBuilder: FormBuilder,
@@ -50,6 +52,8 @@ export class EditProductComponent implements OnInit {
 
             this.product = data.product;
             this.selectedImage = data.image;
+            this.imageValue = this.product.image;
+            console.log(this.imageValue);
             this.productForm = this.formBuilder.group({
               titleEnglish: [
                 this.product.titleEnglish,
@@ -62,21 +66,33 @@ export class EditProductComponent implements OnInit {
                 this.product.titleArabic,
                 Validators.compose([
                   Validators.required,
+                  arabicLetters,
                   Validators.maxLength(100),
                 ]),
               ],
               descriptionEnglish: [
                 this.product.descriptionEnglish,
-                Validators.maxLength(250),
+                Validators.compose([
+                  Validators.required,
+                  Validators.maxLength(250),
+                ]),
               ],
               descriptionArabic: [
                 this.product.descriptionArabic,
-                Validators.maxLength(250),
+                Validators.compose([
+                  Validators.required,
+                  Validators.maxLength(250),
+                  arabicLetters,
+                ]),
               ],
               deliveryDescription: [
                 this.product.deliveryDescription,
-                Validators.maxLength(250),
+                Validators.compose([
+                  Validators.required,
+                  Validators.maxLength(250),
+                ]),
               ],
+              image: [this.product.image, Validators.required],
 
               price: [this.product.price, Validators.required],
               category: [this.product.categoryId, Validators.required],
@@ -85,7 +101,11 @@ export class EditProductComponent implements OnInit {
       }
     });
   }
-
+  uploadFileClicked() {
+    this.imageValue = '';
+    this.productForm.controls['image'].setValue('');
+    //   document.getElementById('file-uploader').click;
+  }
   getWardrobe() {
     this.http
       .get(
@@ -95,7 +115,9 @@ export class EditProductComponent implements OnInit {
         this.wardrobes = data;
       });
   }
-
+  getImageSrc(logo) {
+    return environment.imageURL + logo;
+  }
   ngOnInit(): void {
     this.productForm = this.formBuilder.group({
       titleEnglish: [
@@ -104,55 +126,77 @@ export class EditProductComponent implements OnInit {
       ],
       titleArabic: [
         '',
-        Validators.compose([Validators.required, Validators.maxLength(100)]),
+        Validators.compose([
+          Validators.required,
+          Validators.maxLength(100),
+          arabicLetters,
+        ]),
       ],
-      descriptionEnglish: ['', Validators.maxLength(250)],
-      descriptionArabic: ['', Validators.maxLength(250)],
-      deliveryDescription: ['', Validators.maxLength(250)],
+      descriptionEnglish: [
+        '',
+        Validators.compose([Validators.required, Validators.maxLength(250)]),
+      ],
+      descriptionArabic: [
+        '',
+        Validators.compose([
+          Validators.required,
+          Validators.maxLength(250),
+          arabicLetters,
+        ]),
+      ],
+      deliveryDescription: [
+        '',
+        Validators.compose([Validators.required, Validators.maxLength(250)]),
+      ],
       count: [, Validators.required],
       price: [, Validators.required],
       category: [, Validators.required],
-      image: [],
+      image: ['', Validators.required],
     });
+    this.imageValue = '';
   }
 
   update() {
-    this.http
-      .post(environment.apiURL + '/product/update-by-id/', {
-        available: true,
-        categoryId: this.productForm.controls['category'].value,
-        deliveryDescription:
-          this.productForm.controls['deliveryDescription'].value,
-        descriptionArabic: this.productForm.controls['descriptionArabic'].value,
-        descriptionEnglish:
-          this.productForm.controls['descriptionEnglish'].value,
-        image: this.selectedImage,
-        merchantId: this.merchant.id,
-        price: this.productForm.controls['price'].value,
-        titleArabic: this.productForm.controls['titleArabic'].value,
-        titleEnglish: this.productForm.controls['titleEnglish'].value,
-        createdOn: this.product.createdOn,
-        id: this.product.id,
-        updatedOn: null,
-      })
-      .subscribe((data: any) => {
-        if (this.translate.currentLang == 'en')
-          swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: 'Updated!',
-            showConfirmButton: false,
-            timer: 1500,
-          });
-        else
-          swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: 'تم التحديث',
-            showConfirmButton: false,
-            timer: 1500,
-          });
-      });
+    if (this.productForm.valid && this.imageValue != '') {
+      this.http
+        .post(environment.apiURL + '/product/update-by-id/', {
+          available: true,
+          categoryId: this.productForm.controls['category'].value,
+          deliveryDescription:
+            this.productForm.controls['deliveryDescription'].value,
+          descriptionArabic:
+            this.productForm.controls['descriptionArabic'].value,
+          descriptionEnglish:
+            this.productForm.controls['descriptionEnglish'].value,
+          image: this.imageValue,
+          merchantId: this.merchant.id,
+          price: this.productForm.controls['price'].value,
+          titleArabic: this.productForm.controls['titleArabic'].value,
+          titleEnglish: this.productForm.controls['titleEnglish'].value,
+          createdOn: this.product.createdOn,
+          id: this.product.id,
+          updatedOn: null,
+        })
+        .subscribe((data: any) => {
+          if (this.translate.currentLang == 'en')
+            swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'Updated!',
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          else
+            swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'تم التحديث',
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          this.dialogRef.close({ event: 'UPDATED', data: data });
+        });
+    } else this.productForm.markAllAsTouched();
   }
 
   uploadImage(event) {
@@ -177,6 +221,7 @@ export class EditProductComponent implements OnInit {
                 error.error.text +
                 '.' +
                 event.target.files[0].name.split('.').pop();
+              this.imageValue = this.selectedImage;
               console.log(
                 this.selectedImage +
                   '.' +

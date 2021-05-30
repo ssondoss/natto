@@ -51,20 +51,11 @@ export class CategoriesComponent implements OnInit {
         });
 
       this.categoryForm = this.formBuilder.group({
-        titleEnglish: [
-          '',
-          Validators.compose([Validators.required, Validators.maxLength(100)]),
-        ],
+        titleEnglish: ['', Validators.compose([Validators.required])],
         titleArabic: [
           '',
-          Validators.compose([
-            Validators.required,
-            Validators.maxLength(100),
-            arabicLetters,
-          ]),
+          Validators.compose([Validators.required, arabicLetters]),
         ],
-
-        // imageId: [],
       });
     }
   }

@@ -17,37 +17,7 @@ import { EditProductComponent } from './edit-product/edit-product.component';
 })
 export class ProductsComponent implements OnInit {
   product: any;
-  //   productForm;
-  //   constructor(public formBuilder: FormBuilder) {}
 
-  //   ngOnInit(): void {
-  //     this.productForm = this.formBuilder.group({
-  //       titleEnglish: [
-  //         '',
-  //         Validators.compose([Validators.required, Validators.maxLength(100)]),
-  //       ],
-  //       titleArabic: [
-  //         '',
-  //         Validators.compose([
-  //           Validators.required,
-  //           Validators.maxLength(100),
-  //           arabicLetters,
-  //         ]),
-  //       ],
-  //       descriptionEnglish: ['', Validators.maxLength(250)],
-  //       descriptionArabic: [
-  //         '',
-  //         Validators.compose([Validators.maxLength(250), arabicLetters]),
-  //       ],
-  //       deliveryDescription: ['', Validators.maxLength(250)],
-  //       price: [, Validators.required],
-  //       category: [, Validators.required],
-  //       image: [],
-  //     });
-  //   }
-  //   addProduct() {}
-  //   deleteProduct(id) {}
-  // }
   productForm: FormGroup;
 
   show = 0;
@@ -115,7 +85,7 @@ export class ProductsComponent implements OnInit {
       deliveryDescription: ['', Validators.maxLength(250)],
       price: [, Validators.required],
       category: [, Validators.required],
-      image: [],
+      image: [, Validators.required],
     });
     this.imageValue = '';
   }
@@ -191,40 +161,43 @@ export class ProductsComponent implements OnInit {
   }
 
   addProduct() {
-    this.http
-      .post(environment.apiURL + '/product', {
-        available: true,
-        categoryId: this.productForm.controls['category'].value,
-        deliveryDescription:
-          this.productForm.controls['deliveryDescription'].value,
-        descriptionArabic: this.productForm.controls['descriptionArabic'].value,
-        descriptionEnglish:
-          this.productForm.controls['descriptionEnglish'].value,
-        image: this.imageValue,
-        merchantId: this.merchant.id,
-        price: this.productForm.controls['price'].value,
-        titleArabic: this.productForm.controls['titleArabic'].value,
-        titleEnglish: this.productForm.controls['titleEnglish'].value,
-      })
-      .subscribe((data) => {
-        this.products.push(data);
-        if (this.translate.currentLang == 'en')
-          swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: 'Added!',
-            showConfirmButton: false,
-            timer: 1500,
-          });
-        else
-          swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: 'تم الاضافة',
-            showConfirmButton: false,
-            timer: 1500,
-          });
-      });
+    if (this.productForm.valid) {
+      this.http
+        .post(environment.apiURL + '/product', {
+          available: true,
+          categoryId: this.productForm.controls['category'].value,
+          deliveryDescription:
+            this.productForm.controls['deliveryDescription'].value,
+          descriptionArabic:
+            this.productForm.controls['descriptionArabic'].value,
+          descriptionEnglish:
+            this.productForm.controls['descriptionEnglish'].value,
+          image: this.imageValue,
+          merchantId: this.merchant.id,
+          price: this.productForm.controls['price'].value,
+          titleArabic: this.productForm.controls['titleArabic'].value,
+          titleEnglish: this.productForm.controls['titleEnglish'].value,
+        })
+        .subscribe((data) => {
+          this.products.push(data);
+          if (this.translate.currentLang == 'en')
+            swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'Added!',
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          else
+            swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'تم الاضافة',
+              showConfirmButton: false,
+              timer: 1500,
+            });
+        });
+    } else this.productForm.markAllAsTouched();
   }
 
   uploadImage(event) {
@@ -268,7 +241,7 @@ export class ProductsComponent implements OnInit {
 
   openDialogEditProduct(product: any): void {
     const dialogRef = this.dialog.open(EditProductComponent, {
-      width: '700px',
+      width: '900px',
       height: 'auto',
       maxWidth: '98%',
 
@@ -277,12 +250,14 @@ export class ProductsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(async (updatedCategory) => {
       if (updatedCategory.event == 'UPDATED') {
-        this.product.forEach((element) => {
-          if (element.id == updatedCategory.data.id) {
-            element.titleEnglish = updatedCategory.data.titleEnglish;
-            element.titleArabic = updatedCategory.data.titleArabic;
-          }
-        });
+        this.http
+          .get(
+            environment.apiURL + '/product/by-merchant-id/' + this.merchant.id
+          )
+          .subscribe((data: any) => {
+            this.products = data;
+            console.log(this.products);
+          });
       }
     });
   }

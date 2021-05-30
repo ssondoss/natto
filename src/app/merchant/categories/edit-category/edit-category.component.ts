@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { arabicLetters } from 'src/app/app.component';
 import { environment } from 'src/environments/environment';
 import swal from 'sweetalert2';
 @Component({
@@ -24,15 +25,14 @@ export class EditCategoryComponent implements OnInit {
     public dialogRef: MatDialogRef<EditCategoryComponent>
   ) {
     this.category = data.category;
-    console.log(this.data);
     this.categoryForm = this.formBuilder.group({
       titleEnglish: [
         this.category.titleEnglish,
-        Validators.compose([Validators.required, Validators.maxLength(99)]),
+        Validators.compose([Validators.required]),
       ],
       titleArabic: [
         this.category.titleArabic,
-        Validators.compose([Validators.required, Validators.maxLength(99)]),
+        Validators.compose([Validators.required, arabicLetters]),
       ],
     });
   }

@@ -59,6 +59,13 @@
             >
               {{ "BAZZAR.REQUIRED" | translate }}</mat-error
             >
+            <mat-error
+              *ngIf="
+                categoryForm.controls.titleArabic.hasError('invalidLetters')
+              "
+            >
+              {{ "BAZZAR.USE_ARABIC_LETTERS" | translate }}
+            </mat-error>
             <!-- <mat-error
               *ngIf="categoryForm.controls.titleArabic.hasError('maxlength')"
             >
