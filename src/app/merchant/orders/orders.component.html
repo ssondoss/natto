@@ -57,7 +57,42 @@
               <td>{{ order.total }} {{ "BAZZAR.SAR" | translate }}</td>
               <td>
                 <div class="col-auto my-1">
-                  <select
+                  <button
+                    class="btn btn-primary"
+                    (click)="changeOrderStatus($event.target.value, order.id)"
+                    *ngIf="order.orderStatus == 'PENDING'"
+                  >
+                    {{ "BAZZAR.PENDING" | translate }}
+                  </button>
+                  <button
+                    class="btn btn-primary"
+                    (click)="changeOrderStatus($event.target.value, order.id)"
+                    *ngIf="order.orderStatus == 'PROCCESSING'"
+                  >
+                    {{ "BAZZAR.PROCCESSING" | translate }}
+                  </button>
+                  <button
+                    class="btn btn-primary"
+                    (click)="changeOrderStatus($event.target.value, order.id)"
+                    *ngIf="order.orderStatus == 'DELIVERED'"
+                  >
+                    {{ "BAZZAR.DELIVERED" | translate }}
+                  </button>
+                  <button
+                    class="btn btn-primary"
+                    (click)="changeOrderStatus($event.target.value, order.id)"
+                    *ngIf="order.orderStatus == 'SHIPPED'"
+                  >
+                    {{ "BAZZAR.SHIPPED" | translate }}
+                  </button>
+                  <button
+                    class="btn btn-primary"
+                    (click)="changeOrderStatus($event.target.value, order.id)"
+                    *ngIf="order.orderStatus == 'CANCELED_BY_MERCHANT'"
+                  >
+                    {{ "BAZZAR.CANCELED_BY_MERCHANT" | translate }}
+                  </button>
+                  <!-- <select
                     class="custom-select mr-sm-2"
                     id="orderStatus"
                     (change)="changeOrderStatus($event.target.value, order.id)"
@@ -130,7 +165,7 @@
                     >
                       {{ "BAZZAR.CANCELED_BY_MERCHANT" | translate }}
                     </option>
-                  </select>
+                  </select> -->
                 </div>
               </td>
               <td class="mt-2">
