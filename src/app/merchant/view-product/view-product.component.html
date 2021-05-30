@@ -8,217 +8,179 @@
       <div class="h5 mb-3 text-left">
         {{ "BAZZAR.VIEW_PRODUCT" | translate }}
       </div>
-      <div class="card">
-        <div class="border-bottom">
-          <div class="row mx-0 px-md-4 px-1 py-4">
-            <div class="text-dark text-left h6 col-md-11 col-10">
-              <span class="text-center">{{
-                "BAZZAR.PRODUCT_DETAILS_EN" | translate
-              }}</span>
+      <div class="">
+        <div id="accordion">
+          <div class="card border-bottom-0">
+            <div
+              class="card-header bg-light text-left"
+              id="headingOne"
+              data-toggle="collapse"
+              data-target="#collapseOne"
+              aria-expanded="true"
+              aria-controls="collapseOne"
+            >
+              <h5 class="mb-0">
+                <button class="btn btn-link">
+                  {{ "BAZZAR.PRODUCT_DETAILS_EN" | translate }}
+                </button>
+              </h5>
             </div>
-            <div class="col-md-1 col-2 text-right text-left-ar">
-              <a *ngIf="show == 1">
-                <i
-                  class="fa fa-minus text-dark"
-                  aria-hidden="true"
-                  (click)="minimize()"
-                ></i>
-              </a>
-              <a *ngIf="show == 0">
-                <i
-                  class="fa fa-plus text-dark"
-                  aria-hidden="true"
-                  (click)="maximize()"
-                ></i>
-              </a>
+
+            <div
+              id="collapseOne"
+              class="collapse show"
+              aria-labelledby="headingOne"
+              data-parent="#accordion"
+            >
+              <div class="card-body">
+                <div class="row p-md-4 p-1 mx-0 text-muted">
+                  <p class="col-md-3 col-6 text-left">
+                    {{ "BAZZAR.WARDROBE" | translate }}
+                  </p>
+                  <p class="col-md-9 col-6 text-center">
+                    {{ category.titleEnglish }}
+                  </p>
+                </div>
+
+                <div class="row p-md-4 p-1 mx-0 text-muted">
+                  <p class="col-md-3 col-6 text-left">
+                    {{ "BAZZAR.TITLE" | translate }}
+                  </p>
+                  <p class="col-md-9 col-6 text-center">
+                    {{ product.titleEnglish }}
+                  </p>
+                </div>
+                <div class="row p-md-4 p-1 mx-0 text-muted">
+                  <p class="col-md-3 col-6 text-left">
+                    {{ "BAZZAR.DESCRITION" | translate }}
+                  </p>
+                  <p class="col-md-9 col-6 text-center">
+                    {{ product.descriptionEnglish }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card border-bottom-0">
+            <div
+              class="card-header bg-light text-left"
+              id="headingTwo"
+              data-toggle="collapse"
+              data-target="#collapseTwo"
+              aria-expanded="false"
+              aria-controls="collapseTwo"
+            >
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed">
+                  {{ "BAZZAR.PRODUCT_DETAILS_AR" | translate }}
+                </button>
+              </h5>
+            </div>
+            <div
+              id="collapseTwo"
+              class="collapse"
+              aria-labelledby="headingTwo"
+              data-parent="#accordion"
+            >
+              <div class="card-body">
+                <div class="row p-md-4 p-1 mx-0 text-muted">
+                  <p class="col-md-3 col-6 text-left">
+                    {{ "BAZZAR.WARDROBE" | translate }}
+                  </p>
+                  <p class="col-md-9 col-6 text-center">
+                    {{ category.titleArabic }}
+                  </p>
+                </div>
+
+                <div class="row p-md-4 p-1 mx-0 text-muted">
+                  <p class="col-md-3 col-6 text-left">
+                    {{ "BAZZAR.TITLE" | translate }}
+                  </p>
+                  <p class="col-md-9 col-6 text-center">
+                    {{ product.titleArabic }}
+                  </p>
+                </div>
+                <div class="row p-md-4 p-1 mx-0 text-muted">
+                  <p class="col-md-3 col-6 text-left">
+                    {{ "BAZZAR.DESCRITION" | translate }}
+                  </p>
+                  <p class="col-md-9 col-6 text-center">
+                    {{ product.descriptionArabic }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card border-bottom-0">
+            <div
+              class="card-header bg-light text-left"
+              id="headingThree"
+              data-toggle="collapse"
+              data-target="#collapseThree"
+              aria-expanded="false"
+              aria-controls="collapseThree"
+            >
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed">
+                  {{ "BAZZAR.OTHER_INFO" | translate }}
+                </button>
+              </h5>
+            </div>
+            <div
+              id="collapseThree"
+              class="collapse"
+              aria-labelledby="headingThree"
+              data-parent="#accordion"
+            >
+              <div class="card-body">
+                <div class="row p-md-4 p-1 mx-0 text-muted">
+                  <p class="col-md-3 col-6 text-left">
+                    {{ "BAZZAR.PRICE" | translate }}
+                  </p>
+                  <p class="col-md-9 col-6 text-center">
+                    {{ product.price }} {{ "BAZZAR.SAR" | translate }}
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div *ngIf="show == 1">
-            <div class="row p-md-4 p-1 mx-0 text-muted">
-              <p class="col-md-3 col-6 text-left">
-                {{ "BAZZAR.WARDROBE" | translate }}
-              </p>
-              <p class="col-md-9 col-6 text-center">
-                {{ category.titleEnglish }}
-              </p>
+          <div class="card">
+            <div
+              class="card-header bg-light text-left"
+              id="headingFour"
+              data-toggle="collapse"
+              data-target="#collapseFour"
+              aria-expanded="false"
+              aria-controls="collapseFour"
+            >
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed">
+                  {{ "BAZZAR.IMAGES" | translate }}
+                </button>
+              </h5>
             </div>
-            <div class="row p-md-4 p-1 mx-0 text-muted">
-              <p class="col-md-3 col-6 text-left">
-                {{ "BAZZAR.TITLE" | translate }}
-              </p>
-              <p class="col-md-9 col-6 text-center">
-                {{ product.titleEnglish }}
-              </p>
-            </div>
-            <div class="row p-md-4 p-1 mx-0 text-muted">
-              <p class="col-md-3 col-6 text-left">
-                {{ "BAZZAR.DESCRITION" | translate }}
-              </p>
-              <p class="col-md-9 col-6 text-center">
-                {{ product.descriptionEnglish }}
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="border-bottom">
-          <div class="row mx-0 px-md-4 px-1 py-4">
-            <div class="text-dark text-left h6 col-md-11 col-10">
-              <span class="text-center">
-                {{ "BAZZAR.PRODUCT_DETAILS_AR" | translate }}
-              </span>
-            </div>
-            <div class="col-md-1 col-2 text-right text-left-ar">
-              <a *ngIf="show2 == 2">
-                <i
-                  class="fa fa-minus text-dark"
-                  aria-hidden="true"
-                  (click)="minimize2()"
-                ></i>
-              </a>
-              <a *ngIf="show2 == 20">
-                <i
-                  class="fa fa-plus text-dark"
-                  aria-hidden="true"
-                  (click)="maximize2()"
-                ></i>
-              </a>
-            </div>
-          </div>
-
-          <div *ngIf="show2 == 2">
-            <div class="row p-md-4 p-0 mx-0 text-muted">
-              <p class="col-md-3 col-6 text-left">
-                {{ "BAZZAR.WARDROBE" | translate }}
-              </p>
-              <p class="col-md-9 col-6 text-center">
-                {{ category.titleArabic }}
-              </p>
-            </div>
-            <div class="row p-md-4 p-1 mx-0 text-muted">
-              <p class="col-md-3 col-6 text-left">
-                {{ "BAZZAR.TITLE" | translate }}
-              </p>
-              <p class="col-md-9 col-6 text-center">
-                {{ product.titleArabic }}
-              </p>
-            </div>
-            <div class="row p-md-4 p-1 mx-0 text-muted">
-              <p class="col-md-3 col-6 text-left">
-                {{ "BAZZAR.DESCRITION" | translate }}
-              </p>
-              <p class="col-md-9 col-6 px-1 text-center">
-                {{ product.descriptionArabic }}
-              </p>
-            </div>
-          </div>
-        </div>
-        <!-- <a *ngIf="show2 == 2" style="float: right" class="p-3">
-          <i
-            class="fa fa-minus text-primary"
-            aria-hidden="true"
-            (click)="minimize2()"
-          ></i>
-        </a>
-        <a *ngIf="show2 == 20" style="float: right" class="p-3 pb-5">
-          <i
-            class="fa fa-plus text-primary"
-            aria-hidden="true"
-            (click)="maximize2()"
-          ></i>
-        </a>
-
-        <div class="text-primary mb-5">
-          {{ "BAZZAR.PRODUCT_DETAILS_AR" | translate }}
-        </div>
-        <div *ngIf="show2 == 2" class="view">
-          <div class="row mb-4">
-            <p class="text-muted col-md-3 arabic-text">
-              {{ "BAZZAR.WARDROBE" | translate }}
-            </p>
-            <p class="col-md-9">{{ category.titleArabic }}</p>
-          </div>
-
-          <div class="row mb-4">
-            <p class="text-muted col-md-3 arabic-text">
-              {{ "BAZZAR.TITLE" | translate }}
-            </p>
-
-            <p class="col-md-9">{{ product.titleArabic }}</p>
-          </div>
-          <div class="row mb-4">
-            <p class="text-primary col-md-3 arabic-text">
-              {{ "BAZZAR.DESCRITION" | translate }}
-            </p>
-            <p class="col-md-9">
-              {{ product.descriptionArabic }}
-            </p>
-          </div>
-        </div> -->
-
-        <div class="border-bottom">
-          <div class="row mx-0 px-md-4 px-1 py-4">
-            <div class="text-dark text-left h6 col-md-11 col-10">
-              <span class="text-center">
-                {{ "BAZZAR.OTHER_INFO" | translate }}
-              </span>
-            </div>
-            <div class="col-md-1 col-2 text-right text-left-ar">
-              <a *ngIf="show3 == 3">
-                <i
-                  class="fa fa-minus text-dark"
-                  aria-hidden="true"
-                  (click)="minimize3()"
-                ></i>
-              </a>
-              <a *ngIf="show3 == 30">
-                <i
-                  class="fa fa-plus text-dark"
-                  aria-hidden="true"
-                  (click)="maximize3()"
-                ></i>
-              </a>
-            </div>
-          </div>
-
-          <div *ngIf="show3 == 3">
-            <div class="row p-md-4 p-1 mx-0 text-muted">
-              <p class="col-md-3 col-6 text-left">
-                {{ "BAZZAR.PRICE" | translate }}
-              </p>
-              <p class="col-md-9 col-6 text-center">
-                {{ product.price }} {{ "BAZZAR.SAR" | translate }}
-              </p>
+            <div
+              id="collapseFour"
+              class="collapse"
+              aria-labelledby="headingFour"
+              data-parent="#accordion"
+            >
+              <div class="card-body">
+                <div class="mb-4 text-center col-md-6 mx-auto">
+                  <img
+                    [src]="getSource(product.image)"
+                    alt="product image"
+                    width="100%"
+                    height="auto"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
         <div class="">
-          <div class="row mx-0 px-md-4 px-1 py-4">
-            <div class="text-dark text-left h6 col-md-11 col-10">
-              <span class="text-center">
-                {{ "BAZZAR.IMAGES" | translate }}
-              </span>
-            </div>
-            <div class="col-md-1 col-2 text-right text-left-ar">
-              <a *ngIf="show4 == 4">
-                <i
-                  class="fa fa-minus text-dark"
-                  aria-hidden="true"
-                  (click)="minimize4()"
-                ></i>
-              </a>
-              <a *ngIf="show4 == 40">
-                <i
-                  class="fa fa-plus text-dark"
-                  aria-hidden="true"
-                  (click)="maximize4()"
-                ></i>
-              </a>
-            </div>
-          </div>
-
           <div *ngIf="show4 == 4">
             <div class="mb-4 text-center col-md-6 mx-auto">
               <div
@@ -239,54 +201,6 @@
             </div>
           </div>
         </div>
-
-        <!-- <div *ngIf="show4 == 4">
-          <div class="mb-4 text-center col-md-6 offset-md-3">
-            <div
-              id="carouselExampleControls"
-              class="carousel slide"
-              data-ride="carousel"
-            >
-              <div class="carousel-inner px-5">
-                <div class="carousel-item active">
-                  <img
-                    class="d-block w-100"
-                    [src]="getSource(product.image)"
-                    alt="First slide"
-                  />
-                </div>
-              </div>
-             <a
-                    class="carousel-control-prev mr-5"
-                    href="#carouselExampleControls"
-                    role="button"
-                    data-slide="prev"
-                  >
-                    <span>
-                      <i
-                        class="fa fa-chevron-left text-primary H1 mr-5"
-                        aria-hidden="true"
-                      ></i
-                    ></span>
-                    <p class="sr-only">Previous</p>
-                  </a> -->
-        <!-- <a
-                    class="carousel-control-next ml-5"
-                    href="#carouselExampleControls"
-                    role="button"
-                    data-slide="next"
-                  >
-                    <span>
-                      <i
-                        class="fa fa-chevron-right text-primary ml-5 H1"
-                        aria-hidden="true"
-                      ></i>
-                    </span>
-                    <span class="sr-only">Next</span>
-                  </a>
-            </div>
-          </div>
-        </div> -->
       </div>
     </div>
   </div>

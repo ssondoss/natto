@@ -53,8 +53,6 @@ import { CategoriesComponent } from './merchant/categories/categories.component'
 import { ProductsComponent } from './merchant/products/products.component';
 import { OrdersComponent } from './merchant/orders/orders.component';
 import { ViewCategoryComponent } from './merchant/view-category/view-category.component';
-import { EditCategoryComponent } from './merchant/edit-category/edit-category.component';
-import { EditProductComponent } from './merchant/edit-product/edit-product.component';
 import { ViewProductComponent } from './merchant/view-product/view-product.component';
 import { ViewOrderComponent } from './merchant/view-order/view-order.component';
 import { AllMerchantsComponent } from './admin/all-merchants/all-merchants.component';
@@ -74,6 +72,8 @@ import { UserViewComponent } from './admin/user-view/user-view.component';
 import { OrderViewAdminComponent } from './admin/order-view-admin/order-view-admin.component';
 import { TagComponent } from './admin/tag/tag.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { EditCategoryComponent } from './merchant/categories/edit-category/edit-category.component';
+import { EditProductComponent } from './merchant/products/edit-product/edit-product.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -81,9 +81,9 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-    ViewCategoryComponent,
-    EditCategoryComponent,
     EditProductComponent,
+
+    ViewCategoryComponent,
     ViewProductComponent,
     ViewOrderComponent,
     NavbarComponent,
@@ -129,6 +129,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     DiscountComponent,
     AdminsComponent,
     UsersComponent,
+    EditCategoryComponent,
     PaymentComponent,
     AllMerchantsComponent,
     TagComponent,

@@ -74,10 +74,11 @@
     "IMAGE": "الصورة",
     "SAVE_CHANGES": "حفظ التغييرات",
     "ALL_MERCHANTS": "كافة المتاجر",
+    "UPDATE_PRODUCT": "تحديث المنتج",
 
     "DELIVERY_DESCRIPTION": "تفاصيل التوصيل",
-    "PENDING": "pending",
-    "PROCESSING": "Processing",
+    "PENDING": "قيد الانتظار",
+    "PROCESSING": "قيد المتابعة",
     "SHIPPED": "تم شحنها",
     "DELIVERED": "تم توصيلها",
     "CANCELED_BY_MERCHANT": "تم إلغاؤها من المتجر",

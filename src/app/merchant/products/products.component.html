@@ -5,7 +5,7 @@
       <merchant-side-nav></merchant-side-nav>
     </div>
     <div class="col-md-9 mr-auto mt-5 mt-md-0 px-0 px-md-4">
-      <div class="h5 mb-3 text-left">{{ "BAZZAR.WARDROBE" | translate }}</div>
+      <div class="h5 mb-3 text-left">{{ "BAZZAR.PRODUCTS" | translate }}</div>
       <div class="border px-md-4 p-3 rounded">
         <form class="row mx-0 mt-3" [formGroup]="productForm" id="dirForm">
           <div class="form-group col-md-6 px-0">
@@ -63,20 +63,50 @@
               {{ "BAZZAR.100_LENGTH" | translate }}
             </mat-error>
           </div>
-          <div class="col-md-12 pb-3 text-left px-0">
+          <div class="col-md-12 pb-4 text-left px-0">
             <div class="mb-2">
               {{ "BAZZAR.IMAGE" | translate }}
             </div>
             <div class="custom-file">
-              <br />
-              <input
-                type="file"
-                class="custom-file-input"
-                formControlName="image"
-                (change)="uploadImage($event)"
-              />
-              <label class="custom-file-label"></label>
+              <div *ngIf="imageValue != ''" style="position: relative">
+                <img
+                  [src]="getImageSrc(imageValue)"
+                  alt=""
+                  width="100px"
+                  height="100px"
+                  required
+                  class="border p-2"
+                  style="margin-bottom: 84px !important"
+                />
+                <i
+                  class="fa fa-times-circle text-danger"
+                  (click)="uploadFileClicked()"
+                  style="position: absolute; right: 0"
+                ></i>
+              </div>
+              <span *ngIf="imageValue === ''">
+                <br />
+                <input
+                  type="file"
+                  class="custom-file-input"
+                  formControlName="image"
+                  accept="image/*"
+                  required
+                  id="file-uploader"
+                  (change)="uploadImage($event)"
+                />
+
+                <label class="custom-file-label"></label>
+              </span>
             </div>
+            <mat-error
+              *ngIf="
+                productForm.controls.image.errors?.required &&
+                productForm.controls.image.touched
+              "
+            >
+              {{ "BAZZAR.REQUIRED" | translate }}
+            </mat-error>
           </div>
 
           <div class="form-group col-md-6 px-0">
@@ -85,10 +115,19 @@
             </label>
             <textarea
               type="text"
+              required
               formControlName="descriptionEnglish"
               class="form-control"
               maxlength="250"
             ></textarea>
+            <mat-error
+              *ngIf="
+                productForm.controls.descriptionEnglish.errors?.required &&
+                productForm.controls.descriptionEnglish.touched
+              "
+            >
+              {{ "BAZZAR.REQUIRED" | translate }}
+            </mat-error>
           </div>
           <div class="form-group col-md-6 p-lang px-0">
             <label> {{ "BAZZAR.DESCRIPTION_ARABIC" | translate }} </label>
@@ -97,6 +136,7 @@
               formControlName="descriptionArabic"
               class="form-control"
               maxlength="250"
+              required
             ></textarea>
             <mat-error
               *ngIf="
@@ -107,14 +147,31 @@
             >
               {{ "BAZZAR.USE_ARABIC_LETTERS" | translate }}
             </mat-error>
+            <mat-error
+              *ngIf="
+                productForm.controls.descriptionArabic.errors?.required &&
+                productForm.controls.descriptionArabic.touched
+              "
+            >
+              {{ "BAZZAR.REQUIRED" | translate }}
+            </mat-error>
           </div>
           <div class="form-group col-md-12 px-0">
             <label> {{ "BAZZAR.DELIVERY_DESCRIPTION" | translate }} </label>
             <input
               type="text"
               class="form-control"
+              required
               formControlName="deliveryDescription"
             />
+            <mat-error
+              *ngIf="
+                productForm.controls.deliveryDescription.errors?.required &&
+                productForm.controls.deliveryDescription.touched
+              "
+            >
+              {{ "BAZZAR.REQUIRED" | translate }}
+            </mat-error>
           </div>
           <div class="form-group col-md-8 px-0">
             <label> {{ "BAZZAR.MAIN_WORDROBE" | translate }} </label>
@@ -172,7 +229,7 @@
         </form>
         <div class="mt-5 table-responsive">
           <table class="table table-bordered">
-            <thead class="text-dark text-center">
+            <thead class="text-dark text-center bg-light2">
               <th>
                 {{ "BAZZAR.TITLE_ENGLISH" | translate }}
               </th>
@@ -197,8 +254,7 @@
                   </a>
                   <a
                     class="icon-edit pr-2 col-md-4"
-                    [routerLink]="['/edit-product']"
-                    [queryParams]="{ id: product.id }"
+                    (click)="openDialogEditProduct(product)"
                   >
                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                   </a>

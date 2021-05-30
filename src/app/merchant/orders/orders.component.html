@@ -1,20 +1,20 @@
 <merchant-top-part></merchant-top-part>
 <div class="container my-5 py-5">
-  <div class="row mx-0">
+  <div class="row mx-0 arabic-dir">
     <div class="col-md-3 border px-0 rounded h-100">
       <merchant-side-nav></merchant-side-nav>
     </div>
     <div class="col-md-9 mr-auto mt-5 mt-md-0 px-0 px-md-4">
-      <div class="h5 mb-3">{{ "BAZZAR.ORDERS" | translate }}</div>
+      <div class="h5 mb-3 text-left">{{ "BAZZAR.ORDERS" | translate }}</div>
       <div class="table-responsive">
         <table class="table table-bordered">
-          <thead class="text-center">
+          <thead class="text-center bg-light2">
             <th>
               {{ "BAZZAR.USER" | translate }}
             </th>
-            <th>
+            <!-- <th>
               {{ "BAZZAR.ITEMS" | translate }}
-            </th>
+            </th> -->
             <th>
               {{ "BAZZAR.DATE" | translate }}
             </th>
@@ -34,24 +34,7 @@
           <tbody class="text-center">
             <tr *ngFor="let order of orders">
               <td>{{ order.user.username }}</td>
-              <td>
-                <button
-                  *ngIf="order.id != showenOrderId"
-                  type="button"
-                  class="btn btn-sm btn-primary"
-                  (click)="showItems(order)"
-                >
-                  {{ "BAZZAR.VIEW_ITEMS" | translate }}
-                </button>
-                <button
-                  *ngIf="order.id == showenOrderId"
-                  type="button"
-                  class="btn btn-sm btn-primary"
-                  (click)="unshowItems(0)"
-                >
-                  {{ "BAZZAR.HIDE_ITEMS" | translate }}
-                </button>
-              </td>
+
               <td>{{ order.dateAndTime | date }}</td>
               <!-- <td>{{ order.paymentMethod }}</td> -->
               <td>{{ order.total }} {{ "BAZZAR.SAR" | translate }}</td>
@@ -97,7 +80,7 @@
                     id="orderStatus"
                     (change)="changeOrderStatus($event.target.value, order.id)"
                   >
-                    <option>{{ "BAZZAR.CHOOSE" | translate }}...</option>
+                    <!-- <option>{{ "BAZZAR.CHOOSE" | translate }}...</option> -->
                     <option
                       *ngIf="order.orderStatus == 'PENDING'"
                       value="PENDING"
@@ -169,11 +152,27 @@
                 </div>
               </td>
               <td class="mt-2">
+                <button
+                  *ngIf="order.id != showenOrderId"
+                  type="button"
+                  class="btn btn-sm btn-outline-success"
+                  (click)="showItems(order)"
+                >
+                  {{ "BAZZAR.VIEW_ITEMS" | translate }}
+                </button>
+                <button
+                  *ngIf="order.id == showenOrderId"
+                  type="button"
+                  class="btn btn-sm btn-outline-success"
+                  (click)="unshowItems(0)"
+                >
+                  {{ "BAZZAR.HIDE_ITEMS" | translate }}
+                </button>
                 <a
-                  class="icon-view pr-2 col-md-4"
+                  class="btn btn-success btn-sm mx-2"
                   routerLink="/view-order"
                   [queryParams]="{ id: order.id }"
-                  ><i class="fa fa-eye" aria-hidden="true"></i>
+                  >{{ "BAZZAR.ORDER_DETAILS" | translate }}
                 </a>
               </td>
             </tr>

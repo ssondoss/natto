@@ -1,12 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { arabicLetters } from 'src/app/app.component';
 import { ApplicationStateService } from 'src/app/app.service';
 import { UserSessionService } from 'src/app/user-session.service';
 import { environment } from 'src/environments/environment';
 import swal from 'sweetalert2';
+import { EditProductComponent } from './edit-product/edit-product.component';
 
 @Component({
   selector: 'app-products',
@@ -14,37 +16,8 @@ import swal from 'sweetalert2';
   styleUrls: ['./products.component.css', '../../app.component.css'],
 })
 export class ProductsComponent implements OnInit {
-  //   productForm;
-  //   constructor(public formBuilder: FormBuilder) {}
+  product: any;
 
-  //   ngOnInit(): void {
-  //     this.productForm = this.formBuilder.group({
-  //       titleEnglish: [
-  //         '',
-  //         Validators.compose([Validators.required, Validators.maxLength(100)]),
-  //       ],
-  //       titleArabic: [
-  //         '',
-  //         Validators.compose([
-  //           Validators.required,
-  //           Validators.maxLength(100),
-  //           arabicLetters,
-  //         ]),
-  //       ],
-  //       descriptionEnglish: ['', Validators.maxLength(250)],
-  //       descriptionArabic: [
-  //         '',
-  //         Validators.compose([Validators.maxLength(250), arabicLetters]),
-  //       ],
-  //       deliveryDescription: ['', Validators.maxLength(250)],
-  //       price: [, Validators.required],
-  //       category: [, Validators.required],
-  //       image: [],
-  //     });
-  //   }
-  //   addProduct() {}
-  //   deleteProduct(id) {}
-  // }
   productForm: FormGroup;
 
   show = 0;
@@ -52,6 +25,7 @@ export class ProductsComponent implements OnInit {
   products: any;
   wardrobes: any;
   imageValue: Object;
+
   maximize() {
     this.show = 1;
   }
@@ -61,6 +35,8 @@ export class ProductsComponent implements OnInit {
   constructor(
     public formBuilder: FormBuilder,
     private http: HttpClient,
+    public dialog: MatDialog,
+
     public translate: TranslateService,
     private userSession: UserSessionService,
     public service: ApplicationStateService
@@ -109,8 +85,9 @@ export class ProductsComponent implements OnInit {
       deliveryDescription: ['', Validators.maxLength(250)],
       price: [, Validators.required],
       category: [, Validators.required],
-      image: [],
+      image: [, Validators.required],
     });
+    this.imageValue = '';
   }
 
   deleteProduct(id: string) {
@@ -184,40 +161,43 @@ export class ProductsComponent implements OnInit {
   }
 
   addProduct() {
-    this.http
-      .post(environment.apiURL + '/product', {
-        available: true,
-        categoryId: this.productForm.controls['category'].value,
-        deliveryDescription: this.productForm.controls['deliveryDescription']
-          .value,
-        descriptionArabic: this.productForm.controls['descriptionArabic'].value,
-        descriptionEnglish: this.productForm.controls['descriptionEnglish']
-          .value,
-        image: this.imageValue,
-        merchantId: this.merchant.id,
-        price: this.productForm.controls['price'].value,
-        titleArabic: this.productForm.controls['titleArabic'].value,
-        titleEnglish: this.productForm.controls['titleEnglish'].value,
-      })
-      .subscribe((data) => {
-        this.products.push(data);
-        if (this.translate.currentLang == 'en')
-          swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: 'Added!',
-            showConfirmButton: false,
-            timer: 1500,
-          });
-        else
-          swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: 'تم الاضافة',
-            showConfirmButton: false,
-            timer: 1500,
-          });
-      });
+    if (this.productForm.valid) {
+      this.http
+        .post(environment.apiURL + '/product', {
+          available: true,
+          categoryId: this.productForm.controls['category'].value,
+          deliveryDescription:
+            this.productForm.controls['deliveryDescription'].value,
+          descriptionArabic:
+            this.productForm.controls['descriptionArabic'].value,
+          descriptionEnglish:
+            this.productForm.controls['descriptionEnglish'].value,
+          image: this.imageValue,
+          merchantId: this.merchant.id,
+          price: this.productForm.controls['price'].value,
+          titleArabic: this.productForm.controls['titleArabic'].value,
+          titleEnglish: this.productForm.controls['titleEnglish'].value,
+        })
+        .subscribe((data) => {
+          this.products.push(data);
+          if (this.translate.currentLang == 'en')
+            swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'Added!',
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          else
+            swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'تم الاضافة',
+              showConfirmButton: false,
+              timer: 1500,
+            });
+        });
+    } else this.productForm.markAllAsTouched();
   }
 
   uploadImage(event) {
@@ -248,5 +228,37 @@ export class ProductsComponent implements OnInit {
           }
         );
     }
+  }
+
+  getImageSrc(logo) {
+    return environment.imageURL + logo;
+  }
+
+  uploadFileClicked() {
+    this.imageValue = '';
+    //   document.getElementById('file-uploader').click;
+  }
+
+  openDialogEditProduct(product: any): void {
+    const dialogRef = this.dialog.open(EditProductComponent, {
+      width: '900px',
+      height: 'auto',
+      maxWidth: '98%',
+
+      data: { product: product },
+    });
+
+    dialogRef.afterClosed().subscribe(async (updatedCategory) => {
+      if (updatedCategory.event == 'UPDATED') {
+        this.http
+          .get(
+            environment.apiURL + '/product/by-merchant-id/' + this.merchant.id
+          )
+          .subscribe((data: any) => {
+            this.products = data;
+            console.log(this.products);
+          });
+      }
+    });
   }
 }
