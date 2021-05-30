@@ -77,7 +77,7 @@
         </form>
         <div class="table-responsive mt-5">
           <table class="table table-bordered">
-            <thead class="text-center text-dark">
+            <thead class="text-center text-dark bg-light2">
               <th>
                 {{ "BAZZAR.TITLE_ENGLISH" | translate }}
               </th>
@@ -102,8 +102,7 @@
                   </a> -->
                   <a
                     class="icon-edit col-6"
-                    [routerLink]="['/edit-wordrobe']"
-                    [queryParams]="{ id: wordrobe.id }"
+                    (click)="openDialogEditCategory(wordrobe)"
                   >
                     <i
                       class="fa fa-pencil-square-o text-success t-media-12"

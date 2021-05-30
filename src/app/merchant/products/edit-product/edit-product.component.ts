@@ -1,17 +1,18 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ApplicationStateService } from 'src/app/app.service';
 import { UserSessionService } from 'src/app/user-session.service';
 import { environment } from 'src/environments/environment';
+import { EditCategoryComponent } from '../../categories/edit-category/edit-category.component';
 import swal from 'sweetalert2';
-
 @Component({
   selector: 'app-edit-product',
   templateUrl: './edit-product.component.html',
-  styleUrls: ['./edit-product.component.css', '../../app.component.css'],
+  styleUrls: ['./edit-product.component.css', '../../../app.component.css'],
 })
 export class EditProductComponent implements OnInit {
   productForm: FormGroup;
@@ -26,9 +27,11 @@ export class EditProductComponent implements OnInit {
     public formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute,
     private http: HttpClient,
+    public dialogRef: MatDialogRef<EditCategoryComponent>,
     public translate: TranslateService,
     public service: ApplicationStateService,
-    public userSession: UserSessionService
+    public userSession: UserSessionService,
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.activatedRoute.queryParams.subscribe((params) => {
       this.id = params['id'];
@@ -44,43 +47,40 @@ export class EditProductComponent implements OnInit {
           .subscribe((res) => {
             this.merchant = res;
             this.getWardrobe();
-            this.http
-              .get(environment.apiURL + '/product/' + this.id)
-              .subscribe((data: any) => {
-                this.product = data;
-                this.selectedImage = data.image;
-                this.productForm = this.formBuilder.group({
-                  titleEnglish: [
-                    this.product.titleEnglish,
-                    Validators.compose([
-                      Validators.required,
-                      Validators.maxLength(100),
-                    ]),
-                  ],
-                  titleArabic: [
-                    this.product.titleArabic,
-                    Validators.compose([
-                      Validators.required,
-                      Validators.maxLength(100),
-                    ]),
-                  ],
-                  descriptionEnglish: [
-                    this.product.descriptionEnglish,
-                    Validators.maxLength(250),
-                  ],
-                  descriptionArabic: [
-                    this.product.descriptionArabic,
-                    Validators.maxLength(250),
-                  ],
-                  deliveryDescription: [
-                    this.product.deliveryDescription,
-                    Validators.maxLength(250),
-                  ],
 
-                  price: [this.product.price, Validators.required],
-                  category: [this.product.categoryId, Validators.required],
-                });
-              });
+            this.product = data.product;
+            this.selectedImage = data.image;
+            this.productForm = this.formBuilder.group({
+              titleEnglish: [
+                this.product.titleEnglish,
+                Validators.compose([
+                  Validators.required,
+                  Validators.maxLength(100),
+                ]),
+              ],
+              titleArabic: [
+                this.product.titleArabic,
+                Validators.compose([
+                  Validators.required,
+                  Validators.maxLength(100),
+                ]),
+              ],
+              descriptionEnglish: [
+                this.product.descriptionEnglish,
+                Validators.maxLength(250),
+              ],
+              descriptionArabic: [
+                this.product.descriptionArabic,
+                Validators.maxLength(250),
+              ],
+              deliveryDescription: [
+                this.product.deliveryDescription,
+                Validators.maxLength(250),
+              ],
+
+              price: [this.product.price, Validators.required],
+              category: [this.product.categoryId, Validators.required],
+            });
           });
       }
     });
@@ -121,18 +121,18 @@ export class EditProductComponent implements OnInit {
       .post(environment.apiURL + '/product/update-by-id/', {
         available: true,
         categoryId: this.productForm.controls['category'].value,
-        deliveryDescription: this.productForm.controls['deliveryDescription']
-          .value,
+        deliveryDescription:
+          this.productForm.controls['deliveryDescription'].value,
         descriptionArabic: this.productForm.controls['descriptionArabic'].value,
-        descriptionEnglish: this.productForm.controls['descriptionEnglish']
-          .value,
+        descriptionEnglish:
+          this.productForm.controls['descriptionEnglish'].value,
         image: this.selectedImage,
         merchantId: this.merchant.id,
         price: this.productForm.controls['price'].value,
         titleArabic: this.productForm.controls['titleArabic'].value,
         titleEnglish: this.productForm.controls['titleEnglish'].value,
         createdOn: this.product.createdOn,
-        id: this.id,
+        id: this.product.id,
         updatedOn: null,
       })
       .subscribe((data: any) => {
@@ -186,5 +186,9 @@ export class EditProductComponent implements OnInit {
           }
         );
     }
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close({ event: 'CANCELED' });
   }
 }

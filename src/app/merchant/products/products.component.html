@@ -69,13 +69,27 @@
             </div>
             <div class="custom-file">
               <br />
-              <input
-                type="file"
-                class="custom-file-input"
-                formControlName="image"
-                (change)="uploadImage($event)"
-              />
-              <label class="custom-file-label"></label>
+
+              <span *ngIf="imageValue != ''">
+                <img
+                  [src]="getImageSrc(imageValue)"
+                  alt=""
+                  width="100px"
+                  height="100px"
+                  (click)="uploadFileClicked()"
+                />
+              </span>
+              <span *ngIf="imageValue === ''"
+                ><input
+                  type="file"
+                  class="custom-file-input"
+                  formControlName="image"
+                  accept="image/*"
+                  id="file-uploader"
+                  (change)="uploadImage($event)" />
+
+                <label class="custom-file-label"></label
+              ></span>
             </div>
           </div>
 
@@ -197,8 +211,7 @@
                   </a>
                   <a
                     class="icon-edit pr-2 col-md-4"
-                    [routerLink]="['/edit-product']"
-                    [queryParams]="{ id: product.id }"
+                    (click)="openDialogEditProduct(product)"
                   >
                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                   </a>

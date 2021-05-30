@@ -1,12 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { arabicLetters } from 'src/app/app.component';
 import { UserSessionService } from 'src/app/user-session.service';
 import { environment } from 'src/environments/environment';
 import swal from 'sweetalert2';
+import { EditCategoryComponent } from './edit-category/edit-category.component';
 @Component({
   selector: 'app-categories',
   templateUrl: './categories.component.html',
@@ -28,6 +30,8 @@ export class CategoriesComponent implements OnInit {
     public formBuilder: FormBuilder,
     public translate: TranslateService,
     private http: HttpClient,
+    public dialog: MatDialog,
+
     private router: Router,
     private userSession: UserSessionService
   ) {
@@ -66,6 +70,27 @@ export class CategoriesComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  openDialogEditCategory(category: any): void {
+    const dialogRef = this.dialog.open(EditCategoryComponent, {
+      width: '700px',
+      height: 'auto',
+      maxWidth: '98%',
+
+      data: { category: category },
+    });
+
+    dialogRef.afterClosed().subscribe(async (updatedCategory) => {
+      if (updatedCategory.event == 'UPDATED') {
+        this.wordrobes.forEach((element) => {
+          if (element.id == updatedCategory.data.id) {
+            element.titleEnglish = updatedCategory.data.titleEnglish;
+            element.titleArabic = updatedCategory.data.titleArabic;
+          }
+        });
+      }
+    });
+  }
 
   getWardrobe() {
     console.log(this.merchant);

@@ -21,8 +21,6 @@ import { JoinUsComponent } from './join-us/join-us.component';
 import { LoginComponent } from './login/login.component';
 import { AccountInformationComponent } from './merchant/account-information/account-information.component';
 import { CategoriesComponent } from './merchant/categories/categories.component';
-import { EditCategoryComponent } from './merchant/edit-category/edit-category.component';
-import { EditProductComponent } from './merchant/edit-product/edit-product.component';
 import { OrdersComponent } from './merchant/orders/orders.component';
 import { ProductsComponent } from './merchant/products/products.component';
 import { ViewCategoryComponent } from './merchant/view-category/view-category.component';
@@ -66,10 +64,7 @@ const routes: Routes = [
   { path: 'view-order', component: ViewOrderComponent },
   { path: 'view-product', component: ViewProductComponent },
   { path: 'view-category', component: ViewCategoryComponent },
-  { path: 'edit-wordrobe', component: EditCategoryComponent },
   { path: 'all-merchants', component: AllMerchantsComponent },
-
-  { path: 'edit-product', component: EditProductComponent },
 
   { path: 'how-to-order', component: HowToOrderComponent },
   { path: 'regestration', component: RegestrationComponent },

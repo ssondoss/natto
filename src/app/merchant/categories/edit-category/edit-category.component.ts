@@ -1,62 +1,51 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Component, Inject, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { environment } from 'src/environments/environment';
 import swal from 'sweetalert2';
-
 @Component({
   selector: 'app-edit-category',
   templateUrl: './edit-category.component.html',
-  styleUrls: ['./edit-category.component.css', '../../app.component.css'],
+  styleUrls: ['./edit-category.component.css', '../../../app.component.css'],
 })
 export class EditCategoryComponent implements OnInit {
   categoryForm: FormGroup;
   id: any;
   category: any;
-
   constructor(
+    @Inject(MAT_DIALOG_DATA) public data: any,
     public formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute,
     private http: HttpClient,
-    public translate: TranslateService
+    public translate: TranslateService,
+    public dialogRef: MatDialogRef<EditCategoryComponent>
   ) {
-    this.activatedRoute.queryParams.subscribe((params) => {
-      this.id = params['id'];
-      this.http
-        .get(environment.apiURL + '/category/' + this.id)
-        .subscribe((data: any) => {
-          this.category = data;
-          this.categoryForm = this.formBuilder.group({
-            titleEnglish: [
-              data.titleEnglish,
-              Validators.compose([
-                Validators.required,
-                Validators.maxLength(99),
-              ]),
-            ],
-            titleArabic: [
-              data.titleArabic,
-              Validators.compose([
-                Validators.required,
-                Validators.maxLength(99),
-              ]),
-            ],
-          });
-        });
+    this.category = data.category;
+    console.log(this.data);
+    this.categoryForm = this.formBuilder.group({
+      titleEnglish: [
+        this.category.titleEnglish,
+        Validators.compose([Validators.required, Validators.maxLength(99)]),
+      ],
+      titleArabic: [
+        this.category.titleArabic,
+        Validators.compose([Validators.required, Validators.maxLength(99)]),
+      ],
     });
   }
 
   updateCategory(valuesForm: FormGroup) {
     if (this.categoryForm.valid) {
       this.http
-        .put(environment.apiURL + '/category/' + this.id, {
+        .put(environment.apiURL + '/category/' + this.category.id, {
           merchantId: this.category.merchantId,
           titleArabic: valuesForm.controls['titleArabic'].value,
           titleEnglish: valuesForm.controls['titleEnglish'].value,
         })
-        .subscribe(() => {
+        .subscribe((res) => {
           if (this.translate.currentLang == 'en')
             swal.fire({
               position: 'top-end',
@@ -73,19 +62,13 @@ export class EditCategoryComponent implements OnInit {
               showConfirmButton: false,
               timer: 1500,
             });
+          this.dialogRef.close({ event: 'UPDATED', data: res });
         });
     } else this.categoryForm.markAllAsTouched();
   }
-  ngOnInit(): void {
-    this.categoryForm = this.formBuilder.group({
-      titleEnglish: [
-        '',
-        Validators.compose([Validators.required, Validators.maxLength(99)]),
-      ],
-      titleArabic: [
-        '',
-        Validators.compose([Validators.required, Validators.maxLength(99)]),
-      ],
-    });
+  ngOnInit(): void {}
+
+  onNoClick(): void {
+    this.dialogRef.close({ event: 'CANCELED' });
   }
 }

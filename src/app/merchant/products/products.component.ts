@@ -1,12 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { arabicLetters } from 'src/app/app.component';
 import { ApplicationStateService } from 'src/app/app.service';
 import { UserSessionService } from 'src/app/user-session.service';
 import { environment } from 'src/environments/environment';
 import swal from 'sweetalert2';
+import { EditProductComponent } from './edit-product/edit-product.component';
 
 @Component({
   selector: 'app-products',
@@ -14,6 +16,7 @@ import swal from 'sweetalert2';
   styleUrls: ['./products.component.css', '../../app.component.css'],
 })
 export class ProductsComponent implements OnInit {
+  product: any;
   //   productForm;
   //   constructor(public formBuilder: FormBuilder) {}
 
@@ -52,6 +55,7 @@ export class ProductsComponent implements OnInit {
   products: any;
   wardrobes: any;
   imageValue: Object;
+
   maximize() {
     this.show = 1;
   }
@@ -61,6 +65,8 @@ export class ProductsComponent implements OnInit {
   constructor(
     public formBuilder: FormBuilder,
     private http: HttpClient,
+    public dialog: MatDialog,
+
     public translate: TranslateService,
     private userSession: UserSessionService,
     public service: ApplicationStateService
@@ -111,6 +117,7 @@ export class ProductsComponent implements OnInit {
       category: [, Validators.required],
       image: [],
     });
+    this.imageValue = '';
   }
 
   deleteProduct(id: string) {
@@ -188,11 +195,11 @@ export class ProductsComponent implements OnInit {
       .post(environment.apiURL + '/product', {
         available: true,
         categoryId: this.productForm.controls['category'].value,
-        deliveryDescription: this.productForm.controls['deliveryDescription']
-          .value,
+        deliveryDescription:
+          this.productForm.controls['deliveryDescription'].value,
         descriptionArabic: this.productForm.controls['descriptionArabic'].value,
-        descriptionEnglish: this.productForm.controls['descriptionEnglish']
-          .value,
+        descriptionEnglish:
+          this.productForm.controls['descriptionEnglish'].value,
         image: this.imageValue,
         merchantId: this.merchant.id,
         price: this.productForm.controls['price'].value,
@@ -248,5 +255,35 @@ export class ProductsComponent implements OnInit {
           }
         );
     }
+  }
+
+  getImageSrc(logo) {
+    return environment.imageURL + logo;
+  }
+
+  uploadFileClicked() {
+    this.imageValue = '';
+    //   document.getElementById('file-uploader').click;
+  }
+
+  openDialogEditProduct(product: any): void {
+    const dialogRef = this.dialog.open(EditProductComponent, {
+      width: '700px',
+      height: 'auto',
+      maxWidth: '98%',
+
+      data: { product: product },
+    });
+
+    dialogRef.afterClosed().subscribe(async (updatedCategory) => {
+      if (updatedCategory.event == 'UPDATED') {
+        this.product.forEach((element) => {
+          if (element.id == updatedCategory.data.id) {
+            element.titleEnglish = updatedCategory.data.titleEnglish;
+            element.titleArabic = updatedCategory.data.titleArabic;
+          }
+        });
+      }
+    });
   }
 }
