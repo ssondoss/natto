@@ -63,6 +63,15 @@ export class OrdersComponent implements OnInit {
       .post(environment.apiURL + '/order/change-order-status/' + id, httpParams)
       .subscribe(
         (data: any) => {
+          this.http
+            .get(
+              environment.apiURL +
+                '/order/get-orders-by-merchant-id/' +
+                this.merchant.id
+            )
+            .subscribe((orders: any) => {
+              this.orders = orders;
+            });
           if (this.translate.currentLang == 'en')
             swal.fire({
               position: 'top-end',

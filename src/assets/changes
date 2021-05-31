@@ -1,17 +1,17 @@
-menue and logo to the corners  ---------------------------------------------------------------> Done
-give color to the table headers  -------------------------------------------------------------> NO
-add accordian in product add  ----------------------------------------------------------------> NO
-edit wardrops show with pop up ---------------------------------------------------------------> NO
-in merchant orders all became icons and they will be under options th ------------------------> NO
+menue and logo to the corners  ---------------------------------------------------------------> DONE
+give color to the table headers  -------------------------------------------------------------> DONE
+add accordian in product add  ----------------------------------------------------------------> DONE
+edit wardrops show with pop up ---------------------------------------------------------------> DONE
+in merchant orders all became icons and they will be under options th ------------------------> DONE
 on order tab in merchant the rtl and ltr is wrong as well in edit product --------------------> NO
-edit product show with popup   ---------------------------------------------------------------> NO
+edit product show with popup   ---------------------------------------------------------------> DONE
 order status one way update    ---------------------------------------------------------------> NO
-confirm email in creat account ---------------------------------------------------------------> NO
-order details accrodain    -------------------------------------------------------------------> NO
-city in merchant information DDL   -----------------------------------------------------------> NO
-desing the DDL   -----------------------------------------------------------------------------> Done -> change city in "home" , "join us" and "merchant"
-Catigories in the home page either in boxes or icons and better both   -----------------------> Done
-ازالة غير مفعل من معلومات الميرشانت
+confirm email in creat account ---------------------------------------------------------------> DONE
+order details accrodain    -------------------------------------------------------------------> DONE
+city in merchant information DDL   -----------------------------------------------------------> DONE
+desing the DDL   -----------------------------------------------------------------------------> DONE -> change city in "home" , "join us" and "merchant"
+Catigories in the home page either in boxes or icons and better both   -----------------------> DONE
+ازالة غير مفعل من معلومات الميرشانت-----------------------------------------------------------> DONE
 ________________________ admin
 add accoutn when admin is logged in
 paging in all merchants

@@ -65,7 +65,7 @@ export class AccountInformationComponent implements OnInit {
           ],
           phone2: [this.merchant.contactInfo],
           email: [this.userSession.user.email],
-          tag: [this.merchant.tag],
+          tag: [this.merchant.tag.nameEnglish],
           city: [this.merchant.city],
           country: ['Saudi Arabia'],
           descriptionArabic: [this.merchant.descriptionArabic],
@@ -129,7 +129,6 @@ export class AccountInformationComponent implements OnInit {
             username: this.merchantAccountForm.controls['username'].value,
           })
           .subscribe((data: any) => {
-            this.userSession.user = data;
             this.edit = !this.edit;
           });
       });
