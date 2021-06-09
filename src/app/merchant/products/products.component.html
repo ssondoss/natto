@@ -245,27 +245,29 @@
               <tr *ngFor="let product of products">
                 <td>{{ product.titleEnglish }}</td>
                 <td>{{ product.titleArabic }}</td>
-                <td class="mt-2 w-25">
-                  <a
-                    class="icon-view pr-2 col-md-4"
-                    [routerLink]="['/view-product']"
-                    [queryParams]="{ id: product.id }"
-                    ><i class="fa fa-eye text-success" aria-hidden="true"></i>
-                  </a>
-                  <a
-                    class="icon-edit pr-2 col-md-4"
-                    (click)="openDialogEditProduct(product)"
-                  >
-                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                  </a>
-                  <a
-                    class="icon-danger col-md-4"
-                    (click)="deleteProduct(product.id)"
-                    ><i
-                      class="fa fa-trash-o text-danger"
-                      aria-hidden="true"
-                    ></i>
-                  </a>
+                <td class="mt-2 text-center">
+                  <div class="row mx-0 justifiy-content-center">
+                    <a
+                      class="icon-view col-md-4 t-media-12"
+                      [routerLink]="['/view-product']"
+                      [queryParams]="{ id: product.id }"
+                      ><i class="fa fa-eye text-success" aria-hidden="true"></i>
+                    </a>
+                    <a
+                      class="icon-edit col-md-4 t-media-12"
+                      (click)="openDialogEditProduct(product)"
+                    >
+                      <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    </a>
+                    <a
+                      class="icon-danger col-md-4 t-media-12 text-center"
+                      (click)="deleteProduct(product.id)"
+                      ><i
+                        class="fa fa-trash-o text-danger"
+                        aria-hidden="true"
+                      ></i>
+                    </a>
+                  </div>
                 </td>
               </tr>
             </tbody>

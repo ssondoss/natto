@@ -93,30 +93,32 @@
               <tr *ngFor="let wordrobe of wordrobes">
                 <td>{{ wordrobe.titleEnglish }}</td>
                 <td>{{ wordrobe.titleArabic }}</td>
-                <td class="mt-2">
-                  <!-- <a
+                <td class="mt-2 text-center">
+                  <div class="row mx-0 justifiy-content-center">
+                    <!-- <a
                     class="icon-view pr-2 col-md-4"
                     [routerLink]="['/view-category']"
                     [queryParams]="{ id: wordrobe.id }"
                     ><i class="fa fa-eye" aria-hidden="true"></i>
                   </a> -->
-                  <a
-                    class="icon-edit col-6"
-                    (click)="openDialogEditCategory(wordrobe)"
-                  >
-                    <i
-                      class="fa fa-pencil-square-o text-success t-media-12"
-                      aria-hidden="true"
-                    ></i>
-                  </a>
-                  <a
-                    class="icon-danger col-6"
-                    (click)="deleteWardrobe(wordrobe.id)"
-                    ><i
-                      class="fa fa-trash-o text-danger t-media-12"
-                      aria-hidden="true"
-                    ></i>
-                  </a>
+                    <a
+                      class="icon-edit col-6"
+                      (click)="openDialogEditCategory(wordrobe)"
+                    >
+                      <i
+                        class="fa fa-pencil-square-o text-success t-media-12"
+                        aria-hidden="true"
+                      ></i>
+                    </a>
+                    <a
+                      class="icon-danger col-6"
+                      (click)="deleteWardrobe(wordrobe.id)"
+                      ><i
+                        class="fa fa-trash-o text-danger t-media-12"
+                        aria-hidden="true"
+                      ></i>
+                    </a>
+                  </div>
                 </td>
               </tr>
             </tbody>

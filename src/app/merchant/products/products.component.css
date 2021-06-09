@@ -5,3 +5,8 @@
   font-size: 28px;
   cursor: pointer;
 }
+@media screen and (max-width: 769px) and (min-width: 600px) {
+  .t-media-12 {
+    font-size: 14px !important;
+  }
+}

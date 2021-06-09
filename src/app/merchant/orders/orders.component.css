@@ -3,3 +3,7 @@ option {
   padding-bottom: 70px;
   margin-bottom: 40px;
 }
+.nav-link:hover {
+  text-decoration: underline !important;
+  color: #000;
+}

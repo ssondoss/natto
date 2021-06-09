@@ -39,46 +39,90 @@
               <!-- <td>{{ order.paymentMethod }}</td> -->
               <td>{{ order.total }} {{ "BAZZAR.SAR" | translate }}</td>
               <td>
-                <div class="col-auto my-1">
-                  <button
-                    class="btn btn-sm btn-primary"
+                <div class="row mx-auto text-center justifiy-content-center">
+                  <img
+                    src="../../../assets/to-do.svg"
+                    height="25"
+                    width="auto"
+                    class="px-2"
+                    [popoverOnHover]="false"
+                    [popover]="myPopover"
+                  />
+
+                  <popover-content
+                    #myPopover
+                    placement="top"
+                    [animation]="true"
+                    class="arabic-dir"
+                    [closeOnClickOutside]="true"
+                  >
+                    <ul
+                      class="no-bullets text-left arabic-dir"
+                      style="list-style: none"
+                    >
+                      <li class="arabic-dir">
+                        <a href="" class="nav-link text-dark">
+                          <i
+                            class="fa fa-forward text-primary mx-1"
+                            aria-hidden="true"
+                          ></i>
+
+                          {{ "BAZZAR.CHANGE" | translate }}</a
+                        >
+                      </li>
+
+                      <li>
+                        <a href="" class="nav-link text-dark">
+                          <i
+                            class="fa fa-times-circle-o text-danger mx-1"
+                            aria-hidden="true"
+                          ></i>
+
+                          {{ "BAZZAR.CANCEL" | translate }}</a
+                        >
+                      </li>
+                    </ul>
+                  </popover-content>
+                  <div class="my-auto">Lorem, ipsum.</div>
+                  <!-- <a
+                    class=""
                     (click)="changeOrderStatus('PROCCESSING', order.id)"
                     *ngIf="order.orderStatus == 'PENDING'"
                   >
                     {{ "BAZZAR.PENDING" | translate }}
-                  </button>
-                  <button
-                    class="btn btn-sm btn-primary"
+                  </a> -->
+                  <!-- <a
+                    class=""
                     (click)="changeOrderStatus('DELIVERED', order.id)"
                     *ngIf="order.orderStatus == 'PROCCESSING'"
                   >
                     {{ "BAZZAR.PROCCESSING" | translate }}
-                  </button>
-                  <button
-                    class="btn btn-sm btn-primary"
+                  </a>
+                  <a
+                    class=""
                     (click)="changeOrderStatus('SHIPPED', order.id)"
                     *ngIf="order.orderStatus == 'DELIVERED'"
                   >
                     {{ "BAZZAR.DELIVERED" | translate }}
-                  </button>
-                  <button
-                    class="btn btn-sm btn-primary"
+                  </a>
+                  <a
+                    class=""
                     (click)="
                       changeOrderStatus('CANCELED_BY_MERCHANT', order.id)
                     "
                     *ngIf="order.orderStatus == 'SHIPPED'"
                   >
                     {{ "BAZZAR.SHIPPED" | translate }}
-                  </button>
-                  <button
-                    class="btn btn-sm btn-primary"
+                  </a>
+                  <a
+                    class=""
                     (click)="
                       changeOrderStatus('CANCELED_BY_MERCHANT', order.id)
                     "
                     *ngIf="order.orderStatus == 'CANCELED_BY_MERCHANT'"
                   >
                     {{ "BAZZAR.CANCELED_BY_MERCHANT" | translate }}
-                  </button>
+                  </a> -->
                 </div>
               </td>
               <td class="mt-2">
@@ -88,21 +132,21 @@
                   class="btn btn-sm btn-outline-success"
                   (click)="showItems(order)"
                 >
-                  {{ "BAZZAR.VIEW_ITEMS" | translate }}
+                  <i class="fa fa-shopping-basket" aria-hidden="true"></i>
                 </button>
                 <button
                   *ngIf="order.id == showenOrderId"
                   type="button"
-                  class="btn btn-sm btn-outline-success"
+                  class="btn btn-sm btn-outline-secondary"
                   (click)="unshowItems(0)"
                 >
-                  {{ "BAZZAR.HIDE_ITEMS" | translate }}
+                  <i class="fa fa-shopping-basket" aria-hidden="true"></i>
                 </button>
                 <a
-                  class="btn btn-success btn-sm mx-2"
+                  class="btn btn-outline-success btn-sm mx-2 mt-lg-0 mt-2"
                   routerLink="/view-order"
                   [queryParams]="{ id: order.id }"
-                  >{{ "BAZZAR.ORDER_DETAILS" | translate }}
+                  ><i class="fa fa-info-circle" aria-hidden="true"></i>
                 </a>
               </td>
             </tr>
