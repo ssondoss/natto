@@ -25,3 +25,6 @@
   background-color: #eee !important;
   color: #000 !important;
 }
+.alert-success {
+  background-color: rgba(233, 233, 159, 0.507) !important;
+}

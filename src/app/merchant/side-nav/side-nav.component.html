@@ -1,18 +1,31 @@
 <div
   class="p-3 border-bottom side-nav text-left"
   routerLink="/account-information"
+  [ngClass]="{ 'bg-light': currentComponent === 'account-information' }"
 >
   {{ "BAZZAR.ACCOUNT_INFORMATION" | translate }}
 </div>
-<div class="p-3 border-bottom side-nav text-left" routerLink="/wardrobes">
+<div
+  class="p-3 border-bottom side-nav text-left"
+  routerLink="/wardrobes"
+  [ngClass]="{ 'bg-light': currentComponent === 'wardrobes' }"
+>
   {{ "BAZZAR.WARDROBES" | translate }}
 </div>
 
-<div class="p-3 border-bottom side-nav text-left" routerLink="/products">
+<div
+  class="p-3 border-bottom side-nav text-left"
+  routerLink="/products"
+  [ngClass]="{ 'bg-light': currentComponent === 'products' }"
+>
   {{ "BAZZAR.PRODUCTS" | translate }}
 </div>
 
-<div class="p-3 border-bottom side-nav text-left" routerLink="/orders">
+<div
+  class="p-3 border-bottom side-nav text-left"
+  routerLink="/orders"
+  [ngClass]="{ 'bg-light': currentComponent === 'orders' }"
+>
   {{ "BAZZAR.ORDERS" | translate }}
 </div>
 

@@ -61,14 +61,56 @@
                       style="list-style: none"
                     >
                       <li class="arabic-dir">
-                        <a href="" class="nav-link text-dark">
+                        <a
+                          (click)="changeOrderStatus('PROCCESSING', order.id)"
+                          *ngIf="order.orderStatus == 'PENDING'"
+                          class="nav-link text-dark"
+                        >
                           <i
                             class="fa fa-forward text-primary mx-1"
                             aria-hidden="true"
                           ></i>
 
-                          {{ "BAZZAR.CHANGE" | translate }}</a
+                          {{ "BAZZAR.PROCESSING" | translate }}</a
                         >
+
+                        <a
+                          (click)="changeOrderStatus('SHIPPED', order.id)"
+                          *ngIf="order.orderStatus == 'PROCCESSING'"
+                          class="nav-link text-dark"
+                        >
+                          <i
+                            class="fa fa-forward text-primary mx-1"
+                            aria-hidden="true"
+                          ></i>
+
+                          {{ "BAZZAR.SHIPPED" | translate }}</a
+                        >
+
+                        <a
+                          (click)="changeOrderStatus('DELIVERED', order.id)"
+                          *ngIf="order.orderStatus == 'SHIPPED'"
+                          class="nav-link text-dark"
+                        >
+                          <i
+                            class="fa fa-forward text-primary mx-1"
+                            aria-hidden="true"
+                          ></i>
+
+                          {{ "BAZZAR.DELIVERED" | translate }}</a
+                        >
+
+                        <a
+                          *ngIf="order.orderStatus == 'DELIVERED'"
+                          class="nav-link text-dark"
+                        >
+                          <!-- <i
+                            class="fa fa-forward text-primary mx-1"
+                            aria-hidden="true"
+                          ></i>
+
+                          {{ "BAZZAR.DELIVERED" | translate }}-->
+                        </a>
                       </li>
 
                       <li>
@@ -83,7 +125,23 @@
                       </li>
                     </ul>
                   </popover-content>
-                  <div class="my-auto">Lorem, ipsum.</div>
+                  <div class="my-auto">
+                    <span *ngIf="order.orderStatus == 'PENDING'"
+                      >{{ "BAZZAR.PENDING" | translate }}
+                    </span>
+                    <span *ngIf="order.orderStatus == 'PROCCESSING'"
+                      >{{ "BAZZAR.PROCESSING" | translate }}
+                    </span>
+                    <span *ngIf="order.orderStatus == 'DELIVERED'"
+                      >{{ "BAZZAR.DELIVERED" | translate }}
+                    </span>
+                    <span *ngIf="order.orderStatus == 'SHIPPED'"
+                      >{{ "BAZZAR.SHIPPED" | translate }}
+                    </span>
+                    <span *ngIf="order.orderStatus == 'CANCELED_BY_MERCHANT'"
+                      >{{ "BAZZAR.CANCELED_BY_MERCHANT" | translate }}
+                    </span>
+                  </div>
                   <!-- <a
                     class=""
                     (click)="changeOrderStatus('PROCCESSING', order.id)"

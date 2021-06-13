@@ -36,6 +36,7 @@ export class JoinUsComponent implements OnInit {
 
   ngOnInit(): void {
     this.clearjoinUsForm();
+    this.getTags();
   }
 
   uploadImage(event) {
