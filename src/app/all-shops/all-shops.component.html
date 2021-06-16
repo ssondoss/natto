@@ -54,10 +54,7 @@
     </div>
     <div class="col-lg-9 col-md-8 px-0 px-lg-3">
       <div class="row mx-0 px-0">
-        <div
-          *ngFor="let shop of shopsList"
-          class="col-lg-6 mx-auto px-md-3 px-0 mb-3"
-        >
+        <div *ngFor="let shop of shopsList" class="col-lg-6 px-md-3 px-0 mb-3">
           <shop-card-main [shop]="shop"></shop-card-main>
         </div>
       </div>

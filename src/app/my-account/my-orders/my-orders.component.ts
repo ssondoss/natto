@@ -9,6 +9,7 @@ import { environment } from 'src/environments/environment';
 import { MatDialog } from '@angular/material/dialog';
 import { OrderDetailsComponent } from '../order-details/order-details.component';
 import { RateOrderComponent } from '../rate-order/rate-order.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-my-orders',
@@ -34,6 +35,10 @@ export class MyOrdersComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getAllOrders();
+  }
+
+  getAllOrders() {
     this.http
       .get(environment.apiURL + '/order/get-order-by-client-id/' + this.user.id)
       .subscribe((data: any) => {
@@ -87,6 +92,30 @@ export class MyOrdersComponent implements OnInit {
     }, 2000);
   }
 
+  deleteOrder(order) {
+    this.http.delete(environment.apiURL + '/order/' + order.id).subscribe(
+      (res) => {
+        if (this.appService.lang == 'en')
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Order cancled ',
+            showConfirmButton: false,
+            timer: 2000,
+          });
+        else
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'تم الغاء الطلب ',
+            showConfirmButton: false,
+            timer: 2000,
+          });
+        this.getAllOrders();
+      },
+      (err) => {}
+    );
+  }
   getOrderStatusEnglish(status) {
     switch (status) {
       case 'PENDING':

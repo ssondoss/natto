@@ -1,13 +1,29 @@
-<div class="p-3 border-bottom side-nav text-left" routerLink="/my-account">
+<div
+  class="p-3 border-bottom side-nav text-left"
+  [ngClass]="{ 'bg-light': currentComponent === 'my-account' }"
+  routerLink="/my-account"
+>
   {{ "BAZZAR.ACCOUNT_INFORMATION" | translate }}
 </div>
-<div class="p-3 border-bottom side-nav text-left" routerLink="/saved-address">
+<div
+  class="p-3 border-bottom side-nav text-left"
+  [ngClass]="{ 'bg-light': currentComponent === 'saved-address' }"
+  routerLink="/saved-address"
+>
   {{ "BAZZAR.SAVED_ADDRESSES" | translate }}
 </div>
-<div class="p-3 border-bottom side-nav text-left" routerLink="/my-orders">
+<div
+  class="p-3 border-bottom side-nav text-left"
+  [ngClass]="{ 'bg-light': currentComponent === 'my-orders' }"
+  routerLink="/my-orders"
+>
   {{ "BAZZAR.MY_ORDERS" | translate }}
 </div>
 
-<div class="p-3 side-nav text-left" routerLink="/change-password">
+<div
+  class="p-3 side-nav text-left"
+  routerLink="/change-password"
+  [ngClass]="{ 'bg-light': currentComponent === 'change-password' }"
+>
   {{ "BAZZAR.CHANGE_PASSWORD_SMALL" | translate }}
 </div>

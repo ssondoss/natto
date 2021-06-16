@@ -9,6 +9,7 @@ import { User } from 'src/app/models/user';
 import { UserSessionService } from 'src/app/user-session.service';
 import { environment } from 'src/environments/environment';
 import { AddAddressComponent } from '../add-address/add-address.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-saved-address',
@@ -71,42 +72,28 @@ export class SavedAddressComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(async (data: any) => {
       if (data.event == 'ADDED') {
-        this.addressForm = data.form;
-        this.updateAddress(data.form);
+        this.updateAddress();
       }
     });
   }
 
-  updateAddress(form) {
-    if (form.valid) {
-      this.http
-        .post(
-          environment.apiURL + '/user/update-user-address/' + this.user.id,
-          {
-            addressLineOne: form.controls['addressLineOne'].value,
-            addressLineTwo: form.controls['addressLineTwo'].value,
-            city: form.controls['city'].value,
-            country: form.controls['country'].value,
-          }
-        )
-        .subscribe((data: any) => {
-          this.userSession.user.address = data.deliveryAddress;
-          this.user.address = data.deliveryAddress;
-
-          this.http
-            .post(
-              environment.apiURL +
-                '/user/update-user-mobile-number/' +
-                this.user.id,
-              this.addressForm.controls['phone'].value
-            )
-            .subscribe((data: any) => {
-              this.addressForm.controls['phone'].setValue(data.phone);
-
-              this.userSession.user.phone = data.phone;
-              this.user.phone = data.phone;
-            });
-        });
-    }
+  updateAddress() {
+    this.user = this.userSession.user;
+    if (this.appService.lang == 'en')
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Your address updated successfully',
+        showConfirmButton: false,
+        timer: 2000,
+      });
+    else
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'تم تحديث العنوان بنجاح',
+        showConfirmButton: false,
+        timer: 2000,
+      });
   }
 }

@@ -24,7 +24,7 @@ export class ProductsComponent implements OnInit {
   merchant: any;
   products: any;
   wardrobes: any;
-  imageValue: Object;
+  imageValue: string;
 
   maximize() {
     this.show = 1;

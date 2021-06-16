@@ -1,4 +1,4 @@
-<!-- <div *ngIf="mySuccessAlert === true" class="text-center justify-content-center">
+<div *ngIf="mySuccessAlert === true" class="text-center justify-content-center">
   <div class="fixed-top alert alert-success alert-animation mx-auto">
     <img
       src="../../assets/check_mark-removebg-preview.png"
@@ -7,14 +7,14 @@
     />
     {{ "BAZZAR.UPDATED_SUCCESSFULLY" | translate }}
   </div>
-</div> -->
+</div>
 
-<!-- <div *ngIf="myDangerAlert === true" class="text-center justify-content-center">
+<div *ngIf="myDangerAlert === true" class="text-center justify-content-center">
   <div class="fixed-top alert alert-danger alert-animation mx-auto">
     <img src="../../../assets/cancel.png" alt="image" height="40" />
     {{ "BAZZAR.ALREADY_RATED" | translate }}
   </div>
-</div> -->
+</div>
 <top-part></top-part>
 <div class="container my-5 py-5">
   <div class="row mx-0 arabic-dir">
@@ -80,6 +80,16 @@
               <div
                 class="col-lg-5 col-md-4 text-md-right text-center my-auto pb-2 pb-md-0 px-0"
               >
+                <a
+                  class="btn btn-outline-secondary small mx-1 t-media-12 arabic-dir"
+                  (click)="deleteOrder(order)"
+                  *ngIf="order.orderStatus == 'PENDING'"
+                >
+                  <small class="text-dark">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                    {{ "BAZZAR.CANCLE" | translate }}
+                  </small></a
+                >
                 <a
                   class="btn btn-outline-secondary small mx-1 t-media-12 arabic-dir"
                   (click)="openDialogRateOrder(order)"

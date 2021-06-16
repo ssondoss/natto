@@ -57,8 +57,9 @@ export class ChangePasswordComponent implements OnInit {
   }
   updatePassword() {
     let newPassword = this.changePasswordForm.controls['newPassword'].value;
-    let repeateNewPassword =
-      this.changePasswordForm.controls['repeateNewPassword'].value;
+    let repeateNewPassword = this.changePasswordForm.controls[
+      'repeateNewPassword'
+    ].value;
     if (newPassword == repeateNewPassword) {
       let httpParams = new HttpParams()
         .append('newPassword', newPassword)
@@ -101,7 +102,7 @@ export class ChangePasswordComponent implements OnInit {
               Swal.fire({
                 position: 'top-end',
                 icon: 'error',
-                title: 'لااا ',
+                title: 'حدث خطاء بالعملية ',
                 showConfirmButton: false,
                 timer: 1500,
               });
@@ -120,7 +121,7 @@ export class ChangePasswordComponent implements OnInit {
         Swal.fire({
           position: 'top-end',
           icon: 'warning',
-          title: 'لااا ',
+          title: 'كلمة السر غير متطابقة  ',
           showConfirmButton: false,
           timer: 1500,
         });
