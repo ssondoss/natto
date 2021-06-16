@@ -1,14 +1,14 @@
 <div class="bg-light2 arabic-dir">
   <div class="container">
-    <div class="row mx-0 py-4 arabic-dir">
-      <div class="h5 text-left my-auto">
+    <div class="row mx-0 py-4 arabic-dir t-smaller">
+      <div class="h5 text-left my-auto t-smaller">
         {{ "BAZZAR.MY_ACCOUNT" | translate }}
       </div>
-      <div class="bread my-auto">
-        {{ "BAZZAR.HOME" | translate }}
+      <div class="bread my-auto t-smaller">
+        <a routerLink="/" class="text-dark"> {{ "BAZZAR.HOME" | translate }}</a>
         /
-        <span routerLink="/all-shops" class="primary">
-          {{ "BAZZAR.MY_ACCOUNT" | translate }}</span
+        <a routerLink="/my-account" class="primary t-smaller">
+          {{ "BAZZAR.MY_ACCOUNT" | translate }}</a
         >
       </div>
     </div>
@@ -18,7 +18,7 @@
   <img src="../../assets/profilePic.jpg" alt="" width="100%" height="auto" />
   <div class="bg-light2 py-3">
     <div class="container my-2">
-      <div class="h6 text-left">Username</div>
+      <div class="h6 text-left">{{ username }}</div>
     </div>
   </div>
 </div>

@@ -69,3 +69,9 @@
     padding-left: 10px !important;
   }
 }
+.stars {
+  margin-right: 10px !important;
+}
+.con-stars {
+  margin-left: auto !important;
+}

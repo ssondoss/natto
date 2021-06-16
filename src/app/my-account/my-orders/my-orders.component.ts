@@ -56,7 +56,7 @@ export class MyOrdersComponent implements OnInit {
 
   openDialogRateOrder(order: any) {
     const dialogRef = this.dialog.open(RateOrderComponent, {
-      width: '700px',
+      width: '400px',
       height: 'auto',
       maxWidth: '98%',
 

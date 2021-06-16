@@ -8,9 +8,9 @@
       <div class="h5 mb-3 text-left">
         {{ "BAZZAR.SAVED_ADDRESSES" | translate }}
       </div>
-      <div class="border px-md-4 p-3 rounded">
+      <div class="border px-md-4 p-3 rounded text-left">
         <div *ngIf="hasAddress === false">
-          <p class="text-muted">You dont have any saved address yet ..</p>
+          <p class="text-muted">{{ "BAZZAR.DONT_HAVE_ADDRESS" | translate }}</p>
           <a
             class="text-success ml-auto-en mr-auto-ar border-right-0-ar"
             (click)="openDialogAddAddress()"
@@ -22,7 +22,14 @@
         <div class="arabic-dir px-0" *ngIf="hasAddress === true">
           <div class="row mt-2 mx-0 px-0">
             <label
-              class="col-md-4 col-lg-3 col-form-label text-left my-auto text-muted font-weight-600 px-0"
+              class="
+                col-md-4 col-lg-3 col-form-label
+                text-left
+                my-auto
+                text-muted
+                font-weight-600
+                px-0
+              "
             >
               {{ "BAZZAR.ADDRESS" | translate }}
             </label>
@@ -38,7 +45,13 @@
           </div>
           <div class="row mt-2 mx-0 px-0">
             <label
-              class="col-md-4 col-lg-3 col-form-label text-left text-muted my-auto font-weight-600 px-0"
+              class="
+                col-md-4 col-lg-3 col-form-label
+                text-left text-muted
+                my-auto
+                font-weight-600
+                px-0
+              "
               style="word-wrap: break-word !important"
             >
               {{ "BAZZAR.MOBILE_NUMBER" | translate }}
@@ -49,7 +62,13 @@
           </div>
           <div class="row mx-0 mt-2 px-0">
             <label
-              class="col-md-4 col-lg-3 col-form-label text-left text-muted my-auto font-weight-600 px-0"
+              class="
+                col-md-4 col-lg-3 col-form-label
+                text-left text-muted
+                my-auto
+                font-weight-600
+                px-0
+              "
             >
               {{ "BAZZAR.ADDITIONAL_DIRECTIONS" | translate }}
             </label>

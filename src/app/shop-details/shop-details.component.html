@@ -31,7 +31,7 @@
             </h5>
             <div>
               <i class="fa fa-map-marker primary"></i>
-              <span class="mx-1"> rayad , jadah</span>
+              <span class="mx-1"> {{ merchant.city }} </span>
             </div>
             <div
               *ngIf="appService.lang == 'en'"
@@ -47,7 +47,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-6 w-100 mt-3 mt-lg-0">
+        <div class="col-md-6 w-100 mt-3 mt-lg-0 px-0">
           <div class="row mx-0 px-0">
             <div class="text-success t-14 text-left my-auto">
               <i class="fa fa-circle mx-1" aria-hidden="true"></i>
@@ -59,15 +59,18 @@
                 {{ getStatusArabic(merchant.merchantStatus) }}</span
               >
             </div>
-            <div class="ml-auto text-right d-flex">
+            <div class="con-stars text-right row mx-0 px-0">
               <ngb-rating
                 [max]="5"
-                class="mx-2 my-auto ml-auto"
+                class="my-auto stars px-0"
                 [(rate)]="currentRate"
                 [readonly]="true"
               ></ngb-rating>
-              <span class="bg-primary rounded-lg p-1 my-auto small ml-auto">
-                4.5/5</span
+              <small
+                class="bg-primary rounded-lg p-1 my-auto small ml-auto"
+                style="font-size: 12px !important"
+              >
+                4.5/5</small
               >
             </div>
           </div>
@@ -75,14 +78,20 @@
       </div>
 
       <hr />
-      <p *ngIf="appService.lang == 'en'" class="text-muted t-14 mb-0">
+      <div
+        *ngIf="appService.lang == 'en'"
+        class="text-muted t-14 mb-0 text-left"
+      >
         {{ merchant.descriptionEnglish }}
-      </p>
-      <p *ngIf="appService.lang == 'ar'" class="text-muted t-14 mb-0">
+      </div>
+      <div
+        *ngIf="appService.lang == 'ar'"
+        class="text-muted t-14 mb-0 text-left"
+      >
         {{ merchant.descriptionArabic }}
-      </p>
+      </div>
       <hr />
-      <ul class="nav nav-tabs border-bottom-0 mb-0">
+      <ul class="nav nav-tabs border-bottom-0 mb-0 w-100 px-0">
         <li
           class="nav-item py-3"
           (click)="showMenu()"
@@ -152,7 +161,15 @@
               class="justify-content-center"
             >
               <div
-                class="item mx-md-4 mx-3 px-2 d-flex itemsContainer font-weight-600 text-muted"
+                class="
+                  item
+                  mx-md-4 mx-3
+                  px-2
+                  d-flex
+                  itemsContainer
+                  font-weight-600
+                  text-muted
+                "
               >
                 <span *ngIf="appService.lang == 'en'" class="m-auto"
                   >{{ item.titleEnglish }}
@@ -180,46 +197,64 @@
                 category.titleArabic
               }}</span>
             </div>
-            <div class="col-lg-6 px-0">
+            <div class="row mx-0 px-0">
               <div
+                class="col-lg-6 px-1"
                 *ngFor="let product of category.products"
-                class="productAnimation"
               >
-                <div class="mx-0 mt-3 px-0 border w-100 row mx-0">
-                  <div class="pl-0 mx-0 col-lg-3 col-3">
-                    <img
-                      [src]="getSource(product.image)"
-                      alt="image"
-                      height="80"
-                      width="100%"
-                      class=""
-                    />
-                  </div>
-                  <div class="text-left col-lg-7 col-7 mx-0 px-0 my-auto py-2">
-                    <span
-                      *ngIf="appService.lang == 'en'"
-                      class="font-weight-600"
-                      >{{ product.titleEnglish }}</span
+                <div class="productAnimation">
+                  <div class="mx-0 mt-3 px-0 border w-100 row mx-0">
+                    <div class="pl-0 mx-0 col-lg-3 col-3">
+                      <img
+                        [src]="getSource(product.image)"
+                        alt="image"
+                        height="80"
+                        width="100%"
+                        class=""
+                      />
+                    </div>
+                    <div
+                      class="text-left col-lg-7 col-7 mx-0 px-0 my-auto py-2"
                     >
-                    <span
-                      *ngIf="appService.lang == 'ar'"
-                      class="font-weight-600"
-                      >{{ product.titleArabic }}</span
-                    >
-                    <div class="py-1"></div>
-                    <span
-                      >{{ product.price | number: ".2" }}
-                      <span class="small">{{ "BAZZAR.SAR" | translate }}</span>
-                    </span>
-                  </div>
+                      <span
+                        *ngIf="appService.lang == 'en'"
+                        class="font-weight-600"
+                        >{{ product.titleEnglish }}</span
+                      >
+                      <span
+                        *ngIf="appService.lang == 'ar'"
+                        class="font-weight-600"
+                        >{{ product.titleArabic }}</span
+                      >
+                      <div class="py-1"></div>
+                      <span
+                        >{{ product.price | number: ".2" }}
+                        <span class="small">{{
+                          "BAZZAR.SAR" | translate
+                        }}</span>
+                      </span>
+                    </div>
 
-                  <div
-                    class="col-lg-2 col-2 text-right text-left-ar mx-0 px-2 my-auto"
-                  >
-                    <i
-                      class="fa fa-plus-circle text-success fa-20 icon-add mt-1"
-                      (click)="openDialogAddProduct(product)"
-                    ></i>
+                    <div
+                      class="
+                        col-lg-2 col-2
+                        text-right text-left-ar
+                        mx-0
+                        px-2
+                        my-auto
+                      "
+                    >
+                      <i
+                        class="
+                          fa fa-plus-circle
+                          text-success
+                          fa-20
+                          icon-add
+                          mt-1
+                        "
+                        (click)="openDialogAddProduct(product)"
+                      ></i>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -247,7 +282,13 @@
             </div>
 
             <div
-              class="col-md-6 small text-muted text-left d-none d-md-block my-auto"
+              class="
+                col-md-6
+                small
+                text-muted text-left
+                d-none d-md-block
+                my-auto
+              "
             >
               {{ review.user.username }}
             </div>
@@ -256,7 +297,14 @@
             </div>
 
             <div
-              class="row mx-0 d-block d-md-none my-auto small text-muted text-left"
+              class="
+                row
+                mx-0
+                d-block d-md-none
+                my-auto
+                small
+                text-muted text-left
+              "
             >
               {{ review.user.username }}
             </div>
@@ -277,7 +325,13 @@
           <hr class="w-100" />
           <div class="row mx-0">
             <div
-              class="col-md-3 text-dark text-left px-0 font-weight-600 font-14px my-auto"
+              class="
+                col-md-3
+                text-dark text-left
+                px-0
+                font-weight-600 font-14px
+                my-auto
+              "
             >
               {{ "BAZZAR.DESCRIPTION" | translate }}
             </div>
@@ -293,7 +347,12 @@
           <hr />
           <div class="row mx-0">
             <div
-              class="col-md-3 text-dark text-left px-0 font-weight-600 font-14px"
+              class="
+                col-md-3
+                text-dark text-left
+                px-0
+                font-weight-600 font-14px
+              "
             >
               {{ "BAZZAR.RATING" | translate }}
             </div>
@@ -315,7 +374,12 @@
           <hr />
           <div class="row mx-0 mb-4">
             <div
-              class="col-md-3 text-dark text-left px-0 font-weight-600 font-14px"
+              class="
+                col-md-3
+                text-dark text-left
+                px-0
+                font-weight-600 font-14px
+              "
             >
               {{ "BAZZAR.PAYMENT" | translate }}
             </div>

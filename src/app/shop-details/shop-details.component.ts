@@ -263,8 +263,7 @@ export class ShopDetailsComponent implements OnInit {
           await swal
             .fire({
               title: 'Shopping Cart',
-              text:
-                'Adding items from another merchant will clear your old cart. ',
+              text: 'Adding items from another merchant will clear your old cart. ',
               icon: 'warning',
               showCancelButton: true,
               confirmButtonColor: '#ff5a00',

@@ -15,6 +15,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { environment } from 'src/environments/environment';
 import { User } from '../models/user';
 import { OrderDetailsComponent } from './order-details/order-details.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-my-account',
@@ -48,25 +49,25 @@ export class MyAccountComponent implements OnInit {
     if (!userSession.isLoggedIn) userSession.logout();
     else {
       this.user = userSession.user;
-      console.log(this.user);
-      if (
-        this.user.address.addressLineOne == 'NA' ||
-        this.user.address.addressLineTwo == 'NA' ||
-        this.user.address.city == 'NA' ||
-        this.user.address.country == 'NA'
-      ) {
-        this.hasAddress = false;
-      } else {
-        this.hasAddress = true;
-      }
+      //   console.log(this.user);
+      //   if (
+      //     this.user.address.addressLineOne == 'NA' ||
+      //     this.user.address.addressLineTwo == 'NA' ||
+      //     this.user.address.city == 'NA' ||
+      //     this.user.address.country == 'NA'
+      //   ) {
+      //     this.hasAddress = false;
+      //   } else {
+      //     this.hasAddress = true;
+      //   }
     }
   }
-  showSuccessAlert() {
-    this.mySuccessAlert = true;
-    setTimeout(() => {
-      this.mySuccessAlert = false;
-    }, 2000);
-  }
+  // showSuccessAlert() {
+  //   this.mySuccessAlert = true;
+  //   setTimeout(() => {
+  //     this.mySuccessAlert = false;
+  //   }, 2000);
+  // }
   returnLanguage() {
     return this.appService.lang;
   }
@@ -105,7 +106,7 @@ export class MyAccountComponent implements OnInit {
     });
   }
 
-  updateUsernameAndMobile() {
+  updateMobile() {
     if (this.changeMobileForm.controls['phone'].valid) {
       let username = this.userSession.user.username;
       let phone = this.changeMobileForm.controls['phone'].value;
@@ -130,7 +131,22 @@ export class MyAccountComponent implements OnInit {
           localStorage.removeItem('bazzar-user-jwt');
 
           localStorage.setItem('bazzar-user-jwt', JSON.stringify(token));
-          this.showSuccessAlert();
+          if (this.appService.lang == 'en')
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Your phone number changed successfully',
+              showConfirmButton: false,
+              timer: 2000,
+            });
+          else
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'تم تغيير رقم هاتفك بنجاح',
+              showConfirmButton: false,
+              timer: 2000,
+            });
         });
     } else {
       this.changeMobileForm.markAllAsTouched();

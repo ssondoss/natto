@@ -14,6 +14,7 @@ import { environment } from 'src/environments/environment';
 })
 export class AddAddressComponent implements OnInit {
   user: any;
+  saudi;
   constructor(
     public dialogRef: MatDialogRef<AddAddressComponent>,
     public formBuilder: FormBuilder,
@@ -22,6 +23,8 @@ export class AddAddressComponent implements OnInit {
     private http: HttpClient,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
+    if (this.appService.lang == 'en') this.saudi = 'Saudi Arabia';
+    else this.saudi = 'السعودية';
     this.user = userSession.user;
   }
   addAddressForm: FormGroup;
@@ -33,7 +36,7 @@ export class AddAddressComponent implements OnInit {
       this.user.address.addressLineOne == 'NA' ||
       this.user.address.addressLineTwo == 'NA' ||
       this.user.address.city == 'NA' ||
-      this.user.address.country == 'NA'
+      this.user.address.phone == 'NA'
     ) {
       this.addAddressForm = this.formBuilder.group({
         phone: [
@@ -52,7 +55,7 @@ export class AddAddressComponent implements OnInit {
         ],
         addressLineTwo: ['', Validators.compose([Validators.maxLength(500)])],
 
-        country: ['', Validators.required],
+        country: [this.saudi, Validators.required],
         city: ['', Validators.required],
       });
     } else {
@@ -76,7 +79,7 @@ export class AddAddressComponent implements OnInit {
           Validators.compose([Validators.maxLength(500)]),
         ],
 
-        country: ['Jordan', Validators.required],
+        country: [this.saudi, Validators.required],
         city: [this.user.address.city, Validators.required],
       });
     }
@@ -89,10 +92,10 @@ export class AddAddressComponent implements OnInit {
           .post(
             environment.apiURL + '/user/update-user-address/' + this.user.id,
             {
-              addressLineOne: this.addAddressForm.controls['addressLineOne']
-                .value,
-              addressLineTwo: this.addAddressForm.controls['addressLineTwo']
-                .value,
+              addressLineOne:
+                this.addAddressForm.controls['addressLineOne'].value,
+              addressLineTwo:
+                this.addAddressForm.controls['addressLineTwo'].value,
               city: this.addAddressForm.controls['city'].value,
               country: this.addAddressForm.controls['country'].value,
             }

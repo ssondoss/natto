@@ -75,6 +75,8 @@
     "SAVE_CHANGES": "حفظ التغييرات",
     "ALL_MERCHANTS": "كافة المتاجر",
     "UPDATE_PRODUCT": "تحديث المنتج",
+    "CHANGE_PASSWORD_SMALL": "تغيير كلمة السر",
+    "DONT_HAVE_ADDRESS": "ليس لديك عناوين محفوظة بعد ..",
 
     "DELIVERY_DESCRIPTION": "تفاصيل التوصيل",
     "PENDING": "قيد الانتظار",
@@ -100,7 +102,7 @@
     "UNPAID_ORDERS": "الطلبات الغير مدفوعة",
     "ACCEPT": "قبول",
     "REJECT": "رفض",
-
+    "OLD_PASSWORD": "كلمة المرور القديمة",
     "AGREE_OF_TERMS": "عند  قيامك بإنشاء حساب أنت تقوم بالموافقة تلقائياً على سياسات الخصوصية وشروط الاستخدام ",
     "ALREADY_YOU_HAVE_ACCOUNT": "بالفعل لديك حساب ؟",
     "CREATE_AN_ACCOUNT": "إنشاء حساب",

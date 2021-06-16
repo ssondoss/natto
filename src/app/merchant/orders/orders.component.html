@@ -39,92 +39,7 @@
               <!-- <td>{{ order.paymentMethod }}</td> -->
               <td>{{ order.total }} {{ "BAZZAR.SAR" | translate }}</td>
               <td>
-                <div class="row mx-auto text-center justifiy-content-center">
-                  <img
-                    src="../../../assets/to-do.svg"
-                    height="25"
-                    width="auto"
-                    class="px-2"
-                    [popoverOnHover]="false"
-                    [popover]="myPopover"
-                  />
-
-                  <popover-content
-                    #myPopover
-                    placement="top"
-                    [animation]="true"
-                    class="arabic-dir"
-                    [closeOnClickOutside]="true"
-                  >
-                    <ul
-                      class="no-bullets text-left arabic-dir"
-                      style="list-style: none"
-                    >
-                      <li class="arabic-dir">
-                        <a
-                          (click)="changeOrderStatus('PROCCESSING', order.id)"
-                          *ngIf="order.orderStatus == 'PENDING'"
-                          class="nav-link text-dark"
-                        >
-                          <i
-                            class="fa fa-forward text-primary mx-1"
-                            aria-hidden="true"
-                          ></i>
-
-                          {{ "BAZZAR.PROCESSING" | translate }}</a
-                        >
-
-                        <a
-                          (click)="changeOrderStatus('SHIPPED', order.id)"
-                          *ngIf="order.orderStatus == 'PROCCESSING'"
-                          class="nav-link text-dark"
-                        >
-                          <i
-                            class="fa fa-forward text-primary mx-1"
-                            aria-hidden="true"
-                          ></i>
-
-                          {{ "BAZZAR.SHIPPED" | translate }}</a
-                        >
-
-                        <a
-                          (click)="changeOrderStatus('DELIVERED', order.id)"
-                          *ngIf="order.orderStatus == 'SHIPPED'"
-                          class="nav-link text-dark"
-                        >
-                          <i
-                            class="fa fa-forward text-primary mx-1"
-                            aria-hidden="true"
-                          ></i>
-
-                          {{ "BAZZAR.DELIVERED" | translate }}</a
-                        >
-
-                        <a
-                          *ngIf="order.orderStatus == 'DELIVERED'"
-                          class="nav-link text-dark"
-                        >
-                          <!-- <i
-                            class="fa fa-forward text-primary mx-1"
-                            aria-hidden="true"
-                          ></i>
-
-                          {{ "BAZZAR.DELIVERED" | translate }}-->
-                        </a>
-                      </li>
-
-                      <li>
-                        <a href="" class="nav-link text-dark">
-                          <i
-                            class="fa fa-times-circle-o text-danger mx-1"
-                            aria-hidden="true"
-                          ></i>
-
-                          {{ "BAZZAR.CANCEL" | translate }}</a
-                        >
-                      </li>
-                    </ul>
-                  </popover-content>
+                <div class="text-center justifiy-content-center">
                   <div class="my-auto">
                     <span *ngIf="order.orderStatus == 'PENDING'"
                       >{{ "BAZZAR.PENDING" | translate }}
@@ -184,6 +99,91 @@
                 </div>
               </td>
               <td class="mt-2">
+                <img
+                  src="../../../assets/to-do.svg"
+                  height="25"
+                  width="auto"
+                  class="px-2"
+                  [popoverOnHover]="false"
+                  [popover]="myPopover"
+                />
+
+                <popover-content
+                  #myPopover
+                  placement="top"
+                  [animation]="true"
+                  class="arabic-dir"
+                  [closeOnClickOutside]="true"
+                >
+                  <ul
+                    class="no-bullets text-left arabic-dir"
+                    style="list-style: none"
+                  >
+                    <li class="arabic-dir">
+                      <a
+                        (click)="changeOrderStatus('PROCCESSING', order.id)"
+                        *ngIf="order.orderStatus == 'PENDING'"
+                        class="nav-link text-dark"
+                      >
+                        <i
+                          class="fa fa-forward text-primary mx-1"
+                          aria-hidden="true"
+                        ></i>
+
+                        {{ "BAZZAR.PROCESSING" | translate }}</a
+                      >
+
+                      <a
+                        (click)="changeOrderStatus('SHIPPED', order.id)"
+                        *ngIf="order.orderStatus == 'PROCCESSING'"
+                        class="nav-link text-dark"
+                      >
+                        <i
+                          class="fa fa-forward text-primary mx-1"
+                          aria-hidden="true"
+                        ></i>
+
+                        {{ "BAZZAR.SHIPPED" | translate }}</a
+                      >
+
+                      <a
+                        (click)="changeOrderStatus('DELIVERED', order.id)"
+                        *ngIf="order.orderStatus == 'SHIPPED'"
+                        class="nav-link text-dark"
+                      >
+                        <i
+                          class="fa fa-forward text-primary mx-1"
+                          aria-hidden="true"
+                        ></i>
+
+                        {{ "BAZZAR.DELIVERED" | translate }}</a
+                      >
+
+                      <a
+                        *ngIf="order.orderStatus == 'DELIVERED'"
+                        class="nav-link text-dark"
+                      >
+                        <!-- <i
+                            class="fa fa-forward text-primary mx-1"
+                            aria-hidden="true"
+                          ></i>
+
+                          {{ "BAZZAR.DELIVERED" | translate }}-->
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="" class="nav-link text-dark">
+                        <i
+                          class="fa fa-times-circle-o text-danger mx-1"
+                          aria-hidden="true"
+                        ></i>
+
+                        {{ "BAZZAR.CANCEL" | translate }}</a
+                      >
+                    </li>
+                  </ul>
+                </popover-content>
                 <button
                   *ngIf="order.id != showenOrderId"
                   type="button"

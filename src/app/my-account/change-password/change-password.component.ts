@@ -1,9 +1,11 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApplicationStateService } from 'src/app/app.service';
 import { UserSessionService } from 'src/app/user-session.service';
+import { environment } from 'src/environments/environment';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-change-password',
@@ -12,11 +14,14 @@ import { UserSessionService } from 'src/app/user-session.service';
 })
 export class ChangePasswordComponent implements OnInit {
   changePasswordForm: FormGroup;
+  userID: any;
+  code: any;
   constructor(
     public appService: ApplicationStateService,
     private userSession: UserSessionService,
     private router: Router,
     private http: HttpClient,
+    private activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
 
@@ -26,9 +31,8 @@ export class ChangePasswordComponent implements OnInit {
         '',
         Validators.compose([
           Validators.required,
-          Validators.minLength(10),
-          Validators.maxLength(15),
-          // prettier-ignore
+          Validators.minLength(6),
+          Validators.maxLength(99),
         ]),
       ],
       newPassword: [
@@ -51,5 +55,75 @@ export class ChangePasswordComponent implements OnInit {
       ],
     });
   }
-  updatePassword() {}
+  updatePassword() {
+    let newPassword = this.changePasswordForm.controls['newPassword'].value;
+    let repeateNewPassword =
+      this.changePasswordForm.controls['repeateNewPassword'].value;
+    if (newPassword == repeateNewPassword) {
+      let httpParams = new HttpParams()
+        .append('newPassword', newPassword)
+        .append('code', this.code)
+        .append('userID', this.userID);
+      this.http
+        .post(
+          environment.apiURL + '/reset-password/set-new-password/',
+          httpParams
+        )
+        .subscribe(
+          (data: any) => {
+            if (this.appService.lang == 'en')
+              Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Changed successfully',
+                showConfirmButton: false,
+                timer: 1500,
+              });
+            else
+              Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'تم بنجاح',
+                showConfirmButton: false,
+                timer: 1500,
+              });
+          },
+          (error: any) => {
+            if (this.appService.lang == 'en')
+              Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: 'Wrong Opration',
+                showConfirmButton: false,
+                timer: 1500,
+              });
+            else
+              Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: 'لااا ',
+                showConfirmButton: false,
+                timer: 1500,
+              });
+          }
+        );
+    } else {
+      if (this.appService.lang == 'en')
+        Swal.fire({
+          position: 'top-end',
+          icon: 'warning',
+          title: "Passwords didn't match",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      else
+        Swal.fire({
+          position: 'top-end',
+          icon: 'warning',
+          title: 'لااا ',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+    }
+  }
 }

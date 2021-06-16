@@ -1,6 +1,7 @@
 import { DOCUMENT } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Injectable, HostListener, Inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 
 @Injectable()
@@ -10,6 +11,7 @@ export class ApplicationStateService {
 
   constructor(
     public http: HttpClient,
+    public router: Router,
     public translate: TranslateService,
     @Inject(DOCUMENT) private document: Document
   ) {
@@ -26,7 +28,12 @@ export class ApplicationStateService {
       this.isMobileResolution = false;
     }
   }
-
+  goToLogin() {
+    this.router.navigate(['/login']);
+  }
+  goToHome() {
+    this.router.navigate(['/']);
+  }
   public getIsMobileResolution(): boolean {
     return this.isMobileResolution;
   }
