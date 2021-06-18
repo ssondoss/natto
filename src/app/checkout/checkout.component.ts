@@ -321,39 +321,77 @@ export class CheckoutComponent implements OnInit {
         quantity: item.count,
       });
     });
-    this.http
-      .post(environment.apiURL + '/order/', order)
-      .subscribe((data: any) => {
-        this.http
-          .post(
-            environment.apiURL +
-              '/shopping-cart/clear-cart-by-user-id/' +
-              this.shoppingCart.id,
-            {}
-          )
-          .subscribe((emptyCart: any) => {
-            this.userSession.shoppingCart = emptyCart;
-            this.shoppingCart = emptyCart;
-            if (this.appService.lang == 'en')
-              swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'Your order Placed Successfully',
-                showConfirmButton: false,
-                timer: 2000,
-              });
-            else
-              swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'لقد تم تقديم طلبك بنجاح  ',
-                showConfirmButton: false,
-                timer: 2000,
-              });
+
+    if (
+      this.addressForm.controls['addressLineOne'].value != 'NA' ||
+      this.addressForm.controls['addressLineTwo'].value != 'NA' ||
+      this.addressForm.controls['city'].value != 'NA' ||
+      this.addressForm.controls['country'].value != 'NA'
+    ) {
+      this.http
+        .post(environment.apiURL + '/order/', order)
+        .subscribe((data: any) => {
+          this.http
+            .post(
+              environment.apiURL +
+                '/shopping-cart/clear-cart-by-user-id/' +
+                this.shoppingCart.id,
+              {}
+            )
+            .subscribe((emptyCart: any) => {
+              this.userSession.shoppingCart = emptyCart;
+              this.shoppingCart = emptyCart;
+              if (this.appService.lang == 'en')
+                swal.fire({
+                  position: 'top-end',
+                  icon: 'success',
+                  title: 'Your order Placed Successfully',
+                  showConfirmButton: false,
+                  timer: 2000,
+                });
+              else
+                swal.fire({
+                  position: 'top-end',
+                  icon: 'success',
+                  title: 'لقد تم تقديم طلبك بنجاح  ',
+                  showConfirmButton: false,
+                  timer: 2000,
+                });
+            });
+        });
+      setTimeout(() => {
+        this.router.navigate(['/my-orders']);
+      }, 2000);
+    } else {
+      if (this.appService.lang == 'en')
+        swal
+          .fire({
+            title: 'Address',
+            text: 'you must enter the delivery address?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#ff5a00',
+            cancelButtonColor: '#bbb',
+            confirmButtonText: 'Yes, enter address !',
+          })
+          .then((result) => {
+            this.showDeliveryForm();
           });
-      });
-    setTimeout(() => {
-      this.router.navigate(['/my-orders']);
-    }, 2000);
+      else
+        swal
+          .fire({
+            title: 'العنوان',
+            text: 'يجب عليك ادخال عنوان التوصيل ؟',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#ff5a00',
+            cancelButtonColor: '#bbb',
+            confirmButtonText: 'نعم ،ادخل العنوان',
+            cancelButtonText: 'الغاء',
+          })
+          .then((result) => {
+            this.showDeliveryForm();
+          });
+    }
   }
 }

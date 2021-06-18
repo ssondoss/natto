@@ -24,7 +24,11 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private appService: ApplicationStateService,
     private userSession: UserSessionService
-  ) {}
+  ) {
+    if (userSession.isLoggedIn) {
+      router.navigate(['/']);
+    }
+  }
   openDialogForgetPassword(): void {
     const dialogRef = this.dialog.open(ForgetPasswordComponent, {
       width: '420px',

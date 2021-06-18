@@ -489,4 +489,6 @@ export class ShopDetailsComponent implements OnInit {
         return 'مفتوح';
     }
   }
+
+
 }

@@ -21,7 +21,11 @@ export class RegestrationComponent implements OnInit {
     private router: Router,
     private appService: ApplicationStateService,
     private userSession: UserSessionService
-  ) {}
+  ) {
+    if (userSession.isLoggedIn) {
+      router.navigate(['/']);
+    }
+  }
 
   ngOnInit(): void {
     this.regestrationForm = this.formBuilder.group(

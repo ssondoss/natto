@@ -217,13 +217,13 @@
                   text-muted
                 "
               >
-                <span *ngIf="appService.lang == 'en'" class="m-auto"
+                <a *ngIf="appService.lang == 'en'" class="m-auto text-dark" (click)="scroll(item.id)"
                   >{{ item.titleEnglish }}
-                </span>
+                </a>
 
-                <span *ngIf="appService.lang == 'ar'" class="m-auto"
+                <a *ngIf="appService.lang == 'ar'" class="m-auto text-dark"   (click)="scroll(item.id)"
                   >{{ item.titleArabic }}
-                </span>
+                </a>
               </div>
             </ng-template>
           </div>
@@ -236,12 +236,14 @@
             class="w-100 p-md-3 p-2"
           >
             <div class="text-left row mx-0 arabic-dir">
-              <span *ngIf="appService.lang == 'en'">{{
+              <span
+              *ngIf="appService.lang == 'en'">{{
                 category.titleEnglish
-              }}</span>
-              <span *ngIf="appService.lang == 'ar'">{{
+              }} </span>
+              <span
+              *ngIf="appService.lang == 'ar'">{{
                 category.titleArabic
-              }}</span>
+              }}</span >
             </div>
             <div class="row mx-0 px-0">
               <div
