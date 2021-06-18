@@ -1,11 +1,13 @@
 {
   "BAZZAR": {
+    "CONTACT_INFO": "معلومات التواصل",
     "BECOME_APARTNER": "انضم كشريك",
     "SAVED_ADDRESSES": "العناوين المحفوظة",
     "MY_ORDERS": "طلباتي",
     "ACCOUNT_INFO": "معلومات الحساب",
     "SELECT_COUNTRY": "اختر دولة",
     "KSA": "السعودية",
+    "CONFIRMATION": "التأكيد",
     "MOBILE_NUMBER1": "رقم الهاتف 1",
     "MOBILE_NUMBER2": "رقم الهاتف 2",
     "SELECT": "قم باختيار",
@@ -14,6 +16,7 @@
     "STORE_DESCRIPTION_ENGLISH": "وصف المتجر باللغة الإنجليزية",
     "STORE_DESCRIPTION_ARABIC": "وصف المتجر باللغة العربية",
     "STORE_LOGO": "شعار المتجر",
+    "LOCATION": "الموقع",
     "TAG": "التصنيف",
     "PAYMENT_ONLY_CASH": "الدفع فقط نقدي",
     "MENU": "قائمة المنتجات",
@@ -79,7 +82,7 @@
     "UPDATE_PRODUCT": "تحديث المنتج",
     "CHANGE_PASSWORD_SMALL": "تغيير كلمة السر",
     "DONT_HAVE_ADDRESS": "ليس لديك عناوين محفوظة بعد ..",
-
+    "BASIC_INFO": "معلومات أساسية",
     "DELIVERY_DESCRIPTION": "تفاصيل التوصيل",
     "PENDING": "قيد الانتظار",
     "PROCESSING": "قيد المتابعة",
@@ -87,7 +90,7 @@
     "DELIVERED": "تم توصيلها",
     "CANCELED_BY_MERCHANT": "تم إلغاؤها من المتجر",
     "VIEW_MENU": "إظهار قائمة الطعام",
-
+    "JOIN_US": "انضم إلينا",
     "MERCHANTS_REQUESTS": "طلبات المتاجر",
     "PAYMENTS": "الدفعات",
     "DISCOUNTS": "الخصومات",

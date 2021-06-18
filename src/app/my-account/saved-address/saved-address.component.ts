@@ -32,6 +32,8 @@ export class SavedAddressComponent implements OnInit {
     if (!userSession.isLoggedIn) userSession.logout();
     else {
       this.user = userSession.user;
+      console.log(this.user);
+
       if (
         this.user.address.addressLineOne == 'NA' ||
         this.user.address.addressLineTwo == 'NA' ||
@@ -43,7 +45,6 @@ export class SavedAddressComponent implements OnInit {
           phone: [this.user.phone],
           addressLineOne: [''],
           addressLineTwo: [''],
-
           city: [''],
           country: [''],
         });

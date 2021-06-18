@@ -71,13 +71,13 @@
         </mat-error>
       </div>
       <div class="form-group col-md-6 pr-1 pl-0">
-        <input
-          formControlName="city"
-          required
-          type="text"
-          placeholder="{{ 'BAZZAR.CITY' | translate }}"
-          class="form-control"
-        />
+        <select class="form-control p-foucs" formControlName="city" id="city">
+          <option value="">All</option>
+          <option *ngFor="let city of cities" [value]="city.city">
+            <span *ngIf="appService.lang == 'ar'">{{ city.city }}</span>
+            <span *ngIf="appService.lang == 'en'">{{ city.city }}</span>
+          </option>
+        </select>
         <mat-error
           *ngIf="
             addAddressForm.controls.city.errors?.required &&

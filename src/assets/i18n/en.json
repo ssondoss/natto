@@ -3,9 +3,13 @@
     "BECOME_APARTNER": "Become a partner",
     "SAVED_ADDRESSES": "Saved Addresses",
     "MY_ORDERS": "My Orders",
+    "CONTACT_INFO": "Contact Info",
     "ACCOUNT_INFO": "Account Info",
     "SELECT_COUNTRY": "Select Country",
     "KSA": "KSA",
+    "LOCATION": "Location",
+
+    "CONFIRMATION": "Confirmation",
     "MOBILE_NUMBER1": "Mobile number 1",
     "MOBILE_NUMBER2": "Mobile number 2",
     "SELECT": "Select",
@@ -296,6 +300,8 @@
     "DISABLED": "Disabled",
     "DASHBOARD": "Dashboard",
     "ARABIC": "ARABIC",
+    "BASIC_INFO": "Basic Info",
+
     "ENGLISH": "ENGLISH",
     "NEXT": "Next",
     "JOIN_US_TODAY": "Join us Today",
@@ -316,6 +322,7 @@
     "NEW": "New",
     "DETAILS": "Details",
     "RATE": "Rate",
+    "JOIN_US": "Join Us",
     "ALL": "All",
     "TAGS": "Tags",
     "CANCLE": "Cancel"

@@ -14,6 +14,9 @@ import { environment } from 'src/environments/environment';
 })
 export class AddAddressComponent implements OnInit {
   user: any;
+  cities: Object;
+  private _jsonURL = 'assets/json/cities.json';
+
   saudi;
   constructor(
     public dialogRef: MatDialogRef<AddAddressComponent>,
@@ -23,6 +26,9 @@ export class AddAddressComponent implements OnInit {
     private http: HttpClient,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
+    http.get(this._jsonURL).subscribe((data) => {
+      this.cities = data;
+    });
     if (this.appService.lang == 'en') this.saudi = 'Saudi Arabia';
     else this.saudi = 'السعودية';
     this.user = userSession.user;

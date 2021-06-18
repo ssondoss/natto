@@ -13,7 +13,10 @@ mat-error {
   float: right;
   font-size: 15px;
 }
-
+.h5-ar {
+  font-size: 23px !important;
+  font-weight: bolder !important;
+}
 form {
   direction: rtl !important;
 }

@@ -18,6 +18,7 @@ import swal from 'sweetalert2';
 })
 export class JoinUsComponent implements OnInit {
   private _jsonURL = 'assets/json/cities.json';
+  saudi;
 
   joinUsForm: FormGroup;
   lastUploadedLogo: string;
@@ -32,6 +33,8 @@ export class JoinUsComponent implements OnInit {
     http.get(this._jsonURL).subscribe((data) => {
       this.cities = data;
     });
+    if (this.appService.lang == 'en') this.saudi = 'Saudi Arabia';
+    else this.saudi = 'السعودية';
   }
 
   ngOnInit(): void {
@@ -187,7 +190,7 @@ export class JoinUsComponent implements OnInit {
           ]),
         ],
         city: ['', Validators.compose([Validators.required])],
-        country: [''],
+        country: [this.saudi],
 
         password: [
           '',

@@ -44,23 +44,6 @@ export class RateOrderComponent implements OnInit {
       })
       .subscribe(
         (data: any) => {
-          if (this.appService.lang == 'en')
-            Swal.fire({
-              position: 'top-end',
-              icon: 'success',
-              title: 'Changed successfully',
-              showConfirmButton: false,
-              timer: 1500,
-            });
-          else
-            Swal.fire({
-              position: 'top-end',
-              icon: 'success',
-              title: 'تم بنجاح',
-              showConfirmButton: false,
-              timer: 1500,
-            });
-
           this.dialogRef.close({ event: 'DONE' });
         },
         (error: any) => {
