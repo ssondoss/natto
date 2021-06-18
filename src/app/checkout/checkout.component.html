@@ -10,10 +10,16 @@
 </div>-->
 <div class="bg-light2">
   <div class="container">
-    <div class="row mx-0 py-4 arabic-dir">
-      <div class="h5 text-left my-auto">Checkout</div>
-      <div class="bread my-auto">
-        Home / <span routerLink="/all-shops" class="primary">Checkout</span>
+    <div class="row mx-0 py-4 arabic-dir t-smaller">
+      <div class="h5 text-left my-auto t-smaller" routerLink="/all-shops">
+        {{ "BAZZAR.CHECKOUT" | translate }}
+      </div>
+      <div class="bread my-auto t-smaller">
+        <a routerLink="/" class="text-dark"> {{ "BAZZAR.HOME" | translate }}</a>
+        /
+        <a routerLink="/checkout" class="primary t-smaller">
+          {{ "BAZZAR.CHECKOUT" | translate }}</a
+        >
       </div>
     </div>
   </div>
@@ -99,7 +105,7 @@
       <div class="px-md-2 px-0">
         <div class="" *ngIf="hasAddress == true && showDelForm == false">
           <div class="row mx-0 my-2">
-            <div class="small col-md-4 my-1">
+            <div class="small col-md-4 my-1 text-left">
               <span class="font-weight-bold"
                 >{{ "BAZZAR.MOBILE_NUMBER" | translate }} :
               </span>
@@ -107,13 +113,13 @@
             </div>
           </div>
           <div class="row mx-0 my-2">
-            <div class="small col-md-6 my-1">
+            <div class="small col-md-6 my-1 text-left">
               <span class="font-weight-bold"
                 >{{ "BAZZAR.COUNTRY" | translate }} :
               </span>
               <span class="text-muted">{{ user.address.country }}</span>
             </div>
-            <div class="small col-md-6 my-1">
+            <div class="small col-md-6 my-1 text-left">
               <span class="font-weight-bold"
                 >{{ "BAZZAR.CITY" | translate }} :
               </span>
@@ -122,7 +128,7 @@
           </div>
 
           <div class="row mx-0 my-2">
-            <div class="small col-md-12 my-1">
+            <div class="small col-md-12 my-1 text-left">
               <span class="font-weight-bold">
                 {{ "BAZZAR.ADDRESS_LINE" | translate }}:
               </span>
@@ -131,7 +137,7 @@
           </div>
 
           <div class="row mx-0 my-2">
-            <div class="small col-md-12 my-1">
+            <div class="small col-md-12 my-1 text-left">
               <span class="font-weight-bold">
                 {{ "BAZZAR.ADDITIONAL_NOTES" | translate }}:
               </span>
@@ -149,22 +155,33 @@
             <div class="row mx-0 text-left">
               <div class="form-group col-md-6 px-0" dir="ltr">
                 <input
-                  type="text"
+                  type="tel"
                   ng2TelInput
                   [ng2TelInputOptions]="{ initialCountry: 'sa' }"
                   formControlName="phone"
                   class="form-control"
                   placeholder="{{ 'BAZZAR.MOBILE_NUMBER1' | translate }}"
                   required
+                  maxlength="15"
+                  minlength="10"
+                  pattern="[0-9]+"
                 />
-                <br />
                 <mat-error
                   *ngIf="
                     addressForm.controls.phone.errors?.required &&
                     addressForm.controls.phone.touched
                   "
+                  >{{ "BAZZAR.REQUIRED" | translate }}</mat-error
                 >
-                  {{ "BAZZAR.REQUIRED" | translate }}
+                <mat-error
+                  *ngIf="addressForm.controls.phone.hasError('pattern')"
+                >
+                  {{ "BAZZAR.PHONE_PATTERN" | translate }}
+                </mat-error>
+                <mat-error
+                  *ngIf="addressForm.controls.phone.hasError('minlength')"
+                >
+                  {{ "BAZZAR.PHONE_LENGTH" | translate }}
                 </mat-error>
               </div>
               <!-- <div class="form-group col-md-3 pl-0">
@@ -197,6 +214,7 @@
                   type="text"
                   class="form-control"
                   required
+                  disabled
                   placeholder="{{ 'BAZZAR.COUNTRY' | translate }}"
                   formControlName="country"
                 />
@@ -210,17 +228,12 @@
                 </mat-error>
               </div>
               <div class="form-group col-md-6">
-                <select
-                  class="form-select form-control"
-                  formControlName="city"
-                  required
-                >
-                  <option selected>
-                    - {{ "BAZZAR.SELECT" | translate }} -
+                <select class="form-control" id="city" formControlName="city">
+                  <option>{{ "BAZZAR.ALL" | translate }}</option>
+                  <option *ngFor="let city of cities">
+                    <span *ngIf="appService.lang == 'ar'">{{ city.city }}</span>
+                    <span *ngIf="appService.lang == 'en'">{{ city.city }}</span>
                   </option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
                 </select>
                 <mat-error
                   *ngIf="
@@ -354,7 +367,7 @@
               {{ "BAZZAR.SALES_TAX" | translate }}
             </div>
             <div class="col-5 text-right text-left-ar">
-              {{ tax | number: ".2" }}{{ "BAZZAR.SAR" | translate }}
+              {{ tax | number: ".2" }} {{ "BAZZAR.SAR" | translate }}
             </div>
           </div>
           <div class="row mx-0 my-2 font-14px" *ngIf="withDiscount">
@@ -362,7 +375,7 @@
               {{ "BAZZAR.COUPON_DISCOUNT" | translate }}
             </div>
             <div class="col-5 text-right text-left-ar">
-              {{ discount | number: ".2" }}{{ "BAZZAR.SAR" | translate }}
+              {{ discount | number: ".2" }} {{ "BAZZAR.SAR" | translate }}
             </div>
           </div>
           <div class="row mx-0 my-2 font-14px">
@@ -370,7 +383,7 @@
               {{ "BAZZAR.TOTAL_AMOUNT" | translate }}
             </div>
             <div class="col-5 text-right text-left-ar">
-              {{ total | number: ".2" }}{{ "BAZZAR.SAR" | translate }}
+              {{ total | number: ".2" }} {{ "BAZZAR.SAR" | translate }}
             </div>
           </div>
           <hr />

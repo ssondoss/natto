@@ -57,18 +57,30 @@ export class ChangePasswordComponent implements OnInit {
   }
   updatePassword() {
     let newPassword = this.changePasswordForm.controls['newPassword'].value;
-    let repeateNewPassword = this.changePasswordForm.controls[
-      'repeateNewPassword'
-    ].value;
+    let repeateNewPassword =
+      this.changePasswordForm.controls['repeateNewPassword'].value;
     if (newPassword == repeateNewPassword) {
       let httpParams = new HttpParams()
         .append('newPassword', newPassword)
-        .append('code', this.code)
-        .append('userID', this.userID);
+        .append(
+          'oldPassword',
+          this.changePasswordForm.controls['oldPassword'].value
+        )
+        .append(
+          'confirmationPassword',
+          this.changePasswordForm.controls['repeateNewPassword'].value
+        );
       this.http
         .post(
-          environment.apiURL + '/reset-password/set-new-password/',
-          httpParams
+          environment.apiURL +
+            '/user/update-user-password/' +
+            this.userSession.user.id,
+          {
+            newPassword: newPassword,
+            oldPassword: this.changePasswordForm.controls['oldPassword'].value,
+            confirmationPassword:
+              this.changePasswordForm.controls['repeateNewPassword'].value,
+          }
         )
         .subscribe(
           (data: any) => {

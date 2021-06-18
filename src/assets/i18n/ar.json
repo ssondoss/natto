@@ -61,10 +61,12 @@
     "RATE_ORDER": "تقييم الطلب",
     "UPDATED_SUCCESSFULLY": "تم التحديث بنجاح",
     "ALREADY_RATED": "تم تقييم هذا الطلب بالفعل",
-    "ADD_ITEM_CHOICES": "إضافة خيارات النتج",
+    "ADD_ITEM_CHOICES": "إضافة خيارات المنتج",
     "ORDER_SUMMARY": "ملخص الطلب",
     "ORDER_STATUS": "حالة الطلب",
     "SHOP": "متجر",
+    "DETAILS": "التفاصيل",
+    "RATE": "تقييم",
     "TRY_AGAIN": "حصل خطأ ما ، الرجاء المحاولة مرة أخرى",
     "USE_ARABIC_LETTERS": "الرجاء استخدام الحروف العربية لهذا الحقل",
     "RATING": "التقييم",
@@ -102,6 +104,9 @@
     "UNPAID_ORDERS": "الطلبات الغير مدفوعة",
     "ACCEPT": "قبول",
     "REJECT": "رفض",
+    "GO_TO_MEAL": "اذهب للمتاجر",
+    "ALL": "الكل",
+
     "OLD_PASSWORD": "كلمة المرور القديمة",
     "AGREE_OF_TERMS": "عند  قيامك بإنشاء حساب أنت تقوم بالموافقة تلقائياً على سياسات الخصوصية وشروط الاستخدام ",
     "ALREADY_YOU_HAVE_ACCOUNT": "بالفعل لديك حساب ؟",
@@ -312,6 +317,7 @@
     "NEXT": "التالي",
     "VOUCHER_CODE": "كود الخصم",
     "ADD_SPECAIL_REQUEST": "أضف طلب خاص هنا",
+    "CHOOSE_MERCHANT": "اختر متجر",
 
     "JOIN_US_TODAY": "انضم الينا اليوم",
     "PROCEED_TO_CHECKOUT": "انتقل إلى عملية الدفع",
@@ -328,8 +334,15 @@
     "HOMR_SLIDER_Text": "خدمة ٢٤ ساعة",
     "FIND_NEW_MERCHANRS": "اكتشف متاجر جديدة",
     "NEW": "جديد",
+    "ADD_SHOP": "إضافة متجر",
+
+    "FILTER": "بحث",
+    "CATEGORY": "الصنف",
+    "MERCHANT_NAME": "اسم المتجر",
+    "SHOP_DETAILS": "تفاصيل المتجر",
     "ALL": "الكل",
+    "FIND_FOOD": "ابحث المنتجات",
     "TAGS": "الاقسام",
-    "CANCLE":"الغاء"
+    "CANCLE": "الغاء"
   }
 }

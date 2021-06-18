@@ -69,10 +69,39 @@ export class MyOrdersComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(async (data) => {
       if (data.event == 'DONE') {
-        this.showSuccessAlert();
+        if (this.appService.lang == 'en')
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Changed successfully',
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        else
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'تم بنجاح',
+            showConfirmButton: false,
+            timer: 1500,
+          });
       } else if (data.event == 'ALREADY_RATED') {
-        console.log('ALREADY_RATED');
-        this.showDangerAlert();
+        if (this.appService.lang == 'en')
+          Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'this order already rated',
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        else
+          Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'هذا الطلب تم تقييمه بالفعل',
+            showConfirmButton: false,
+            timer: 1500,
+          });
       }
     });
   }

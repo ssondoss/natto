@@ -75,3 +75,8 @@
 .con-stars {
   margin-left: auto !important;
 }
+@media screen and (min-width: 1023px) {
+  .text-lg-right-en {
+    text-align: right !important;
+  }
+}

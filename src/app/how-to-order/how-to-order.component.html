@@ -1,14 +1,15 @@
 <div class="bg-light2">
   <div class="container">
-    <div class="row mx-0 py-4 arabic-dir">
-      <div class="h5 text-left my-auto">
+    <div class="row mx-0 py-4 arabic-dir t-smaller">
+      <div class="h5 text-left my-auto t-smaller">
         {{ "BAZZAR.HOW_TO_ORDER" | translate }}
       </div>
-      <div class="bread my-auto">
-        {{ "BAZZAR.HOME" | translate }} /
-        <span routerLink="/how-to-order" class="primary"
-          >{{ "BAZZAR.HOW_TO_ORDER" | translate }}
-        </span>
+      <div class="bread my-auto t-smaller">
+        <a routerLink="/" class="text-dark"> {{ "BAZZAR.HOME" | translate }}</a>
+        /
+        <a routerLink="/how-to-order" class="primary t-smaller">
+          {{ "BAZZAR.HOW_TO_ORDER" | translate }}</a
+        >
       </div>
     </div>
   </div>

@@ -54,6 +54,7 @@ export class ShopDetailsComponent implements OnInit {
     let el = document.getElementById(id);
     el.scrollIntoView();
   }
+
   show = true;
   showitems = false;
   ngOnInit(): void {

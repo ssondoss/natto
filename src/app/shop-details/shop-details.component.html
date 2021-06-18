@@ -1,9 +1,15 @@
 <div class="bg-light2">
   <div class="container">
-    <div class="row mx-0 py-4 arabic-dir">
-      <div class="h5 text-left my-auto">Shop Details</div>
-      <div class="bread my-auto">
-        Home / <span routerLink="/all-shops" class="primary">Shop Details</span>
+    <div class="row mx-0 py-4 arabic-dir t-smaller">
+      <div class="h5 text-left my-auto t-smaller" routerLink="/all-shops">
+        {{ "BAZZAR.SHOP_DETAILS" | translate }}
+      </div>
+      <div class="bread my-auto t-smaller">
+        <a routerLink="/" class="text-dark"> {{ "BAZZAR.HOME" | translate }}</a>
+        /
+        <a routerLink="/" class="primary t-smaller">
+          {{ "BAZZAR.SHOP_DETAILS" | translate }}</a
+        >
       </div>
     </div>
   </div>
@@ -60,7 +66,25 @@
               >
             </div>
             <div class="con-stars text-right row mx-0 px-0">
+              <span class="my-auto text-dark font-weight-bold"
+                >{{ "BAZZAR.REVIEWS" | translate }} :</span
+              >
               <ngb-rating
+                class="my-auto stars px-0"
+                [max]="5"
+                [(rate)]="totalRatings"
+                [readonly]="true"
+              ></ngb-rating>
+              <span class="bg-primary rounded-lg p-1 my-auto small ml-auto">
+                <span *ngIf="totalRatings == 0">
+                  {{ "BAZZAR.NEW" | translate }}
+                </span>
+                <span *ngIf="totalRatings != 0" style="font-size: 11px">
+                  {{ totalRatings }} / 5
+                </span>
+              </span>
+
+              <!-- <ngb-rating
                 [max]="5"
                 class="my-auto stars px-0"
                 [(rate)]="currentRate"
@@ -71,7 +95,7 @@
                 style="font-size: 12px !important"
               >
                 4.5/5</small
-              >
+              > -->
             </div>
           </div>
         </div>
@@ -118,9 +142,9 @@
           </a>
         </li>
       </ul>
-      <div class="row mx-0 px-0 border border-top-0 mt-0">
-        <div *ngIf="showMenuDiv == true" class="mx-0 px-1 w-100">
-          <div class="w-100 mt-5 pb-5">
+      <div class="row mx-0 px-0 border border-top-0 mt-0 arabic-dir">
+        <div *ngIf="showMenuDiv == true" class="mx-0 px-1 w-100 arabic-dir">
+          <div class="w-100 mt-5 pb-5 arabic-dir">
             <div
               ng2-carouselamos
               class="slides-wrapper d-md-none d-block"
@@ -149,10 +173,32 @@
               [$item]="item"
             ></div>
             <ng-template #prev class="text-left pl-0 ml-0">
-              <i class="fa fa-chevron-left" aria-hidden="true" id="left"></i>
+              <i
+                *ngIf="appService.lang == 'en'"
+                class="fa fa-chevron-left"
+                aria-hidden="true"
+                id="left"
+              ></i>
+              <i
+                *ngIf="appService.lang == 'ar'"
+                class="fa fa-chevron-right"
+                aria-hidden="true"
+                id="right"
+              ></i>
             </ng-template>
             <ng-template #next class="text-right ml-auto mr-0">
-              <i class="fa fa-chevron-right" aria-hidden="true" id="right"></i>
+              <i
+                *ngIf="appService.lang == 'en'"
+                class="fa fa-chevron-right"
+                aria-hidden="true"
+                id="right"
+              ></i>
+              <i
+                *ngIf="appService.lang == 'ar'"
+                class="fa fa-chevron-left"
+                aria-hidden="true"
+                id="left"
+              ></i>
             </ng-template>
             <ng-template
               #item
@@ -184,12 +230,12 @@
 
           <div
             *ngFor="let category of categories"
-            class="tab-pane show"
+            class="tab-pane show arabic-dir"
             [id]="category.id"
             role="tabpanel"
             class="w-100 p-md-3 p-2"
           >
-            <div class="text-left row mx-0">
+            <div class="text-left row mx-0 arabic-dir">
               <span *ngIf="appService.lang == 'en'">{{
                 category.titleEnglish
               }}</span>
@@ -271,10 +317,11 @@
           </div>
           <div
             *ngFor="let review of ratings"
-            class="row bg-light border mx-0 rounded-sm p-2 my-3"
+            class="row bg-light border mx-0 rounded-sm p-2 my-3 text-left"
           >
-            <div class="col-6 col-md-3 pl-0 text-left">
+            <div class="col-6 col-md-3 pl-0 text-left pr-ar-0">
               <ngb-rating
+                class="text-left"
                 [max]="5"
                 [(rate)]="review.rate"
                 [readonly]="true"

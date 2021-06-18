@@ -156,7 +156,7 @@ small {
   right: 15px !important;
 }
 .search-form ::placeholder {
-  padding-right: 20px !important;
+  padding-right: 0px !important;
 }
 .bread {
   margin-right: auto !important;
@@ -190,4 +190,9 @@ small {
 }
 .con-stars {
   margin-right: auto !important;
+}
+@media screen and (min-width: 1023px) {
+  .text-lg-left-ar {
+    text-align: left !important;
+  }
 }

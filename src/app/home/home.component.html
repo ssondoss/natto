@@ -17,7 +17,9 @@
             {{ "BAZZAR.HOMR_SLIDER_SUBTITLE" | translate }}
           </div>
           <p>{{ "BAZZAR.HOMR_SLIDER_Text" | translate }}</p>
-          <a class="p-3 btn btn-main mt-4" href="#">Go To Meal</a>
+          <a class="p-3 btn btn-main mt-4" href="#">{{
+            "BAZZAR.GO_TO_MEAL" | translate
+          }}</a>
         </div>
       </div>
       <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 bg-transparent d-flex">
@@ -26,7 +28,7 @@
             <i class="fa fa-map-marker search-icon"></i>
 
             <select class="form-control p-foucs" id="city">
-              <option value="">All</option>
+              <option value="">{{ "BAZZAR.ALL" | translate }}</option>
               <option *ngFor="let city of cities">
                 <span *ngIf="appService.lang == 'ar'">{{ city.city }}</span>
                 <span *ngIf="appService.lang == 'en'">{{ city.city }}</span>
@@ -40,7 +42,7 @@
               name="search"
               type="text"
               id="nameInput"
-              placeholder="Choose merchant"
+              placeholder="{{ 'BAZZAR.CHOOSE_MERCHANT' | translate }}"
             />
             <div class="text-left">
               <button
@@ -48,7 +50,7 @@
                 type="button"
                 (click)="search()"
               >
-                Find Food
+                {{ "BAZZAR.FIND_FOOD" | translate }}
               </button>
             </div>
           </div>

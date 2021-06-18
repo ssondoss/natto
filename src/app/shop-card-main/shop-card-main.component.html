@@ -19,7 +19,7 @@
 
       <div class="text-muted t-12 mt-2">
         <i class="fa fa-map-marker primary"></i>
-        <span class="mx-1"> rayad , jadah</span>
+        <span class="mx-1"> {{ shop.city }}</span>
       </div>
       <small
         class="font-weight-bold"
@@ -61,8 +61,8 @@
         <span *ngIf="shop.totalRatings == 0">
           {{ "BAZZAR.NEW" | translate }}
         </span>
-        <span *ngIf="shop.totalRatings != 0">
-          {{ shop.totalRatings }}
+        <span *ngIf="shop.totalRatings != 0" style="font-size: 12px">
+          {{ shop.totalRatings }} / 5
         </span>
       </span>
     </div>

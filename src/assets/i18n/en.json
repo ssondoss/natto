@@ -117,11 +117,10 @@
     "MERCHANT": "Merchant",
     "ORDER_DETAILS": "order details",
     "UPDATE_PRODUCT": "Update Product",
-
+    "GO_TO_MEAL": "Go To Shops",
     "BLOCK": "Block",
-
     "TRY_AGAIN": "Something wrong happened , please try again",
-
+    "CHOOSE_MERCHANT": "Choose merchant",
     "AGREE_OF_TERMS": "By creating an account you agree to the privacy policy and to the terms of use",
     "ALREADY_YOU_HAVE_ACCOUNT": "Already have an account?",
     "CREATE_AN_ACCOUNT": "Create an Account",
@@ -148,14 +147,16 @@
     "JORDAN": "Jordan",
     "ACCOUNT_DETAILS": "Account Details",
     "STORE_DETAILS": "Account Details",
-
+    "FIND_FOOD": "Find Items",
+    "FILTER": "Filter",
     "REQUIRED": "this field is required",
-
     "ITEM": "Item",
     "DESCRIPTION": "Description",
     "ADDTIONAL_NOTES": "Addtional Notes",
-    "ORDER": "Order",
+    "SHOP_DETAILS": "Shop Details",
 
+    "ORDER": "Order",
+    "MERCHANT_NAME": "Merchant name",
     "TIP1": "View this order",
     "TIP2": "View Items",
     "EMPTY_CART": "YOU HAVE NO ITEMS IN YOUR SHOPPING CART.",
@@ -313,8 +314,10 @@
     "HOMR_SLIDER_Text": "Get our services from 24 hours.",
     "FIND_NEW_MERCHANRS": "Discover New Merchants & Order Now",
     "NEW": "New",
+    "DETAILS": "Details",
+    "RATE": "Rate",
     "ALL": "All",
     "TAGS": "Tags",
-    "CANCLE": "Cancle"
+    "CANCLE": "Cancel"
   }
 }

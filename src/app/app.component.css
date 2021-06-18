@@ -51,6 +51,12 @@ body {
   padding: 0px !important;
   margin: 0px !important;
 }
+@media screen and (max-width: 450px) {
+  .t-smaller {
+    font-size: 13px !important;
+  }
+}
+
 .bg-grey {
   background-color: #8b8a8a1a;
 }

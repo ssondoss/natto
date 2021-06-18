@@ -15,14 +15,12 @@ import swal from 'sweetalert2';
 export class CheckoutComponent implements OnInit {
   addressForm: FormGroup;
   shoppingCart: any;
+  private _jsonURL = 'assets/json/cities.json';
+
+  cities: Object;
   user: any;
-  mySuccessAlert = false;
-  showSuccessAlert() {
-    this.mySuccessAlert = true;
-    setTimeout(() => {
-      this.mySuccessAlert = false;
-    }, 2000);
-  }
+  saudi;
+
   total = 0;
   tax = 0;
   subTotal = 0;
@@ -40,6 +38,11 @@ export class CheckoutComponent implements OnInit {
     private http: HttpClient,
     private fb: FormBuilder
   ) {
+    if (this.appService.lang == 'en') this.saudi = 'Saudi Arabia';
+    else this.saudi = 'السعودية';
+    http.get(this._jsonURL).subscribe((data) => {
+      this.cities = data;
+    });
     if (!userSession.isLoggedIn) userSession.logout();
     else if (
       userSession.shoppingCart == undefined ||
@@ -138,14 +141,16 @@ export class CheckoutComponent implements OnInit {
   showDelFormAfterConfirm = false;
   ngOnInit(): void {
     this.addressForm = this.formBuilder.group({
-      country: ['', Validators.required],
+      country: [this.saudi, Validators.required],
 
       phone: [
         '',
         Validators.compose([
           Validators.required,
-          Validators.maxLength(15),
           Validators.minLength(10),
+          Validators.maxLength(15),
+          // prettier-ignore
+          Validators.pattern("[0-9]*"),
         ]),
       ],
       city: ['', Validators.required],
@@ -348,7 +353,7 @@ export class CheckoutComponent implements OnInit {
           });
       });
     setTimeout(() => {
-      this.router.navigate(['/my-account']);
+      this.router.navigate(['/my-orders']);
     }, 2000);
   }
 }

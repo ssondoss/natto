@@ -1,15 +1,15 @@
 <div class="bg-light2">
   <div class="container">
-    <div class="row mx-0 py-4 arabic-dir">
-      <div class="h5 text-left my-auto" routerLink="/all-shops">
+    <div class="row mx-0 py-4 arabic-dir t-smaller">
+      <div class="h5 text-left my-auto t-smaller" routerLink="/all-shops">
         {{ "BAZZAR.ALL_SHOPS" | translate }}
       </div>
-      <div class="bread my-auto">
-        <span routerLink="/"> {{ "BAZZAR.HOME" | translate }}</span>
+      <div class="bread my-auto t-smaller">
+        <a routerLink="/" class="text-dark"> {{ "BAZZAR.HOME" | translate }}</a>
         /
-        <span routerLink="/all-shops" class="primary">
-          {{ "BAZZAR.ALL_SHOPS" | translate }}
-        </span>
+        <a routerLink="/all-shops" class="primary t-smaller">
+          {{ "BAZZAR.ALL_SHOPS" | translate }}</a
+        >
       </div>
     </div>
   </div>
@@ -21,12 +21,14 @@
       class="col-lg-3 col-md-4 border p-0 sticky-top mb-5"
       style="height: fit-content"
     >
-      <div class="border-bottom h5 p-3">Filter</div>
+      <div class="border-bottom h5 p-3 text-left">
+        {{ "BAZZAR.FILTER" | translate }}
+      </div>
       <form action="" class="p-3">
         <div class="form-group">
-          <label class="small">City</label>
+          <label class="small"> {{ "BAZZAR.CITY" | translate }} </label>
           <select class="form-control" id="city">
-            <option value="">All</option>
+            <option value="">{{ "BAZZAR.ALL" | translate }}</option>
             <option *ngFor="let city of cities">
               <span *ngIf="service.lang == 'ar'">{{ city.city }}</span>
               <span *ngIf="service.lang == 'en'">{{ city.city }}</span>
@@ -34,9 +36,9 @@
           </select>
         </div>
         <div class="form-group">
-          <label class="small">Category</label>
+          <label class="small"> {{ "BAZZAR.CATEGORY" | translate }} </label>
           <select class="form-control" id="tag">
-            <option value="all">All</option>
+            <option value="all">{{ "BAZZAR.ALL" | translate }}</option>
             <option *ngFor="let tag of tags" [value]="tag.id">
               <span *ngIf="service.lang == 'ar'">{{ tag.nameArabic }}</span>
               <span *ngIf="service.lang == 'en'">{{ tag.nameEnglish }}</span>
@@ -44,11 +46,13 @@
           </select>
         </div>
         <div class="form-group">
-          <label for="" class="small">Merchant name</label>
+          <label for="" class="small">
+            {{ "BAZZAR.MERCHANT_NAME" | translate }}
+          </label>
           <input type="text" class="form-control" id="name" />
         </div>
         <button class="btn btn-main w-100 rounded-lg" (click)="search()">
-          search
+          {{ "BAZZAR.SEARCH" | translate }}
         </button>
       </form>
     </div>

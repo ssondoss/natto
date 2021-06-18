@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ApplicationStateService } from 'src/app/app.service';
 import { environment } from 'src/environments/environment';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-rate-order',
@@ -43,7 +44,23 @@ export class RateOrderComponent implements OnInit {
       })
       .subscribe(
         (data: any) => {
-          alert('ggg');
+          if (this.appService.lang == 'en')
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'Changed successfully',
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          else
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'تم بنجاح',
+              showConfirmButton: false,
+              timer: 1500,
+            });
+
           this.dialogRef.close({ event: 'DONE' });
         },
         (error: any) => {

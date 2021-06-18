@@ -23,7 +23,7 @@
     </div>
     <div class="col-md-9 mr-auto mt-5 mt-md-0 px-0 px-md-4">
       <div class="h5 mb-3 text-left">{{ "BAZZAR.MY_ORDERS" | translate }}</div>
-      <div class="border p-3 rounded">
+      <div class="border p-lg-3 p-0 rounded">
         <div
           *ngIf="orders.length == 0"
           class="justify-content-center row py-3 mx-0"
@@ -51,7 +51,7 @@
                   class="border"
                 />
               </div>
-              <div class="col-md-5 col-lg-5 col-8 ml-0 t-media-12">
+              <div class="col-md-9 col-lg-4 col-8 ml-0 t-media-12">
                 <div class="card-body mx-0 px-0 text-left">
                   <span *ngIf="appService.lang == 'en'">{{
                     order.merchant.titleEnglish
@@ -78,34 +78,46 @@
                 </div>
               </div>
               <div
-                class="col-lg-5 col-md-4 text-md-right text-center my-auto pb-2 pb-md-0 px-0"
+                class="
+                  col-lg-6
+                  text-center
+                  my-auto
+                  pb-2 pb-lg-0
+                  text-lg-right-en text-lg-left-ar
+                "
               >
                 <a
-                  class="btn btn-outline-secondary small mx-1 t-media-12 arabic-dir"
+                  class="btn btn-outline-secondary small t-media-12 arabic-dir"
                   (click)="deleteOrder(order)"
                   *ngIf="order.orderStatus == 'PENDING'"
                 >
                   <small class="text-dark">
-                    <i class="fa fa-trash" aria-hidden="true"></i>
+                    <i class="fa fa-trash text-danger" aria-hidden="true"></i>
                     {{ "BAZZAR.CANCLE" | translate }}
                   </small></a
                 >
                 <a
-                  class="btn btn-outline-secondary small mx-1 t-media-12 arabic-dir"
+                  class="
+                    btn btn-outline-secondary
+                    small
+                    mx-1
+                    t-media-12
+                    arabic-dir
+                  "
                   (click)="openDialogRateOrder(order)"
                 >
                   <small class="text-dark">
                     <i class="fa fa-star primary" aria-hidden="true"></i>
-                    {{ "BAZZAR.RATE_ORDER" | translate }}
+                    {{ "BAZZAR.RATE" | translate }}
                   </small></a
                 >
                 <a
                   (click)="openDialogOrderDetails(order)"
-                  class="btn btn-outline-secondary mx-1 mt-md-2 mt-lg-0 t-media-12 arabic-dir"
+                  class="btn btn-outline-secondary t-media-12 arabic-dir"
                 >
                   <small class="text-dark">
-                    <i class="fa fa-asterisk primary"></i>
-                    {{ "BAZZAR.ORDER_DETAILS" | translate }}
+                    <i class="fa fa-asterisk text-info"></i>
+                    {{ "BAZZAR.DETAILS" | translate }}
                   </small></a
                 >
               </div>
