@@ -108,7 +108,7 @@
             {{ "BAZZAR.USE_ARABIC_LETTERS" | translate }}
           </mat-error>
         </div>
-        <div class="form-group">
+        <div class="form-group" *ngIf="lastUploadedLogo === ''">
           <label class="">{{ "BAZZAR.STORE_LOGO" | translate }}</label>
 
           <div class="custom-file mb-3">
@@ -133,6 +133,12 @@
           >
             {{ "BAZZAR.REQUIRED" | translate }}
           </mat-error>
+        </div>
+
+        <div class="form-group" *ngIf="lastUploadedLogo != ''">
+          <label class="">{{ "BAZZAR.STORE_LOGO" | translate }}</label>
+
+          <img [src]="getImageSource(lastUploadedLogo)" width="100" height="auto" alt="" srcset="">
         </div>
         <div class="form-group mb-5">
           <label>{{ "BAZZAR.TAG" | translate }}</label>

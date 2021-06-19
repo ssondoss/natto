@@ -81,10 +81,12 @@ export class AllShopsComponent implements OnInit {
   getPageOfShops(page: number) {
     console.log('get page');
     this.currentPage = page;
+    console.log('1');
 
     let url = environment.apiURL;
     let httpParams = new HttpParams();
     if (this.withSearchkeyword && this.withSearchTag && this.withSearchCity) {
+      console.log('2');
       url += '/merchant/page-of-merchants-by-name-and-tag-and-city';
       httpParams = new HttpParams()
         .append('page', page + '')
@@ -93,28 +95,8 @@ export class AllShopsComponent implements OnInit {
         .append('sequence', this.searchKeyword)
         .append('tag', this.currentTag);
       this.title = 'Search Results...';
-    } else if (this.withSearchkeyword) {
-      url += '/merchant/page-of-merchants-by-name-like';
-      httpParams = new HttpParams()
-        .append('page', page + '')
-        .append('size', '4')
-        .append('sequence', this.searchKeyword);
-      this.title = 'Search Results...';
-    } else if (this.withSearchTag) {
-      url += '/merchant/page-of-merchants-by-tag';
-      httpParams = new HttpParams()
-        .append('page', page + '')
-        .append('size', '4')
-        .append('tag', this.currentTag);
-      this.title = 'Search Results...';
-    } else if (this.withSearchCity) {
-      url += '/merchant/page-of-merchants-by-city';
-      httpParams = new HttpParams()
-        .append('page', page + '')
-        .append('size', '4')
-        .append('city', this.currentCity);
-      this.title = 'Search Results...';
     } else if (this.withSearchCity && this.withSearchTag) {
+      console.log('6');
       url += '/merchant/page-of-merchants-by-tag-and-city';
       httpParams = new HttpParams()
         .append('page', page + '')
@@ -123,6 +105,7 @@ export class AllShopsComponent implements OnInit {
         .append('city', this.currentCity);
       this.title = 'Search Results...';
     } else if (this.withSearchCity && this.withSearchkeyword) {
+      console.log('7');
       url += '/merchant/page-of-merchants-by-name-and-city';
       httpParams = new HttpParams()
         .append('page', page + '')
@@ -131,6 +114,7 @@ export class AllShopsComponent implements OnInit {
         .append('city', this.currentCity);
       this.title = 'Search Results...';
     } else if (this.withSearchTag && this.withSearchkeyword) {
+      console.log('8');
       url += '/merchant/page-of-merchants-by-name-and-city';
       httpParams = new HttpParams()
         .append('page', page + '')
@@ -138,13 +122,39 @@ export class AllShopsComponent implements OnInit {
         .append('sequence', this.searchKeyword)
         .append('tag', this.currentTag);
       this.title = 'Search Results...';
+    } else if (this.withSearchkeyword) {
+      console.log('3');
+      url += '/merchant/page-of-merchants-by-name-like';
+      httpParams = new HttpParams()
+        .append('page', page + '')
+        .append('size', '4')
+        .append('sequence', this.searchKeyword);
+      this.title = 'Search Results...';
+    } else if (this.withSearchTag) {
+      console.log('4');
+      url += '/merchant/page-of-merchants-by-tag';
+      httpParams = new HttpParams()
+        .append('page', page + '')
+        .append('size', '4')
+        .append('tag', this.currentTag);
+      this.title = 'Search Results...';
+    } else if (this.withSearchCity) {
+      console.log('5');
+      url += '/merchant/page-of-merchants-by-city';
+      httpParams = new HttpParams()
+        .append('page', page + '')
+        .append('size', '4')
+        .append('city', this.currentCity);
+      this.title = 'Search Results...';
     } else {
+      console.log('9');
       url += '/merchant/page-of-merchants/';
       httpParams = new HttpParams()
         .append('page', page + '')
         .append('size', '4');
       this.title = 'all';
     }
+    console.log('10');
     this.http
       .get(url, {
         params: httpParams,
@@ -287,6 +297,8 @@ export class AllShopsComponent implements OnInit {
       if (name == '' && tag == 'all' && city == '') {
         this.currentPage = 0;
         this.withSearchkeyword = false;
+        this.withSearchCity = false;
+        this.withSearchTag = false;
         this.currentTag = 'all';
         this.title = 'all';
         this.currentTagName = 'all';
@@ -297,14 +309,20 @@ export class AllShopsComponent implements OnInit {
         if (name != '') {
           this.withSearchkeyword = true;
           this.searchKeyword = name;
+        } else {
+          this.withSearchkeyword = false;
         }
         if (tag != 'all') {
           this.withSearchTag = true;
           this.currentTag = tag;
+        } else {
+          this.withSearchTag = false;
         }
-        if (city != 'all') {
+        if (city != '') {
           this.withSearchCity = true;
           this.currentCity = city;
+        } else {
+          this.withSearchCity = false;
         }
         this.getPageOfShops(this.currentPage);
       }

@@ -23,7 +23,7 @@ export class EditProductComponent implements OnInit {
   merchant: any;
   selectedImage: any;
   isImageUploaded = false;
-  imageValue: Object;
+  imageValue: any;
 
   constructor(
     public formBuilder: FormBuilder,
@@ -162,12 +162,12 @@ export class EditProductComponent implements OnInit {
         .post(environment.apiURL + '/product/update-by-id/', {
           available: true,
           categoryId: this.productForm.controls['category'].value,
-          deliveryDescription:
-            this.productForm.controls['deliveryDescription'].value,
-          descriptionArabic:
-            this.productForm.controls['descriptionArabic'].value,
-          descriptionEnglish:
-            this.productForm.controls['descriptionEnglish'].value,
+          deliveryDescription: this.productForm.controls['deliveryDescription']
+            .value,
+          descriptionArabic: this.productForm.controls['descriptionArabic']
+            .value,
+          descriptionEnglish: this.productForm.controls['descriptionEnglish']
+            .value,
           image: this.imageValue,
           merchantId: this.merchant.id,
           price: this.productForm.controls['price'].value,

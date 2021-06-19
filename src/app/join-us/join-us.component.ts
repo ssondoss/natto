@@ -21,7 +21,7 @@ export class JoinUsComponent implements OnInit {
   saudi;
 
   joinUsForm: FormGroup;
-  lastUploadedLogo: string;
+  lastUploadedLogo = '';
   tags: Object;
   cities: Object;
   constructor(
@@ -131,7 +131,12 @@ export class JoinUsComponent implements OnInit {
       this.joinUsForm.markAllAsTouched();
     }
   }
+
+  clearUploadedImage() {
+    this.lastUploadedLogo = '';
+  }
   clearjoinUsForm() {
+    this.lastUploadedLogo = '';
     this.joinUsForm = this.formBuilder.group(
       {
         nameEnglish: [
@@ -206,5 +211,9 @@ export class JoinUsComponent implements OnInit {
         validator: matchingPasswords('password', 'confirmPassword'),
       }
     );
+  }
+
+  getImageSource(image) {
+    return environment.imageURL + image;
   }
 }
