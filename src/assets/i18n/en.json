@@ -86,7 +86,9 @@
     "WRONG_EMAIL_OR_PASSWORD": "Incorrect email and/or password!",
     "VOUCHER_CODE": "Voucher Code",
     "ADD_SPECAIL_REQUEST": "Add special requests here",
-    "USE_ARABIC_LETTERS": "please use the arabic letters for this field",
+    "USE_ARABIC_LETTERS": "please use the arabic letters for this field , specail characters or numbers",
+    "USE_ENGLISH_LETTERS": "please use the english letters for this field , specail characters or numbers",
+
     "EMAIL_RESET_PASSWORD": "the link sent for your email successfully ",
     "EMAIL_NOT_FOUND": "this email not found , please check the email or use another one",
     "SAVE_CHANGES": "Save Changes",

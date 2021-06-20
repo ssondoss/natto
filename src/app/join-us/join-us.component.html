@@ -19,7 +19,7 @@
     <div class="col-md-6 text-left">
       <div class="h5 h5-ar">{{ "BAZZAR.BASIC_INFO" | translate }}</div>
       <form class="mt-5" [formGroup]="joinUsForm">
-        <div class="form-group">
+        <div class="form-group mb-4">
           <label>
             {{ "BAZZAR.STORE_NAME_ENGLISH" | translate }}
           </label>
@@ -37,6 +37,11 @@
             "
           >
             {{ "BAZZAR.REQUIRED" | translate }}
+          </mat-error>
+          <mat-error
+            *ngIf="joinUsForm.controls.nameEnglish.hasError('invalidLetters')"
+          >
+            {{ "BAZZAR.USE_ENGLISH_LETTERS" | translate }}
           </mat-error>
         </div>
         <div class="form-group mb-4">
@@ -62,7 +67,7 @@
             {{ "BAZZAR.REQUIRED" | translate }}
           </mat-error>
         </div>
-        <div class="form-group">
+        <div class="form-group mb-4">
           <label>
             {{ "BAZZAR.STORE_DESCRIPTION_ENGLISH" | translate }}
           </label>
@@ -75,6 +80,11 @@
             class="form-control"
           />
           <mat-error
+            *ngIf="joinUsForm.controls.desEnglish.hasError('invalidLetters')"
+          >
+            {{ "BAZZAR.USE_ENGLISH_LETTERS" | translate }}
+          </mat-error>
+          <mat-error
             *ngIf="
               joinUsForm.controls.desEnglish.errors?.required &&
               joinUsForm.controls.desEnglish.touched
@@ -83,7 +93,7 @@
             {{ "BAZZAR.REQUIRED" | translate }}
           </mat-error>
         </div>
-        <div class="form-group">
+        <div class="form-group mb-4">
           <label>
             {{ "BAZZAR.STORE_DESCRIPTION_ARABIC" | translate }}
           </label>
@@ -108,21 +118,42 @@
             {{ "BAZZAR.USE_ARABIC_LETTERS" | translate }}
           </mat-error>
         </div>
-        <div class="form-group" *ngIf="lastUploadedLogo === ''">
+        <div class="form-group mb-4">
           <label class="">{{ "BAZZAR.STORE_LOGO" | translate }}</label>
+          <div class="custom-file">
+            <div
+              *ngIf="lastUploadedLogo != ''"
+              style="position: relative"
+              class=""
+            >
+              <img
+                [src]="getImageSource(lastUploadedLogo)"
+                alt=""
+                width="auto"
+                style="margin-bottom: 45px !important"
+                formControlName="image"
+                height="100"
+                class="border p-2"
+              />
+              <i
+                class="fa fa-times-circle text-danger"
+                (click)="clearUploadedImage()"
+                style="position: absolute; right: 0"
+              ></i>
+            </div>
+            <span *ngIf="lastUploadedLogo === ''">
+              <input
+                type="file"
+                class="custom-file-input"
+                formControlName="logo"
+                accept="image/*"
+                required
+                id="file-uploader"
+                (change)="uploadImage($event)"
+              />
 
-          <div class="custom-file mb-3">
-            <label class="custom-file-label" for="validatedCustomFile">{{
-              "BAZZAR.STORE_LOGO" | translate
-            }}</label>
-            <input
-              accept="image/*"
-              type="file"
-              class="custom-file-input"
-              formControlName="logo"
-              (change)="uploadImage($event)"
-              required
-            />
+              <label class="custom-file-label"></label>
+            </span>
           </div>
 
           <mat-error
@@ -135,11 +166,6 @@
           </mat-error>
         </div>
 
-        <div class="form-group" *ngIf="lastUploadedLogo != ''">
-          <label class="">{{ "BAZZAR.STORE_LOGO" | translate }}</label>
-
-          <img [src]="getImageSource(lastUploadedLogo)" width="100" height="auto" alt="" srcset="">
-        </div>
         <div class="form-group mb-5">
           <label>{{ "BAZZAR.TAG" | translate }}</label>
           <select
@@ -164,7 +190,7 @@
         </div>
 
         <div class="h5 h5-ar">{{ "BAZZAR.CONTACT_INFO" | translate }}</div>
-        <div class="form-group mt-5">
+        <div class="form-group mb-4 mt-5">
           <label class="t-media-14">
             {{ "BAZZAR.MOBILE_NUMBER1" | translate }}
           </label>
@@ -243,7 +269,7 @@
         </div>
         <div class="h5 h5-ar">{{ "BAZZAR.LOCATION" | translate }}</div>
 
-        <div class="form-group mt-5">
+        <div class="form-group mb-4 mt-5">
           <label>{{ "BAZZAR.COUNTRY" | translate }}</label>
           <input
             type="text"

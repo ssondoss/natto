@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import {
   arabicLetters,
   emailValidator,
+  englishLetters,
   matchingPasswords,
 } from '../app.component';
 import { ApplicationStateService } from '../app.service';
@@ -163,7 +164,11 @@ export class JoinUsComponent implements OnInit {
       {
         nameEnglish: [
           '',
-          Validators.compose([Validators.required, Validators.maxLength(100)]),
+          Validators.compose([
+            Validators.required,
+            Validators.maxLength(100),
+            englishLetters,
+          ]),
         ],
 
         nameArabic: [
@@ -177,7 +182,11 @@ export class JoinUsComponent implements OnInit {
 
         desEnglish: [
           '',
-          Validators.compose([Validators.required, Validators.maxLength(250)]),
+          Validators.compose([
+            Validators.required,
+            Validators.maxLength(250),
+            englishLetters,
+          ]),
         ],
         desArabic: [
           '',
