@@ -105,27 +105,49 @@ export class JoinUsComponent implements OnInit {
               tag: this.joinUsForm.controls['tag'].value,
               city: this.joinUsForm.controls['city'].value,
             })
-            .subscribe((merchant: any) => {
-              this.clearjoinUsForm();
-              if (this.appService.lang == 'en')
-                swal.fire({
-                  position: 'top-end',
-                  icon: 'success',
-                  title:
-                    'Please wait admin acceptance , we will contact you as soon as possible',
-                  showConfirmButton: false,
-                  timer: 1500,
-                });
-              else
-                swal.fire({
-                  position: 'top-end',
-                  icon: 'success',
-                  title:
-                    'الرجاء انتظار موافقة المسوؤل ، سوف نقوم بالتواصل معك في اقرب وقت ',
-                  showConfirmButton: false,
-                  timer: 1500,
-                });
-            });
+            .subscribe(
+              (merchant: any) => {
+                this.clearjoinUsForm();
+                if (this.appService.lang == 'en')
+                  swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title:
+                      'Please wait admin acceptance , we will contact you as soon as possible',
+                    showConfirmButton: false,
+                    timer: 1500,
+                  });
+                else
+                  swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title:
+                      'الرجاء انتظار موافقة المسوؤل ، سوف نقوم بالتواصل معك في اقرب وقت ',
+                    showConfirmButton: false,
+                    timer: 1500,
+                  });
+              },
+              (error: any) => {
+                if (error.message == 'Email Used') {
+                  if (this.appService.lang == 'en')
+                    swal.fire({
+                      position: 'top-end',
+                      icon: 'error',
+                      title: 'Email is already used !',
+                      showConfirmButton: false,
+                      timer: 1500,
+                    });
+                  else
+                    swal.fire({
+                      position: 'top-end',
+                      icon: 'error',
+                      title: 'البريد الالكتروني مستخدم ',
+                      showConfirmButton: false,
+                      timer: 1500,
+                    });
+                }
+              }
+            );
         });
     } else {
       this.joinUsForm.markAllAsTouched();

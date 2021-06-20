@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
   categoriesEn: any;
   cities: Object;
   private _jsonURL = 'assets/json/cities.json';
+  merchants: any;
 
   constructor(
     public appService: ApplicationStateService,
@@ -40,6 +41,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getHomePageMerchnats();
     this.getAllCategories();
   }
 
@@ -60,5 +62,20 @@ export class HomeComponent implements OnInit {
 
   getIconSrc(logo) {
     return environment.imageURL + logo;
+  }
+
+  searchByTag(tagId) {
+    this.router.navigate(['/all-shops'], {
+      queryParams: { tag: tagId },
+    });
+  }
+
+  getHomePageMerchnats() {
+    this.http
+      .get(environment.apiURL + '/merchant/flagged-by-admin-for-home-page')
+      .subscribe((data: any) => {
+        this.merchants = data;
+        console.log(this.merchants);
+      });
   }
 }
