@@ -57,7 +57,10 @@
         [(rate)]="shop.totalRatings"
         [readonly]="true"
       ></ngb-rating>
-      <span class="bg-primary px-2 py-1 rounded-lg mx-2 h-auto my-auto">
+      <span
+        class="bg-primary px-2 py-1 rounded-lg mx-2 h-auto my-auto"
+        style="font-size: 11px"
+      >
         <span *ngIf="shop.totalRatings == 0">
           {{ "BAZZAR.NEW" | translate }}
         </span>

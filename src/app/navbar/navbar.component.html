@@ -1,4 +1,4 @@
-<div class="px-4 arabic-dir">
+<div class="px-md-4 arabic-dir">
   <div class="row mx-0 py-1 px-0">
     <div class="col-md-2 col-lg-1 px-0 text-left">
       <div class="menu-left text-center text-lg-left">
@@ -78,6 +78,8 @@
               "
               class="nav-item text-left"
             >
+              <!-- user account list in mobile version starts-->
+
               <a
                 class="nav-link d-block d-lg-none text-dark"
                 (click)="viewAccount()"
@@ -97,7 +99,12 @@
               >
                 <a
                   routerLink="/my-account"
-                  class="list-group-item list-group-item-action bg-light border-0 t-14"
+                  class="
+                    list-group-item list-group-item-action
+                    bg-light
+                    border-0
+                    t-14
+                  "
                   type="button"
                   data-toggle="collapse"
                   data-target="#navbarSupportedContent"
@@ -108,7 +115,11 @@
                 </a>
                 <a
                   routerLink="/my-account"
-                  class="list-group-item list-group-item-action bg-light border-0"
+                  class="
+                    list-group-item list-group-item-action
+                    bg-light
+                    border-0
+                  "
                   type="button"
                   data-toggle="collapse"
                   data-target="#navbarSupportedContent"
@@ -119,7 +130,11 @@
                 </a>
                 <a
                   routerLink="/my-account"
-                  class="list-group-item list-group-item-action bg-light border-0"
+                  class="
+                    list-group-item list-group-item-action
+                    bg-light
+                    border-0
+                  "
                   type="button"
                   data-toggle="collapse"
                   data-target="#navbarSupportedContent"
@@ -131,7 +146,12 @@
                 <a
                   (click)="logout()"
                   *ngIf="userSession.isLoggedIn"
-                  class="list-group-item list-group-item-action text-dark bg-light border-0"
+                  class="
+                    list-group-item list-group-item-action
+                    text-dark
+                    bg-light
+                    border-0
+                  "
                   type="button"
                   data-toggle="collapse"
                   data-target="#navbarSupportedContent"
@@ -141,6 +161,9 @@
                   {{ "BAZZAR.LOGOUT" | translate }}
                 </a>
               </div>
+              <!-- user account list in mobile version ends-->
+
+              <!-- user account list in desktop version starts -->
 
               <a
                 [popoverOnHover]="false"
@@ -173,6 +196,7 @@
                   </li>
                 </ul>
               </popover-content>
+              <!-- user account list in desktop version starts -->
             </li>
 
             <li
@@ -182,6 +206,8 @@
               "
               class="nav-item text-left"
             >
+              <!-- merchant account list in mobile version starts -->
+
               <a
                 class="nav-link d-block d-lg-none text-dark"
                 (click)="viewAccount()"
@@ -201,7 +227,11 @@
               >
                 <a
                   routerLink="/account-information"
-                  class="list-group-item list-group-item-action bg-light border-0"
+                  class="
+                    list-group-item list-group-item-action
+                    bg-light
+                    border-0
+                  "
                   type="button"
                   data-toggle="collapse"
                   data-target="#navbarSupportedContent"
@@ -212,7 +242,12 @@
                 </a>
                 <a
                   routerLink="/orders"
-                  class="list-group-item list-group-item-action bg-light border-0 t-14"
+                  class="
+                    list-group-item list-group-item-action
+                    bg-light
+                    border-0
+                    t-14
+                  "
                   type="button"
                   data-toggle="collapse"
                   data-target="#navbarSupportedContent"
@@ -223,7 +258,12 @@
                 </a>
                 <a
                   routerLink="/products"
-                  class="list-group-item list-group-item-action bg-light border-0 t-14"
+                  class="
+                    list-group-item list-group-item-action
+                    bg-light
+                    border-0
+                    t-14
+                  "
                   type="button"
                   data-toggle="collapse"
                   data-target="#navbarSupportedContent"
@@ -234,7 +274,11 @@
                 </a>
                 <a
                   routerLink="/wardrobes"
-                  class="list-group-item list-group-item-action bg-light border-0"
+                  class="
+                    list-group-item list-group-item-action
+                    bg-light
+                    border-0
+                  "
                   type="button"
                   data-toggle="collapse"
                   data-target="#navbarSupportedContent"
@@ -247,7 +291,12 @@
                 <a
                   (click)="logout()"
                   *ngIf="userSession.isLoggedIn"
-                  class="list-group-item list-group-item-action text-dark bg-light border-0"
+                  class="
+                    list-group-item list-group-item-action
+                    text-dark
+                    bg-light
+                    border-0
+                  "
                   type="button"
                   data-toggle="collapse"
                   data-target="#navbarSupportedContent"
@@ -257,10 +306,12 @@
                   {{ "BAZZAR.LOGOUT" | translate }}
                 </a>
               </div>
+              <!-- merchant account list in mobile version ends -->
+              <!-- merchant account list in desktop version starts -->
 
               <a
                 [popoverOnHover]="false"
-                [popoverDismissTimeout]="2000"
+                [popoverDismissTimeout]="6000"
                 [popover]="myPopover"
                 class="nav-link d-none d-lg-block"
               >
@@ -295,6 +346,212 @@
                   </li>
                 </ul>
               </popover-content>
+              <!-- merchant account list in desktop version ends -->
+            </li>
+
+            <li
+              *ngIf="userSession.isLoggedIn && userSession.user.role == 'ADMIN'"
+              class="nav-item text-left"
+            >
+              <!-- admin account list in mobile version starts -->
+
+              <a
+                class="nav-link d-block d-lg-none text-dark"
+                (click)="viewAccount()"
+                ><span class="text-left">
+                  {{ "BAZZAR.ADMIN_ACCOUNT" | translate }}
+                </span>
+                <span *ngIf="viewAccountDiv == false" class="float-right"
+                  ><i class="fa fa-chevron-down"></i
+                ></span>
+                <span *ngIf="viewAccountDiv == true" class="float-right"
+                  ><i class="fa fa-chevron-up"></i
+                ></span>
+              </a>
+              <div
+                *ngIf="viewAccountDiv == true"
+                class="menu-animation text-left d-block d-lg-none mx-2 border"
+              >
+                <a
+                  routerLink="/all-merchants"
+                  class="
+                    list-group-item list-group-item-action
+                    bg-light
+                    border-0
+                  "
+                  type="button"
+                  data-toggle="collapse"
+                  data-target="#navbarSupportedContent"
+                  aria-expanded="false"
+                  aria-controls="navbarSupportedContent"
+                >
+                  {{ "BAZZAR.ALL_MERCHANTS" | translate }}
+                </a>
+                <a
+                  routerLink="/merchants-requests"
+                  class="
+                    list-group-item list-group-item-action
+                    bg-light
+                    border-0
+                    t-14
+                  "
+                  type="button"
+                  data-toggle="collapse"
+                  data-target="#navbarSupportedContent"
+                  aria-expanded="false"
+                  aria-controls="navbarSupportedContent"
+                >
+                  {{ "BAZZAR.MERCHANTS_REQUESTS" | translate }}
+                </a>
+                <a
+                  routerLink="/users"
+                  class="
+                    list-group-item list-group-item-action
+                    bg-light
+                    border-0
+                    t-14
+                  "
+                  type="button"
+                  data-toggle="collapse"
+                  data-target="#navbarSupportedContent"
+                  aria-expanded="false"
+                  aria-controls="navbarSupportedContent"
+                >
+                  {{ "BAZZAR.USERS" | translate }}
+                </a>
+                <a
+                  routerLink="/payment"
+                  class="
+                    list-group-item list-group-item-action
+                    bg-light
+                    border-0
+                  "
+                  type="button"
+                  data-toggle="collapse"
+                  data-target="#navbarSupportedContent"
+                  aria-expanded="false"
+                  aria-controls="navbarSupportedContent"
+                >
+                  {{ "BAZZAR.PAYMENTS" | translate }}
+                </a>
+
+                <a
+                  routerLink="/admins"
+                  class="
+                    list-group-item list-group-item-action
+                    bg-light
+                    border-0
+                  "
+                  type="button"
+                  data-toggle="collapse"
+                  data-target="#navbarSupportedContent"
+                  aria-expanded="false"
+                  aria-controls="navbarSupportedContent"
+                >
+                  {{ "BAZZAR.ADMINS" | translate }}
+                </a>
+                <a
+                  routerLink="/order-view-admin"
+                  class="
+                    list-group-item list-group-item-action
+                    bg-light
+                    border-0
+                  "
+                  type="button"
+                  data-toggle="collapse"
+                  data-target="#navbarSupportedContent"
+                  aria-expanded="false"
+                  aria-controls="navbarSupportedContent"
+                >
+                  {{ "BAZZAR.ORDERS" | translate }}
+                </a>
+                <a
+                  routerLink="/discount"
+                  class="
+                    list-group-item list-group-item-action
+                    bg-light
+                    border-0
+                  "
+                  type="button"
+                  data-toggle="collapse"
+                  data-target="#navbarSupportedContent"
+                  aria-expanded="false"
+                  aria-controls="navbarSupportedContent"
+                >
+                  {{ "BAZZAR.DISCOUNT" | translate }}
+                </a>
+
+                <a
+                  (click)="logout()"
+                  *ngIf="userSession.isLoggedIn"
+                  class="
+                    list-group-item list-group-item-action
+                    text-dark
+                    bg-light
+                    border-0
+                  "
+                  type="button"
+                  data-toggle="collapse"
+                  data-target="#navbarSupportedContent"
+                  aria-expanded="false"
+                  aria-controls="navbarSupportedContent"
+                >
+                  {{ "BAZZAR.LOGOUT" | translate }}
+                </a>
+              </div>
+              <!-- admin account list in mobile version ends -->
+              <!-- admin account list in desktop version starts -->
+
+              <a
+                [popoverOnHover]="false"
+                [popoverDismissTimeout]="6000"
+                [popover]="myPopover"
+                class="nav-link d-none d-lg-block"
+              >
+                <i class="fa fa-user-circle" aria-hidden="true"></i>
+                <span class="mx-1">
+                  {{ "BAZZAR.ADMIN_ACCOUNT" | translate }}</span
+                >
+              </a>
+              <popover-content
+                #myPopover
+                placement="bottom "
+                [animation]="true"
+                popover-trigger="focus"
+                class="arabic-dir d-none d-lg-block"
+                [closeOnClickOutside]="true"
+              >
+                <ul class="no-bullets text-left arabic-dir">
+                  <li class="p-3 px-4" routerLink="/all-merchants">
+                    {{ "BAZZAR.ALL_MERCHANTS" | translate }}
+                  </li>
+                  <li
+                    class="p-3 px-4 arabic-dir"
+                    routerLink="/merchants-requests"
+                  >
+                    {{ "BAZZAR.MERCHANTS_REQUESTS" | translate }}
+                  </li>
+                  <li class="p-3 px-4" routerLink="/users">
+                    {{ "BAZZAR.USERS" | translate }}
+                  </li>
+                  <li class="p-3 px-4" routerLink="/payment">
+                    {{ "BAZZAR.PAYMENTS" | translate }}
+                  </li>
+                  <li class="p-3 px-4" routerLink="/admins">
+                    {{ "BAZZAR.ADMINS" | translate }}
+                  </li>
+                  <li class="p-3 px-4" routerLink="/order-view-admin">
+                    {{ "BAZZAR.ORDERS" | translate }}
+                  </li>
+                  <li class="p-3 px-4" routerLink="/discount">
+                    {{ "BAZZAR.DISCOUNT" | translate }}
+                  </li>
+                  <li class="p-3 px-4" (click)="logout()">
+                    {{ "BAZZAR.LOGOUT" | translate }}
+                  </li>
+                </ul>
+              </popover-content>
+              <!-- admin account list in desktop version ends -->
             </li>
 
             <li class="nav-item text-left" *ngIf="!userSession.isLoggedIn">
@@ -321,7 +578,13 @@
                 class="bg-light menu-animation d-lg-none d-block mx-2 border"
               >
                 <a
-                  class="list-group-item list-group-item-action border-0 text-dark px-2 bg-light"
+                  class="
+                    list-group-item list-group-item-action
+                    border-0
+                    text-dark
+                    px-2
+                    bg-light
+                  "
                   type="button"
                   data-toggle="collapse"
                   data-target="#navbarSupportedContent"
