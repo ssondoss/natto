@@ -327,6 +327,7 @@
     "JOIN_US": "Join Us",
     "ALL": "All",
     "TAGS": "Tags",
-    "CANCLE": "Cancel"
+    "CANCLE": "Cancel",
+    "DONT_HAVE_ADDRESS": "You don't have saved address..."
   }
 }

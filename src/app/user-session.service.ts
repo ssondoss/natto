@@ -44,6 +44,8 @@ export class UserSessionService {
   }
 
   logout() {
+    localStorage.removeItem('bazzar-merchant-user-jwt');
+    localStorage.removeItem('bazzar-admin-user-jwt');
     localStorage.removeItem('bazzar-user-jwt');
     this.isLoggedIn = false;
     this.user = null;

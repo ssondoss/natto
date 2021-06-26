@@ -13,15 +13,13 @@ export function emailValidator(control: FormControl): { [key: string]: any } {
   }
 }
 export function englishLetters(control: FormControl): { [key: string]: any } {
-  var englishRegexp =
-    /^[A-Za-z0-9\#\.\+\,\?\^\$\(\)\[\]\{\}\|\@\%\&\!\=\*\^\~\÷\_\"\'\>\<\?]+$/;
+  var englishRegexp = /^[A-Za-z0-9\#\ \.\+\,\?\^\$\(\)\[\]\{\}\|\@\%\&\!\=\*\^\~\÷\_\"\'\>\<\?]+$/;
   if (control.value && !englishRegexp.test(control.value)) {
     return { invalidLetters: true };
   }
 }
 export function arabicLetters(control: FormControl): { [key: string]: any } {
-  var arabicRegexp =
-    /^[\u0621-\u064A\u0660-\u0669\u0020\#\.\+\,\?\^\$\(\)\[\]\{\}\|\@\%\&\!\=\*\^\~\÷\_\"\'\>\<\?]+$/;
+  var arabicRegexp = /^[\u0621-\u064A\u0660-\u0669\u0020\#\.\+\,\?\^\$\(\)\[\]\{\}\|\@\%\&\!\=\*\^\~\÷\_\"\'\>\<\?]+$/;
   if (control.value && !arabicRegexp.test(control.value)) {
     return { invalidLetters: true };
   }

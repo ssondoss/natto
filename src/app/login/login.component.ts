@@ -51,6 +51,7 @@ export class LoginComponent implements OnInit {
     });
   }
   login() {
+    this.messageWrongEmailOrPassword = false;
     if (this.loginForm.valid) {
       let httpParams = new HttpParams()
         .append('email', this.loginForm.controls['email'].value)
