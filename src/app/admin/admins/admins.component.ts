@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserSessionService } from 'src/app/user-session.service';
 import { environment } from 'src/environments/environment';
 import swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admins',
@@ -14,11 +15,14 @@ export class AdminsComponent implements OnInit {
   i = 0;
   constructor(
     private http: HttpClient,
+    private router: Router,
     private userSession: UserSessionService
   ) {
-    if (localStorage.getItem('bazzar-admin-user-jwt') == null) {
-      userSession.logout();
-    }
+    if (userSession.isLoggedIn == false) userSession.logout();
+    else if (userSession.user.role != 'ADMIN') router.navigate(['/']);
+    // if (localStorage.getItem('bazzar-admin-user-jwt') == null) {
+    //   userSession.logout();
+    // }
   }
 
   ngOnInit() {

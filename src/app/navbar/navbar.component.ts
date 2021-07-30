@@ -17,7 +17,9 @@ export class NavbarComponent implements OnInit {
     public userSession: UserSessionService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.userSession);
+  }
   viewCountries() {
     this.viewCountriesDiv = !this.viewCountriesDiv;
   }

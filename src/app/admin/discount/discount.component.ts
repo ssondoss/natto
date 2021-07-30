@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserSessionService } from 'src/app/user-session.service';
 import { environment } from 'src/environments/environment';
 import swal from 'sweetalert2';
@@ -18,12 +18,15 @@ export class DiscountComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private route: ActivatedRoute,
+    private router: Router,
     public formBuilder: FormBuilder,
     private userSession: UserSessionService
   ) {
-    if (localStorage.getItem('bazzar-admin-user-jwt') == null) {
-      userSession.logout();
-    }
+    if (userSession.isLoggedIn == false) userSession.logout();
+    else if (userSession.user.role != 'ADMIN') router.navigate(['/']);
+    // if (localStorage.getItem('bazzar-admin-user-jwt') == null) {
+    //   userSession.logout();
+    // }
     this.codeForm = this.formBuilder.group({
       code: [
         '',

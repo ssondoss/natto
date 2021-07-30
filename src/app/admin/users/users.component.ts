@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserSessionService } from 'src/app/user-session.service';
 import { environment } from 'src/environments/environment';
 import swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-users',
@@ -11,26 +12,24 @@ import swal from 'sweetalert2';
 })
 export class UsersComponent implements OnInit {
   users: any[] = new Array();
+  currentPage = 0;
   i = 0;
+  totalPages: any;
+  pagesNumber: any[];
   constructor(
     private http: HttpClient,
+    private router: Router,
     private userSession: UserSessionService
   ) {
-    if (localStorage.getItem('bazzar-admin-user-jwt') == null) {
-      userSession.logout();
-    }
+    if (userSession.isLoggedIn == false) userSession.logout();
+    else if (userSession.user.role != 'ADMIN') router.navigate(['/']);
+    // if (localStorage.getItem('bazzar-admin-user-jwt') == null) {
+    //   userSession.logout();
+    // }
   }
 
   ngOnInit() {
-    this.http
-      .get(environment.apiURL + '/user/client/')
-      .subscribe((data: any) => {
-        data.forEach((code) => {
-          this.users[this.i] = code;
-          this.i++;
-        });
-        console.log(this.users);
-      });
+    this.getPageOfUsers();
   }
 
   deleteUser(id: string, username: string) {
@@ -108,6 +107,28 @@ export class UsersComponent implements OnInit {
               }
             });
         }
+      });
+  }
+
+  changePage(page) {
+    this.currentPage = page;
+    this.getPageOfUsers();
+  }
+  getPageOfUsers() {
+    this.i = 0;
+    this.http
+      .get(environment.apiURL + '/user/page-of-client/' + this.currentPage)
+      .subscribe((data: any) => {
+        data.content.forEach((code) => {
+          this.users[this.i] = code;
+          this.i++;
+        });
+        this.totalPages = data.totalPages;
+        this.pagesNumber = Array(this.totalPages);
+        for (let index = 1; index <= this.totalPages; index++) {
+          this.pagesNumber[index - 1] = index;
+        }
+        // console.log(this.users);
       });
   }
 }

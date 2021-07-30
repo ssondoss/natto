@@ -16,6 +16,8 @@ export class UserSessionService {
       this.login(localStorage.getItem('bazzar-user-jwt'));
     } else if (localStorage.getItem('bazzar-merchant-user-jwt') != null) {
       this.login(localStorage.getItem('bazzar-merchant-user-jwt'));
+    } else if (localStorage.getItem('bazzar-admin-user-jwt') != null) {
+      this.login(localStorage.getItem('bazzar-admin-user-jwt'));
     } else {
       this.isLoggedIn = false;
       this.user = null;
@@ -44,6 +46,8 @@ export class UserSessionService {
   }
 
   logout() {
+    console.log('bey');
+
     localStorage.removeItem('bazzar-merchant-user-jwt');
     localStorage.removeItem('bazzar-admin-user-jwt');
     localStorage.removeItem('bazzar-user-jwt');

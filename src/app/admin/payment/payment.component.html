@@ -9,6 +9,25 @@
         {{ "BAZZAR.PAYMENTS" | translate }}
       </div>
 
+      <div class="col-12 mt-auto mb-3">
+        <select
+          class="form-control"
+          name=""
+          id=""
+          (change)="filterMerchats($event.target.value)"
+        >
+          <option value="all">All</option>
+          <option *ngFor="let merchnat of merchants" [value]="merchnat.id">
+            <span *ngIf="appService.lang == 'en'">{{
+              merchnat.titleEnglish
+            }}</span>
+            <span *ngIf="appService.lang == 'ar'">{{
+              merchnat.titleArabic
+            }}</span>
+          </option>
+        </select>
+      </div>
+
       <div class="table-responsive">
         <table class="table table-bordered">
           <thead class="bg-light text-center">

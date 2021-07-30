@@ -51,3 +51,7 @@
   padding-left: 30px;
   padding-right: 30px;
 }
+
+.bg-mid-transparent {
+  background-color: #18181846 !important;
+}

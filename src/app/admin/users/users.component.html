@@ -51,6 +51,56 @@
             </tr>
           </tbody>
         </table>
+        <nav aria-label="Page navigation example " class="mt-4">
+          <ul class="pagination justify-content-center">
+            <li *ngIf="currentPage != 0" class="page-item">
+              <a
+                class="page-link primary"
+                (click)="changePage(currentPage - 1)"
+                aria-label="Previous"
+              >
+                <span aria-hidden="true">&laquo;</span>
+                <span class="sr-only">Previous</span>
+              </a>
+            </li>
+            <li *ngIf="currentPage == 0" class="page-item">
+              <button
+                class="page-link text-muted"
+                aria-label="Previous"
+                disabled
+              >
+                <span aria-hidden="true">&laquo;</span>
+                <span class="sr-only">Previous</span>
+              </button>
+            </li>
+            <li
+              *ngFor="let number of pagesNumber"
+              class="page-item"
+              [ngClass]="{ myactive: number === currentPage + 1 }"
+            >
+              <a class="page-link text-dark" (click)="changePage(number - 1)">{{
+                number
+              }}</a>
+            </li>
+
+            <li *ngIf="currentPage != totalPages - 1" class="page-item">
+              <a
+                class="page-link primary"
+                (click)="changePage(currentPage + 1)"
+                aria-label="Next"
+              >
+                <span aria-hidden="true">&raquo;</span>
+                <span class="sr-only">Next</span>
+              </a>
+            </li>
+            <li *ngIf="currentPage == totalPages - 1" class="page-item">
+              <button class="page-link text-muted" aria-label="Next" disabled>
+                <span aria-hidden="true">&raquo;</span>
+                <span class="sr-only">Next</span>
+              </button>
+            </li>
+          </ul>
+        </nav>
       </div>
     </div>
   </div>

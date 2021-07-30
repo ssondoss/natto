@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserSessionService } from 'src/app/user-session.service';
 import { environment } from 'src/environments/environment';
 import swal from 'sweetalert2';
@@ -20,11 +20,14 @@ export class EditMerchantComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private route: ActivatedRoute,
-    private userSession: UserSessionService
+    private userSession: UserSessionService,
+    private router: Router
   ) {
-    if (localStorage.getItem('bazzar-admin-user-jwt') == null) {
-      userSession.logout();
-    }
+    if (userSession.isLoggedIn == false) userSession.logout();
+    else if (userSession.user.role != 'ADMIN') router.navigate(['/']);
+    // if (localStorage.getItem('bazzar-admin-user-jwt') == null) {
+    //   userSession.logout();
+    // }
 
     this.route.queryParams.subscribe((params) => {
       this.merchantID = params['id'];

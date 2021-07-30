@@ -7,7 +7,10 @@ import { UserSessionService } from 'src/app/user-session.service';
   styleUrls: ['./side-nav.component.css'],
 })
 export class AdminSideNavComponent implements OnInit {
-  constructor(public userSession: UserSessionService) {}
+  currentComponent = '';
+  constructor(public userSession: UserSessionService) {
+    this.currentComponent = window.location.href.split('/').pop();
+  }
 
   ngOnInit(): void {}
 }

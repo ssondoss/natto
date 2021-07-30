@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { UserSessionService } from 'src/app/user-session.service';
 import { environment } from 'src/environments/environment';
+import { ApplicationStateService } from 'src/app/app.service';
 
 @Component({
   selector: 'app-payment',
@@ -10,10 +11,12 @@ import { environment } from 'src/environments/environment';
 })
 export class PaymentComponent implements OnInit {
   i = 0;
-  payments: Array<any>;
+  payments: any;
+  merchants: any;
   constructor(
     private http: HttpClient,
-    private userSession: UserSessionService
+    private userSession: UserSessionService,
+    public appService: ApplicationStateService
   ) {
     if (localStorage.getItem('bazzar-admin-user-jwt') == null) {
       userSession.logout();
@@ -21,6 +24,11 @@ export class PaymentComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getAllCommissions();
+    this.getAllMerchants();
+  }
+
+  getAllCommissions() {
     this.http
       .get(environment.apiURL + '/merchant-commission')
       .subscribe((data: any) => {
@@ -29,6 +37,14 @@ export class PaymentComponent implements OnInit {
         this.payments = data;
         // this.i++;
         // });
+      });
+  }
+
+  getOneCommissionByMerchantID(id) {
+    this.http
+      .get(environment.apiURL + '/merchant-commission/by-merchant-id/' + id)
+      .subscribe((data: any) => {
+        this.payments = data;
       });
   }
 
@@ -65,5 +81,22 @@ export class PaymentComponent implements OnInit {
       if (!element.paid) count++;
     });
     return count;
+  }
+
+  getAllMerchants() {
+    this.http
+      .get(environment.apiURL + '/merchant/accepted/')
+      .subscribe((data: any) => {
+        this.merchants = data;
+        console.log(this.merchants);
+      });
+  }
+
+  filterMerchats(value) {
+    if (value == 'all') {
+      this.getAllCommissions();
+    } else {
+      this.getOneCommissionByMerchantID(value);
+    }
   }
 }

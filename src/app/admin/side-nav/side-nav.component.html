@@ -1,25 +1,50 @@
-<div class="p-3 border-bottom side-nav text-left" routerLink="/all-merchants">
+<div
+  class="p-3 border-bottom side-nav text-left"
+  [ngClass]="{ 'bg-light': currentComponent === 'all-merchants' }"
+  routerLink="/all-merchants"
+>
   {{ "BAZZAR.ALL_MERCHANTS" | translate }}
 </div>
 <div
   class="p-3 border-bottom side-nav text-left"
   routerLink="/merchants-requests"
+  [ngClass]="{ 'bg-light': currentComponent === 'merchants-requests' }"
 >
   {{ "BAZZAR.MERCHANTS_REQUESTS" | translate }}
 </div>
-<div class="p-3 border-bottom side-nav text-left" routerLink="/users">
+<div
+  class="p-3 border-bottom side-nav text-left"
+  [ngClass]="{ 'bg-light': currentComponent === 'users' }"
+  routerLink="/users"
+>
   {{ "BAZZAR.USERS" | translate }}
 </div>
-<div class="p-3 border-bottom side-nav text-left" routerLink="/payment">
+<div
+  class="p-3 border-bottom side-nav text-left"
+  [ngClass]="{ 'bg-light': currentComponent === 'payment' }"
+  routerLink="/payment"
+>
   {{ "BAZZAR.PAYMENTS" | translate }}
 </div>
-<div class="p-3 border-bottom side-nav text-left" routerLink="/admins">
+<div
+  class="p-3 border-bottom side-nav text-left"
+  [ngClass]="{ 'bg-light': currentComponent === 'admins' }"
+  routerLink="/admins"
+>
   {{ "BAZZAR.ADMINS" | translate }}
 </div>
-<div class="p-3 border-bottom side-nav text-left" routerLink="/all-orders">
+<div
+  class="p-3 border-bottom side-nav text-left"
+  [ngClass]="{ 'bg-light': currentComponent === 'all-orders' }"
+  routerLink="/all-orders"
+>
   {{ "BAZZAR.ORDERS" | translate }}
 </div>
-<div class="p-3 border-bottom side-nav text-left" routerLink="/discount">
+<div
+  class="p-3 border-bottom side-nav text-left"
+  [ngClass]="{ 'bg-light': currentComponent === 'discount' }"
+  routerLink="/discount"
+>
   {{ "BAZZAR.DISCOUNTS" | translate }}
 </div>
 <div class="p-3 side-nav text-left" (click)="userSession.logout()">

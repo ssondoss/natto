@@ -44,7 +44,6 @@ export class JoinUsComponent implements OnInit {
   }
 
   uploadImage(event) {
-    console.log('staart uoloadaing');
     let exe = event.target.files[0].name.split('.').pop();
     let fileList: FileList = event.target.files;
     if (fileList.length > 0) {
