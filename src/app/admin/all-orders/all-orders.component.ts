@@ -15,6 +15,7 @@ export class AllOrdersComponent implements OnInit {
   currentPage = 0;
   totalPages;
   pagesNumber: any[];
+  filtredOrder: any[] = new Array();
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -32,19 +33,18 @@ export class AllOrdersComponent implements OnInit {
 
   getPageOfOrders() {
     this.i = 0;
-    this.http
-      .get(environment.apiURL + '/order/' + this.currentPage)
-      .subscribe((data: any) => {
-        data.content.forEach((code) => {
-          this.orders[this.i] = code;
-          this.i++;
-        });
-        this.totalPages = data.totalPages;
-        this.pagesNumber = Array(this.totalPages);
-        for (let index = 1; index <= this.totalPages; index++) {
-          this.pagesNumber[index - 1] = index;
-        }
+    this.http.get(environment.apiURL + '/order').subscribe((data: any) => {
+      data.forEach((code) => {
+        this.orders[this.i] = code;
+        this.filtredOrder[this.i] = code;
+        this.i++;
       });
+      this.totalPages = 1;
+      this.pagesNumber = Array(1);
+      for (let index = 1; index <= 1; index++) {
+        this.pagesNumber[index - 1] = index;
+      }
+    });
   }
 
   getNextPage() {}
@@ -54,5 +54,50 @@ export class AllOrdersComponent implements OnInit {
   changePage(page) {
     this.currentPage = page;
     this.getPageOfOrders();
+  }
+  search(startDate: any, endDate: any, status: any, merchant: any) {
+    this.filtredOrder = this.orders;
+    if (startDate != '') {
+      this.filterStartDate(startDate);
+    }
+
+    if (endDate != '') {
+      this.filterEndDate(endDate);
+    }
+    if (status != '') {
+      this.filterStatus(status);
+    }
+    if (merchant != '') {
+      this.filterMerchant(merchant);
+    }
+  }
+
+  filterStartDate(startDate) {
+    console.log(startDate);
+    this.filtredOrder = this.filtredOrder.filter((order: any) => {
+      order.dateAndTime >= startDate;
+    });
+  }
+  filterEndDate(endDate) {
+    console.log(endDate);
+    this.filtredOrder = this.filtredOrder.filter((order: any) => {
+      order.dateAndTime <= endDate;
+    });
+  }
+  filterStatus(status) {
+    console.log(status);
+    let a: any = new Array();
+    for (const order of this.filtredOrder) {
+      if (order.orderStatus == status) {
+        a.push(order);
+      }
+    }
+    this.filtredOrder = a;
+  }
+  filterMerchant(merchant) {
+    console.log(merchant);
+    this.filtredOrder = this.filtredOrder.filter((order: any) => {
+      order.merchant.id == merchant;
+    });
   }
 }

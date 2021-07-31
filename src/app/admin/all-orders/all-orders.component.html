@@ -9,6 +9,56 @@
         {{ "BAZZAR.ALL_ORDERS" | translate }}
       </div>
 
+      <div class="row">
+        <form action="" class="" dir="rtl">
+          <div class="mx-0 rounded row justify-content-center">
+            <select class="form-control col-md-2 m-1" #status>
+              <option value="all">ALL</option>
+              <option value="PENDING">PENDING</option>
+
+              <option value="DELIVERED">DELIVERED</option>
+              <option value="PROCESSING">PROCESSING</option>
+              <option value="SHIPPED">SHIPPED</option>
+              <option value="CANCELED">CANCELED</option>
+            </select>
+
+            <select #merchant class="form-control col-md-2 m-1">
+              <option value="" selected>All</option>
+            </select>
+
+            <input
+              type="date"
+              class="form-control col-md-2 m-1"
+              name=""
+              id=""
+              #startDate
+            />
+
+            <input
+              type="date"
+              class="form-control col-md-3 m-1"
+              name=""
+              id=""
+              #endDate
+            />
+
+            <button
+              class="col-md-2 m-1 btn btn-primary w-100"
+              (click)="
+                search(
+                  startDate.value,
+                  endDate.value,
+                  status.value,
+                  merchant.value
+                )
+              "
+            >
+              بحث
+            </button>
+          </div>
+        </form>
+      </div>
+
       <div class="table-responsive">
         <table class="table table-bordered">
           <thead class="bg-light text-center">
@@ -21,7 +71,7 @@
             <th>{{ "BAZZAR.STATUS" | translate }}</th>
           </thead>
           <tbody>
-            <tr *ngFor="let order of orders" class="text-center">
+            <tr *ngFor="let order of filtredOrder" class="text-center">
               <td>
                 <a
                   class="anchor"
