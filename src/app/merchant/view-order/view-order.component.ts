@@ -67,7 +67,7 @@ export class ViewOrderComponent implements OnInit {
   }
 
   getSource(image): string {
-    return environment.apiURL + '/images/' + image;
+    return environment.imageURL + image;
   }
   ngOnInit(): void {}
 }

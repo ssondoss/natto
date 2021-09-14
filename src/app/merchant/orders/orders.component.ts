@@ -13,7 +13,7 @@ import swal from 'sweetalert2';
 export class OrdersComponent implements OnInit {
   show = [0, 0];
   merchant: any;
-  orders: any;
+  orders: any = new Array();
   selectedOrderProducts: any;
   showOrderProducts = false;
   showenOrderId: any;

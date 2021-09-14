@@ -62,8 +62,17 @@
           <shop-card-main [shop]="shop"></shop-card-main>
         </div>
       </div>
+      <div *ngIf="shopsList.length <= 0" class="w-100 alert alert-warning">
+        <p class="text-center">
+          {{ "BAZZAR.NO_RECORDS" | translate }}
+        </p>
+      </div>
 
-      <nav aria-label="Page navigation example " class="mt-4">
+      <nav
+        aria-label="Page navigation example "
+        class="mt-4"
+        *ngIf="totalPages != 0"
+      >
         <ul class="pagination justify-content-center">
           <li *ngIf="currentPage != 0" class="page-item">
             <a

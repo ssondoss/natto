@@ -19,7 +19,7 @@ export class CategoriesComponent implements OnInit {
   lang = 'en';
   show = 0;
   merchant: any;
-  wordrobes: any;
+  wordrobes: any = new Array();
   maximize() {
     this.show = 1;
   }

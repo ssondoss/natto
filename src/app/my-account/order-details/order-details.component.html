@@ -33,8 +33,11 @@
       [ngClass]="{ 'text-md-right': appService.lang === 'ar' }"
       class="col-md-8 text-right text-md-left col-6 px-0 mx-0"
     >
-      <span *ngIf="appService.lang == 'en'">{{
-        data.order.merchant.orderStatus
+      <span class="text-success t-media-12" *ngIf="appService.lang == 'ar'">{{
+        getOrderStatusArabic(data.order.orderStatus)
+      }}</span>
+      <span class="text-success t-media-12" *ngIf="appService.lang == 'en'">{{
+        getOrderStatusEnglish(data.order.orderStatus)
       }}</span>
     </div>
   </div>

@@ -211,6 +211,9 @@
           </tbody>
         </table>
       </div>
+      <div class="w-100 text-center text-dark" *ngIf="orders.length < 1">
+        <h3>{{ "BAZZAR.NO_RECORDS" | translate }}</h3>
+      </div>
       <div *ngIf="showOrderProducts" class="mb-4 pt-3 table-responsive">
         <table class="table table-bordered bg-light">
           <thead class="text-center">

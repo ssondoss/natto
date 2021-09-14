@@ -1,233 +1,627 @@
 [
   {
-    "city": "Riyadh",
-    "lat": "24.6500",
-    "lng": "46.7100",
-    "country": "Saudi Arabia",
-    "iso2": "SA",
-    "admin_name": "Ar Riy\u0101\u1e11",
-    "capital": "primary",
-    "population": "6881000",
-    "population_proper": "6694000"
+    "Id": 1,
+    "NameAr": "الخرج",
+    "NameEn": "Al-Khark"
   },
   {
-    "city": "Jeddah",
-    "lat": "21.5428",
-    "lng": "39.1728",
-    "country": "Saudi Arabia",
-    "iso2": "SA",
-    "admin_name": "Makkah al Mukarramah",
-    "capital": "",
-    "population": "3976000",
-    "population_proper": "3976000"
+    "Id": 2,
+    "NameAr": "مكة",
+    "NameEn": "Makka"
   },
   {
-    "city": "Mecca",
-    "lat": "21.4225",
-    "lng": "39.8261",
-    "country": "Saudi Arabia",
-    "iso2": "SA",
-    "admin_name": "Makkah al Mukarramah",
-    "capital": "admin",
-    "population": "1700000",
-    "population_proper": "1700000"
+    "Id": 3,
+    "NameAr": "الخبر",
+    "NameEn": "Khobar"
   },
   {
-    "city": "Medina",
-    "lat": "24.4667",
-    "lng": "39.6000",
-    "country": "Saudi Arabia",
-    "iso2": "SA",
-    "admin_name": "Al Mad\u012bnah al Munawwarah",
-    "capital": "admin",
-    "population": "1180770",
-    "population_proper": "1180770"
+    "Id": 4,
+    "NameAr": "المجاردة",
+    "NameEn": "Majardh"
   },
   {
-    "city": "Ad Damm\u0101m",
-    "lat": "26.4333",
-    "lng": "50.1000",
-    "country": "Saudi Arabia",
-    "iso2": "SA",
-    "admin_name": "Ash Sharq\u012byah",
-    "capital": "admin",
-    "population": "903312",
-    "population_proper": "903312"
+    "Id": 5,
+    "NameAr": "فرسان",
+    "NameEn": "Fursan"
   },
   {
-    "city": "Al Huf\u016bf",
-    "lat": "25.3608",
-    "lng": "49.5997",
-    "country": "Saudi Arabia",
-    "iso2": "SA",
-    "admin_name": "Ash Sharq\u012byah",
-    "capital": "",
-    "population": "637389",
-    "population_proper": "400000"
+    "Id": 6,
+    "NameAr": "جدة",
+    "NameEn": "Jeddah"
   },
   {
-    "city": "Buraydah",
-    "lat": "26.3333",
-    "lng": "43.9667",
-    "country": "Saudi Arabia",
-    "iso2": "SA",
-    "admin_name": "Al Qa\u015f\u012bm",
-    "capital": "admin",
-    "population": "614093",
-    "population_proper": "614093"
+    "Id": 7,
+    "NameAr": "رأس تنورة",
+    "NameEn": "Ras Tanura"
   },
   {
-    "city": "Al \u1e28illah",
-    "lat": "23.4895",
-    "lng": "46.7564",
-    "country": "Saudi Arabia",
-    "iso2": "SA",
-    "admin_name": "Ar Riy\u0101\u1e11",
-    "capital": "",
-    "population": "594605",
-    "population_proper": "594605"
+    "Id": 8,
+    "NameAr": "الشماسية",
+    "NameEn": "Shamasiah"
   },
   {
-    "city": "A\u0163 \u0162\u0101\u2019if",
-    "lat": "21.2667",
-    "lng": "40.4167",
-    "country": "Saudi Arabia",
-    "iso2": "SA",
-    "admin_name": "Makkah al Mukarramah",
-    "capital": "",
-    "population": "579970",
-    "population_proper": "579970"
+    "Id": 9,
+    "NameAr": "حائل",
+    "NameEn": "Ha'il"
   },
   {
-    "city": "Tab\u016bk",
-    "lat": "28.3972",
-    "lng": "36.5789",
-    "country": "Saudi Arabia",
-    "iso2": "SA",
-    "admin_name": "Tab\u016bk",
-    "capital": "admin",
-    "population": "512629",
-    "population_proper": "512629"
+    "Id": 10,
+    "NameAr": "القويعية",
+    "NameEn": "Quwaiya"
   },
   {
-    "city": "Kham\u012bs Mushay\u0163",
-    "lat": "18.3000",
-    "lng": "42.7333",
-    "country": "Saudi Arabia",
-    "iso2": "SA",
-    "admin_name": "\u2018As\u012br",
-    "capital": "",
-    "population": "430828",
-    "population_proper": "430828"
+    "Id": 11,
+    "NameAr": "المندق",
+    "NameEn": "Mandaq"
   },
   {
-    "city": "\u1e28\u0101\u2019il",
-    "lat": "27.5236",
-    "lng": "41.7001",
-    "country": "Saudi Arabia",
-    "iso2": "SA",
-    "admin_name": "\u1e28\u0101\u2019il",
-    "capital": "admin",
-    "population": "385257",
-    "population_proper": "385257"
+    "Id": 12,
+    "NameAr": "خيبر",
+    "NameEn": "Khyber"
   },
   {
-    "city": "Al Qa\u0163\u012bf",
-    "lat": "26.5196",
-    "lng": "50.0115",
-    "country": "Saudi Arabia",
-    "iso2": "SA",
-    "admin_name": "Ash Sharq\u012byah",
-    "capital": "",
-    "population": "368892",
-    "population_proper": "98259"
+    "Id": 13,
+    "NameAr": "المذنب",
+    "NameEn": "Muthnab"
   },
   {
-    "city": "Al Mubarraz",
-    "lat": "25.4416",
-    "lng": "49.6642",
-    "country": "Saudi Arabia",
-    "iso2": "SA",
-    "admin_name": "Ash Sharq\u012byah",
-    "capital": "",
-    "population": "298562",
-    "population_proper": "290802"
+    "Id": 14,
+    "NameAr": "الدمام",
+    "NameEn": "Dammam"
   },
   {
-    "city": "Al Kharj",
-    "lat": "24.1556",
-    "lng": "47.3120",
-    "country": "Saudi Arabia",
-    "iso2": "SA",
-    "admin_name": "Ar Riy\u0101\u1e11",
-    "capital": "",
-    "population": "298428",
-    "population_proper": "298428"
+    "Id": 15,
+    "NameAr": "س",
+    "NameEn": "aden"
   },
   {
-    "city": "Najr\u0101n",
-    "lat": "17.4917",
-    "lng": "44.1322",
-    "country": "Saudi Arabia",
-    "iso2": "SA",
-    "admin_name": "Najr\u0101n",
-    "capital": "admin",
-    "population": "298288",
-    "population_proper": "298288"
+    "Id": 16,
+    "NameAr": "بيشة",
+    "NameEn": "Bisha"
   },
   {
-    "city": "Abh\u0101",
-    "lat": "18.2167",
-    "lng": "42.5000",
-    "country": "Saudi Arabia",
-    "iso2": "SA",
-    "admin_name": "\u2018As\u012br",
-    "capital": "admin",
-    "population": "236157",
-    "population_proper": "236157"
+    "Id": 17,
+    "NameAr": "الليث",
+    "NameEn": "Laith"
   },
   {
-    "city": "\u2018Ar\u2018ar",
-    "lat": "30.9833",
-    "lng": "41.0167",
-    "country": "Saudi Arabia",
-    "iso2": "SA",
-    "admin_name": "Al \u1e28ud\u016bd ash Sham\u0101l\u012byah",
-    "capital": "admin",
-    "population": "167057",
-    "population_proper": "167057"
+    "Id": 18,
+    "NameAr": "الغاط",
+    "NameEn": "Ghat"
   },
   {
-    "city": "Sak\u0101k\u0101",
-    "lat": "30.0000",
-    "lng": "40.1333",
-    "country": "Saudi Arabia",
-    "iso2": "SA",
-    "admin_name": "Al Jawf",
-    "capital": "admin",
-    "population": "128332",
-    "population_proper": "128332"
+    "Id": 19,
+    "NameAr": "السليل",
+    "NameEn": "Salel"
   },
   {
-    "city": "J\u0101z\u0101n",
-    "lat": "16.8892",
-    "lng": "42.5611",
-    "country": "Saudi Arabia",
-    "iso2": "SA",
-    "admin_name": "J\u0101z\u0101n",
-    "capital": "admin",
-    "population": "127743",
-    "population_proper": "127743"
+    "Id": 20,
+    "NameAr": "الرس",
+    "NameEn": "Al Rass"
   },
   {
-    "city": "Al B\u0101\u1e29ah",
-    "lat": "20.0129",
-    "lng": "41.4677",
-    "country": "Saudi Arabia",
-    "iso2": "SA",
-    "admin_name": "Al B\u0101\u1e29ah",
-    "capital": "admin",
-    "population": "95089",
-    "population_proper": "95089"
+    "Id": 21,
+    "NameAr": "رفحاء",
+    "NameEn": "Rafhaa"
+  },
+  {
+    "Id": 22,
+    "NameAr": "أبو عريش",
+    "NameEn": "Abu Arish  "
+  },
+  {
+    "Id": 23,
+    "NameAr": "الكامل",
+    "NameEn": "Al kamel"
+  },
+  {
+    "Id": 24,
+    "NameAr": "طريف",
+    "NameEn": "Tarif"
+  },
+  {
+    "Id": 25,
+    "NameAr": "ضمد",
+    "NameEn": "Damed"
+  },
+  {
+    "Id": 26,
+    "NameAr": "البدائع",
+    "NameEn": "Badai"
+  },
+  {
+    "Id": 27,
+    "NameAr": "تيماء",
+    "NameEn": "Taima"
+  },
+  {
+    "Id": 28,
+    "NameAr": "حريملاء",
+    "NameEn": "Harimlae  "
+  },
+  {
+    "Id": 29,
+    "NameAr": "الدرعية",
+    "NameEn": "ALdrrayah"
+  },
+  {
+    "Id": 30,
+    "NameAr": "بدر الجنوب",
+    "NameEn": "Badr south  "
+  },
+  {
+    "Id": 31,
+    "NameAr": "العيدابي",
+    "NameEn": "Alaidabi  "
+  },
+  {
+    "Id": 32,
+    "NameAr": "ثار",
+    "NameEn": "Thaar"
+  },
+  {
+    "Id": 33,
+    "NameAr": "رابغ",
+    "NameEn": "Rabigh"
+  },
+  {
+    "Id": 34,
+    "NameAr": "العقيق",
+    "NameEn": "Al-Aqiq"
+  },
+  {
+    "Id": 35,
+    "NameAr": "الخرمة",
+    "NameEn": "Khurmah"
+  },
+  {
+    "Id": 36,
+    "NameAr": "القريات",
+    "NameEn": "Gurayaat"
+  },
+  {
+    "Id": 37,
+    "NameAr": "الدائر",
+    "NameEn": "Dair"
+  },
+  {
+    "Id": 38,
+    "NameAr": "الجموم",
+    "NameEn": "Aljmom"
+  },
+  {
+    "Id": 39,
+    "NameAr": "القنفذة",
+    "NameEn": "Qunfudah"
+  },
+  {
+    "Id": 40,
+    "NameAr": "الباحة",
+    "NameEn": "Baha"
+  },
+  {
+    "Id": 41,
+    "NameAr": "شرورة",
+    "NameEn": "Sharurah"
+  },
+  {
+    "Id": 42,
+    "NameAr": "خميس مشيط",
+    "NameEn": "Khamis Mushait"
+  },
+  {
+    "Id": 43,
+    "NameAr": "بقيق",
+    "NameEn": "Abqaiq"
+  },
+  {
+    "Id": 44,
+    "NameAr": "المدينة",
+    "NameEn": "MADINAH"
+  },
+  {
+    "Id": 45,
+    "NameAr": "المخواة",
+    "NameEn": "Makhwah"
+  },
+  {
+    "Id": 46,
+    "NameAr": "المدينة المنورة",
+    "NameEn": "Medina"
+  },
+  {
+    "Id": 47,
+    "NameAr": "بلقرن",
+    "NameEn": "Balgarn"
+  },
+  {
+    "Id": 48,
+    "NameAr": "المجمعة",
+    "NameEn": "Magmaah"
+  },
+  {
+    "Id": 49,
+    "NameAr": "نجران",
+    "NameEn": "Najran"
+  },
+  {
+    "Id": 50,
+    "NameAr": "أبها",
+    "NameEn": "Abha"
+  },
+  {
+    "Id": 51,
+    "NameAr": "أحد رفيدة",
+    "NameEn": "A Rafidah  "
+  },
+  {
+    "Id": 52,
+    "NameAr": "الشنان",
+    "NameEn": "Aelchenan"
+  },
+  {
+    "Id": 53,
+    "NameAr": "ثادق",
+    "NameEn": "Thadeq"
+  },
+  {
+    "Id": 54,
+    "NameAr": "بيش",
+    "NameEn": "Piech  "
+  },
+  {
+    "Id": 55,
+    "NameAr": "بدر",
+    "NameEn": "Badr"
+  },
+  {
+    "Id": 56,
+    "NameAr": "النماص",
+    "NameEn": "Namas"
+  },
+  {
+    "Id": 57,
+    "NameAr": "خباش",
+    "NameEn": "Bash"
+  },
+  {
+    "Id": 58,
+    "NameAr": "ضرماء",
+    "NameEn": "Darmaa  "
+  },
+  {
+    "Id": 59,
+    "NameAr": "بالجرشي",
+    "NameEn": "Paljrchi"
+  },
+  {
+    "Id": 60,
+    "NameAr": "الدرب",
+    "NameEn": "alDarb"
+  },
+  {
+    "Id": 61,
+    "NameAr": "عيون الجواء",
+    "NameEn": "Oyon Aljawaa"
+  },
+  {
+    "Id": 62,
+    "NameAr": "حقل",
+    "NameEn": "Haql"
+  },
+  {
+    "Id": 63,
+    "NameAr": "يدمة",
+    "NameEn": "Yadma"
+  },
+  {
+    "Id": 64,
+    "NameAr": "الحريق",
+    "NameEn": "Alhareeq"
+  },
+  {
+    "Id": 65,
+    "NameAr": "الريث",
+    "NameEn": "Rit"
+  },
+  {
+    "Id": 66,
+    "NameAr": "مكة المكرمة",
+    "NameEn": "Makkah"
+  },
+  {
+    "Id": 67,
+    "NameAr": "الوجه",
+    "NameEn": "Al wajeh"
+  },
+  {
+    "Id": 68,
+    "NameAr": "أملج",
+    "NameEn": "Amlaj"
+  },
+  {
+    "Id": 69,
+    "NameAr": "تربة",
+    "NameEn": "Tarbah"
+  },
+  {
+    "Id": 70,
+    "NameAr": "رنية",
+    "NameEn": "Raniah"
+  },
+  {
+    "Id": 71,
+    "NameAr": "النعيرية",
+    "NameEn": "Nairiyah"
+  },
+  {
+    "Id": 72,
+    "NameAr": "الخفجي",
+    "NameEn": "Khafji"
+  },
+  {
+    "Id": 73,
+    "NameAr": "صبياء",
+    "NameEn": "Sbia"
+  },
+  {
+    "Id": 74,
+    "NameAr": "سراة عبيدة",
+    "NameEn": "Obeida"
+  },
+  {
+    "Id": 75,
+    "NameAr": "رجال ألمع",
+    "NameEn": "Rijal Almaa"
+  },
+  {
+    "Id": 76,
+    "NameAr": "صامطة",
+    "NameEn": "Samtah"
+  },
+  {
+    "Id": 77,
+    "NameAr": "الخرخير",
+    "NameEn": "Samtah"
+  },
+  {
+    "Id": 78,
+    "NameAr": "حبونا",
+    "NameEn": "hbuna"
+  },
+  {
+    "Id": 79,
+    "NameAr": "أحد المسارحة",
+    "NameEn": "A Almsarhh"
+  },
+  {
+    "Id": 80,
+    "NameAr": "حفر الباطن",
+    "NameEn": "Hafr Al-Batin  "
+  },
+  {
+    "Id": 81,
+    "NameAr": "الأفلاج",
+    "NameEn": "Aflaj"
+  },
+  {
+    "Id": 82,
+    "NameAr": "الغزالة",
+    "NameEn": "Ghazala"
+  },
+  {
+    "Id": 83,
+    "NameAr": "الحرث",
+    "NameEn": "Al Harith"
+  },
+  {
+    "Id": 84,
+    "NameAr": "الأحساء",
+    "NameEn": " Al-Ahsa"
+  },
+  {
+    "Id": 85,
+    "NameAr": "ضباء",
+    "NameEn": "Duba"
+  },
+  {
+    "Id": 86,
+    "NameAr": "بريدة",
+    "NameEn": "Buraidah"
+  },
+  {
+    "Id": 87,
+    "NameAr": "العلا",
+    "NameEn": "Alola"
+  },
+  {
+    "Id": 88,
+    "NameAr": "العارضة",
+    "NameEn": "Al Arda"
+  },
+  {
+    "Id": 89,
+    "NameAr": "تبوك",
+    "NameEn": "Tabuk"
+  },
+  {
+    "Id": 90,
+    "NameAr": "القطيف",
+    "NameEn": "Qatif"
+  },
+  {
+    "Id": 91,
+    "NameAr": "خليص",
+    "NameEn": "Khulais"
+  },
+  {
+    "Id": 92,
+    "NameAr": "الجبيل",
+    "NameEn": "Jubail"
+  },
+  {
+    "Id": 93,
+    "NameAr": "نجران",
+    "NameEn": "NAJRAN"
+  },
+  {
+    "Id": 94,
+    "NameAr": "ينبع",
+    "NameEn": "Yanbu"
+  },
+  {
+    "Id": 95,
+    "NameAr": "الدوادمي",
+    "NameEn": "ALdwdmi"
+  },
+  {
+    "Id": 96,
+    "NameAr": "الزلفي",
+    "NameEn": "Zulfi"
+  },
+  {
+    "Id": 97,
+    "NameAr": "عرعر",
+    "NameEn": "Ar Ar"
+  },
+  {
+    "Id": 98,
+    "NameAr": "قلوة",
+    "NameEn": "Qalwa"
+  },
+  {
+    "Id": 99,
+    "NameAr": "الحناكية",
+    "NameEn": "Hanakia"
+  },
+  {
+    "Id": 100,
+    "NameAr": "ظهران الجنوب",
+    "NameEn": "Dhahran South  "
+  },
+  {
+    "Id": 101,
+    "NameAr": "المزاحمية",
+    "NameEn": "Mzahmiyah"
+  },
+  {
+    "Id": 102,
+    "NameAr": "حوطة بني تميم",
+    "NameEn": "Hotat Bani Tamim  "
+  },
+  {
+    "Id": 103,
+    "NameAr": "عنيزة",
+    "NameEn": "Onaizah"
+  },
+  {
+    "Id": 104,
+    "NameAr": "جازان",
+    "NameEn": "Jazan"
+  },
+  {
+    "Id": 105,
+    "NameAr": "عفيف",
+    "NameEn": "Afif"
+  },
+  {
+    "Id": 106,
+    "NameAr": "البكيرية",
+    "NameEn": "Bakeereya  "
+  },
+  {
+    "Id": 107,
+    "NameAr": "تثليث",
+    "NameEn": "Tathit"
+  },
+  {
+    "Id": 108,
+    "NameAr": "الأسياح",
+    "NameEn": "Asiyah"
+  },
+  {
+    "Id": 109,
+    "NameAr": "سكاكا",
+    "NameEn": "Sakakah"
+  },
+  {
+    "Id": 110,
+    "NameAr": "النبهانية",
+    "NameEn": "Nabhaniyah  "
+  },
+  {
+    "Id": 111,
+    "NameAr": "محايل",
+    "NameEn": "Mhail"
+  },
+  {
+    "Id": 112,
+    "NameAr": "الخبر",
+    "NameEn": "Al-Khobar"
+  },
+  {
+    "Id": 113,
+    "NameAr": "القرى",
+    "NameEn": "Al qura"
+  },
+  {
+    "Id": 114,
+    "NameAr": "رماح",
+    "NameEn": "Rimah"
+  },
+  {
+    "Id": 115,
+    "NameAr": "س",
+    "NameEn": "aden"
+  },
+  {
+    "Id": 116,
+    "NameAr": "المهد",
+    "NameEn": "Almahed"
+  },
+  {
+    "Id": 117,
+    "NameAr": "وادي الدواسر",
+    "NameEn": "Wadi aldawaser"
+  },
+  {
+    "Id": 118,
+    "NameAr": "شقراء",
+    "NameEn": "Shaqraa"
+  },
+  {
+    "Id": 119,
+    "NameAr": "الطائف",
+    "NameEn": "Taif"
+  },
+  {
+    "Id": 120,
+    "NameAr": "قرية العليا",
+    "NameEn": "Olaia"
+  },
+  {
+    "Id": 121,
+    "NameAr": "رياض الخبراء",
+    "NameEn": "Riad Alkhubaraa"
+  },
+  {
+    "Id": 122,
+    "NameAr": "دومة الجندل",
+    "NameEn": "Dumat Aljandal"
+  },
+  {
+    "Id": 123,
+    "NameAr": "بقعاء",
+    "NameEn": "?????"
+  },
+  {
+    "Id": 124,
+    "NameAr": "الدمام",
+    "NameEn": "Dammam"
+  },
+  {
+    "Id": 125,
+    "NameAr": "الرياض",
+    "NameEn": "Riyadh"
   }
 ]

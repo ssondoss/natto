@@ -22,7 +22,7 @@ export class ProductsComponent implements OnInit {
 
   show = 0;
   merchant: any;
-  products: any;
+  products: any = new Array();
   wardrobes: any;
   imageValue: string;
 
@@ -166,12 +166,12 @@ export class ProductsComponent implements OnInit {
         .post(environment.apiURL + '/product', {
           available: true,
           categoryId: this.productForm.controls['category'].value,
-          deliveryDescription:
-            this.productForm.controls['deliveryDescription'].value,
-          descriptionArabic:
-            this.productForm.controls['descriptionArabic'].value,
-          descriptionEnglish:
-            this.productForm.controls['descriptionEnglish'].value,
+          deliveryDescription: this.productForm.controls['deliveryDescription']
+            .value,
+          descriptionArabic: this.productForm.controls['descriptionArabic']
+            .value,
+          descriptionEnglish: this.productForm.controls['descriptionEnglish']
+            .value,
           image: this.imageValue,
           merchantId: this.merchant.id,
           price: this.productForm.controls['price'].value,

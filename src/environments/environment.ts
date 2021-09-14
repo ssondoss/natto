@@ -1,5 +1,5 @@
 export const environment = {
-  production: true,
-  apiURL: 'http://127.0.0.1:8080/api',
-  imageURL: 'http://127.0.0.1:8887/',
+  production: false,
+  apiURL: 'http://161.97.169.197/api',
+  imageURL: 'http://161.97.169.197/images/',
 };

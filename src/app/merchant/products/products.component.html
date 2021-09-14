@@ -293,6 +293,9 @@
               </tr>
             </tbody>
           </table>
+          <div class="w-100 text-center" *ngIf="products.length == 0">
+            <h3>{{ "BAZZAR.NO_RECORDS" | translate }}</h3>
+          </div>
         </div>
       </div>
     </div>

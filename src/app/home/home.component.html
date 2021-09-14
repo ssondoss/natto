@@ -11,13 +11,13 @@
       <div class="col-lg-8 col-md-6 my-auto d-none d-md-block text-left">
         <div class="text-white">
           <div class="title h1">
-            {{ "BAZZAR.HOMR_SLIDER_TITLE" | translate }}
+            {{"STATIC_CONTENT.PART_G"|translate}}
           </div>
           <div class="h6 pt-3">
-            {{ "BAZZAR.HOMR_SLIDER_SUBTITLE" | translate }}
+            {{"STATIC_CONTENT.PART_A"|translate}}
           </div>
           <p>{{ "BAZZAR.HOMR_SLIDER_Text" | translate }}</p>
-          <a class="p-3 btn btn-main mt-4" href="#">{{
+          <a class="p-3 btn btn-main mt-4" href="all-shops">{{
             "BAZZAR.GO_TO_MEAL" | translate
           }}</a>
         </div>
@@ -27,7 +27,7 @@
           <div class="form-group search-form">
             <i class="fa fa-map-marker search-icon"></i>
 
-            <select class="form-control p-foucs" id="city">
+            <select class="form-control p-foucs" id="cityInput">
               <option value="">{{ "BAZZAR.ALL" | translate }}</option>
               <option *ngFor="let city of cities">
                 <span *ngIf="appService.lang == 'ar'">{{ city.city }}</span>
@@ -50,7 +50,7 @@
                 type="button"
                 (click)="search()"
               >
-                {{ "BAZZAR.FIND_FOOD" | translate }}
+              {{"STATIC_CONTENT.PART_E"|translate}}
               </button>
             </div>
           </div>
@@ -73,10 +73,9 @@
           />
         </div>
         <div class="mt-4 col-10 font-small text-left">
-          <h6 class="font-weight-bold">Choose Your Area Restaurant</h6>
+          <!-- <h6 class="font-weight-bold">Choose Your Area Restaurant</h6> -->
           <p class="text-md">
-            Donec et tellus sed lorem condimentum maximus. Sed tempor, leo
-            tempus condimentum.
+            {{"STATIC_CONTENT.PART_B"|translate}}
           </p>
         </div>
       </div>
@@ -93,10 +92,9 @@
           />
         </div>
         <div class="mt-4 col-10 font-small text-left">
-          <h6 class="font-weight-bold">Choose Your Area Restaurant</h6>
+          <!-- <h6 class="font-weight-bold">Choose Your Area Restaurant</h6> -->
           <p class="text-md">
-            Donec et tellus sed lorem condimentum maximus. Sed tempor, leo
-            tempus condimentum.
+            {{"STATIC_CONTENT.PART_C"|translate}}
           </p>
         </div>
       </div>
@@ -113,10 +111,9 @@
           />
         </div>
         <div class="mt-4 col-10 font-small text-left">
-          <h6 class="font-weight-bold">Choose Your Area Restaurant</h6>
+          <!-- <h6 class="font-weight-bold">Choose Your Area Restaurant</h6> -->
           <p class="text-md">
-            Donec et tellus sed lorem condimentum maximus. Sed tempor, leo
-            tempus condimentum.
+            {{"STATIC_CONTENT.PART_D"|translate}}
           </p>
         </div>
       </div>
@@ -124,7 +121,7 @@
   </div>
 </div>
 <div class="container my-5">
-  <div class="h4 text-center pt-5">Discover New Resturant & Book Now</div>
+  <div class="h4 text-center pt-5"> {{"STATIC_CONTENT.PART_F"|translate}}</div>
   <div class="w-100 mt-5 border py-5">
     <div
       ng2-carouselamos
@@ -218,7 +215,7 @@
     </div>
   </div>
   <div class="text-center mt-5">
-    <button class="btn btn-main py-2 px-4">Show All</button>
+    <a routerLink="/all-shops" class="btn btn-main py-2 px-4">Show All</a>
   </div>
 
   <div class="row my-5 arabic-dir">
@@ -234,7 +231,7 @@
             on your next order.
           </p>
           <div class="small pt-2">
-            <a href="#" class="btn btn-main"
+            <a href="all-shops" class="btn btn-main"
               ><span class="small"> Order Now</span></a
             >
           </div>

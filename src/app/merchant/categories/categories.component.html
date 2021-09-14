@@ -124,6 +124,9 @@
             </tbody>
           </table>
         </div>
+        <div class="w-100 text-center text-dark" *ngIf="wordrobes.length < 1">
+          <h3>{{ "BAZZAR.NO_RECORDS" | translate }}</h3>
+        </div>
       </div>
     </div>
   </div>

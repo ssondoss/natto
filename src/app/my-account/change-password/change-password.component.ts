@@ -57,8 +57,9 @@ export class ChangePasswordComponent implements OnInit {
   }
   updatePassword() {
     let newPassword = this.changePasswordForm.controls['newPassword'].value;
-    let repeateNewPassword =
-      this.changePasswordForm.controls['repeateNewPassword'].value;
+    let repeateNewPassword = this.changePasswordForm.controls[
+      'repeateNewPassword'
+    ].value;
     if (newPassword == repeateNewPassword) {
       let httpParams = new HttpParams()
         .append('newPassword', newPassword)
@@ -78,8 +79,9 @@ export class ChangePasswordComponent implements OnInit {
           {
             newPassword: newPassword,
             oldPassword: this.changePasswordForm.controls['oldPassword'].value,
-            confirmationPassword:
-              this.changePasswordForm.controls['repeateNewPassword'].value,
+            confirmationPassword: this.changePasswordForm.controls[
+              'repeateNewPassword'
+            ].value,
           }
         )
         .subscribe(
@@ -106,7 +108,7 @@ export class ChangePasswordComponent implements OnInit {
               Swal.fire({
                 position: 'top-end',
                 icon: 'error',
-                title: 'Wrong Opration',
+                title: "Current password doesn't match",
                 showConfirmButton: false,
                 timer: 1500,
               });
@@ -114,7 +116,7 @@ export class ChangePasswordComponent implements OnInit {
               Swal.fire({
                 position: 'top-end',
                 icon: 'error',
-                title: 'حدث خطاء بالعملية ',
+                title: 'كلمة المرور الحالية غير صحيحة  ',
                 showConfirmButton: false,
                 timer: 1500,
               });

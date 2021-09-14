@@ -9,7 +9,7 @@
         {{ "BAZZAR.PAYMENTS" | translate }}
       </div>
 
-      <div class="col-12 mt-auto mb-3">
+      <!-- <div class="col-12 mt-auto mb-3">
         <select
           class="form-control"
           name=""
@@ -26,9 +26,9 @@
             }}</span>
           </option>
         </select>
-      </div>
+      </div> -->
 
-      <div class="table-responsive">
+      <!-- <div class="table-responsive">
         <table class="table table-bordered">
           <thead class="bg-light text-center">
             <th>{{ "BAZZAR.MERCHANT" | translate }}</th>
@@ -67,6 +67,48 @@
               </td>
               <td class="text-center">
                 {{ calculateTotalRevenue(payment.orderCommissions) }} $
+              </td>
+              <td>
+                <button class="btn btn-success" (click)="payTake(payment.id)">
+                  {{ "BAZZAR.PAY" | translate }}
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div> -->
+
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead class="bg-light text-center">
+            <th>{{ "BAZZAR.MERCHANT" | translate }}</th>
+
+            <th class="text-center">
+              {{ "BAZZAR.IMAGE" | translate }}
+            </th>
+
+            <th>{{ "BAZZAR.PAY" | translate }}</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let payment of paymentsReq" class="text-center">
+              <td>
+                <a
+                  class="anchor"
+                  [routerLink]="['/merchant-view']"
+                  [queryParams]="{ id: payment.merchant.id }"
+                  rel="noopener noreferrer"
+                  rel="noopener noreferrer"
+                  >{{ payment.merchant.titleEnglish }}</a
+                >
+              </td>
+              <td>
+                <div (click)="goToIamge(payment.image)">
+                  <img
+                    [src]="getImageSource(payment.image)"
+                    width="200px"
+                    height="auto"
+                  />
+                </div>
               </td>
               <td>
                 <button class="btn btn-success" (click)="payTake(payment.id)">

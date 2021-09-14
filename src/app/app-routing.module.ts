@@ -36,6 +36,7 @@ import { RegestrationComponent } from './regestration/regestration.component';
 import { ShopDetailsComponent } from './shop-details/shop-details.component';
 import { TagComponent } from './admin/tag/tag.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { UploadPaymentComponent } from './merchant/upload-payment/upload-payment.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -81,6 +82,8 @@ const routes: Routes = [
   { path: 'change-password', component: ChangePasswordComponent },
   { path: 'my-orders', component: MyOrdersComponent },
   { path: 'tags', component: TagComponent },
+  { path: 'upload-payment', component: UploadPaymentComponent },
+
   { path: '404', component: PageNotFoundComponent },
   { path: '**', redirectTo: '/404' },
 ];

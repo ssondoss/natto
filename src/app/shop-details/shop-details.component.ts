@@ -35,6 +35,8 @@ export class ShopDetailsComponent implements OnInit {
   filteredProducts: any;
   ratings: any;
   totalRatings: any;
+  serviceFees: any=0;
+  tax: number=0;
   constructor(
     public dialog: MatDialog,
     config: NgbRatingConfig,
@@ -58,6 +60,10 @@ export class ShopDetailsComponent implements OnInit {
   show = true;
   showitems = false;
   ngOnInit(): void {
+    this.getServiceFees();
+    this.http.get(environment.apiURL+"/system-settings/tax").subscribe((data:number)=>{
+      this.tax=data;
+    });
     this.route.queryParams.subscribe((params) => {
       this.id = params['id'];
 
@@ -443,7 +449,7 @@ export class ShopDetailsComponent implements OnInit {
 
   getTax() {
     let total = this.getTotal();
-    return total * 0.16;
+    return total * this.tax;
   }
 
   getTotalRatings() {
@@ -489,6 +495,10 @@ export class ShopDetailsComponent implements OnInit {
         return 'مفتوح';
     }
   }
-
+  getServiceFees(){
+    this.http.get(environment.apiURL+"/system-settings/service-fees").subscribe((data:any)=>{
+      this.serviceFees = data;
+    })
+  }
 
 }

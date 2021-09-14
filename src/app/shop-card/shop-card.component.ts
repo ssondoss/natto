@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ApplicationStateService } from '../app.service';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'shop-card',
@@ -15,7 +16,8 @@ export class ShopCardComponent implements OnInit {
   ratingsCount: any;
   constructor(
     public appService: ApplicationStateService,
-    private http: HttpClient
+    private http: HttpClient,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -43,6 +45,9 @@ export class ShopCardComponent implements OnInit {
     return environment.imageURL + image;
   }
 
+  goToMerchant(id: string) {
+    this.router.navigate(['/shop'], { queryParams: { id: id } });
+  }
   getStatusEnglish(value: string) {
     switch (value) {
       case 'OPENED':

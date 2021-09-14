@@ -13,6 +13,7 @@ export class PaymentComponent implements OnInit {
   i = 0;
   payments: any;
   merchants: any;
+  paymentsReq: any = new Array();
   constructor(
     private http: HttpClient,
     private userSession: UserSessionService,
@@ -26,6 +27,7 @@ export class PaymentComponent implements OnInit {
   ngOnInit() {
     this.getAllCommissions();
     this.getAllMerchants();
+    this.getAllPayments();
   }
 
   getAllCommissions() {
@@ -40,6 +42,15 @@ export class PaymentComponent implements OnInit {
       });
   }
 
+  getAllPayments() {
+    this.http
+      .get(environment.apiURL + '/merchant-payment')
+      .subscribe((data: any) => {
+        this.paymentsReq = data;
+        console.log(this.paymentsReq);
+      });
+  }
+
   getOneCommissionByMerchantID(id) {
     this.http
       .get(environment.apiURL + '/merchant-commission/by-merchant-id/' + id)
@@ -50,12 +61,19 @@ export class PaymentComponent implements OnInit {
 
   payTake(id: string) {
     this.http
-      .post(environment.apiURL + '/merchant-commission/pay/' + id, {})
-      .subscribe((data) => {
-        this.payments = this.payments.filter(
-          (payment: any) => payment.id != id
-        );
-        this.payments.push(data);
+      .get(environment.apiURL + '/merchant-commission/by-merchant-id/' + id)
+      .subscribe((payment: any) => {
+        this.http
+          .post(
+            environment.apiURL + '/merchant-commission/pay/' + payment.id,
+            {}
+          )
+          .subscribe((data) => {
+            this.payments = this.payments.filter(
+              (payment: any) => payment.id != id
+            );
+            this.payments.push(data);
+          });
       });
   }
 
@@ -98,5 +116,13 @@ export class PaymentComponent implements OnInit {
     } else {
       this.getOneCommissionByMerchantID(value);
     }
+  }
+
+  getImageSource(image) {
+    return environment.imageURL + image;
+  }
+
+  goToIamge(image) {
+    window.open(environment.imageURL + image);
   }
 }

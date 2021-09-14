@@ -78,7 +78,7 @@ export class LoginComponent implements OnInit {
                   JSON.stringify(merchant)
                 );
                 this.userSession.login(JSON.stringify(data));
-                this.router.navigate(['/']);
+                this.router.navigate(['/account-information']);
               });
           } else if (data.payload.role == 'ADMIN') {
             localStorage.setItem('bazzar-admin-user-jwt', JSON.stringify(data));

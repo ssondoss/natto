@@ -46,7 +46,7 @@ export class MyOrdersComponent implements OnInit {
       });
   }
   getSource(image): string {
-    return 'http://164.68.99.181' + '/images/' + image;
+    return environment.imageURL + image;
   }
 
   openDialogOrderDetails(order: any): void {

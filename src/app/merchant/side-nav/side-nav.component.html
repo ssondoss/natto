@@ -28,7 +28,13 @@
 >
   {{ "BAZZAR.ORDERS" | translate }}
 </div>
-
+<div
+  class="p-3 border-bottom side-nav text-left"
+  routerLink="/upload-payment"
+  [ngClass]="{ 'bg-light': currentComponent === 'upload-payment' }"
+>
+  {{ "BAZZAR.UPLOAD_PAYMENT" | translate }}
+</div>
 <div class="p-3 side-nav text-left" (click)="userSession.logout()">
   {{ "BAZZAR.LOGOUT" | translate }}
 </div>

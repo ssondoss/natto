@@ -74,11 +74,11 @@ import { TagComponent } from './admin/tag/tag.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { EditCategoryComponent } from './merchant/categories/edit-category/edit-category.component';
 import { EditProductComponent } from './merchant/products/edit-product/edit-product.component';
-import {MatSelectModule} from '@angular/material/select'; 
+import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MaterialFileInputModule } from 'ngx-material-file-input';
 import { MatInputModule } from '@angular/material/input';
-
+import { UploadPaymentComponent } from './merchant/upload-payment/upload-payment.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -139,6 +139,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AllMerchantsComponent,
     TagComponent,
     PageNotFoundComponent,
+    UploadPaymentComponent,
   ],
   imports: [
     BrowserModule,
