@@ -47,6 +47,13 @@
 >
   {{ "BAZZAR.DISCOUNTS" | translate }}
 </div>
+<div
+  class="p-3 border-bottom side-nav text-left"
+  [ngClass]="{ 'bg-light': currentComponent === 'tags' }"
+  routerLink="/tags"
+>
+  {{ "BAZZAR.TAGS" | translate }}
+</div>
 <div class="p-3 side-nav text-left" (click)="userSession.logout()">
   {{ "BAZZAR.LOGOUT" | translate }}
 </div>
